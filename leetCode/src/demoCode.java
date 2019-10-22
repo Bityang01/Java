@@ -47,3 +47,33 @@ class Solution {
         return -1;
     }
 }
+
+class Solution {
+	//20191022leetcode7整数反转
+    public int reverse(int x) {
+    int num=x;
+    int count=0;
+    long sum=0;
+    //num=abs(num);
+    while(num!=0)
+    {
+        count++;
+        num=num/10;
+    }
+    int[] arr=new int[count];
+    for(int i=0;i<count;i++)
+    {
+        arr[i]=x%10;//arr[0]=3 arr[1]=2 arr[2]=1
+        x=x/10;
+    }
+    for(int j=count-1;j>=0;j--)
+    {
+        sum=sum+(long)(arr[j]*Math.pow(10,count-1-j));
+        if(sum<-2147483648||sum>2147483647)
+        {
+            return 0;
+        }
+    }
+    return (int)(sum);
+    }
+}
