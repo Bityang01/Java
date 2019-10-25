@@ -129,3 +129,21 @@ class Solution {
         return digits;
     }
 }
+
+class Solution {
+	//20191025leetcode69x的平方根
+    public int mySqrt(int x) {
+        for(long i=1;i<=x;i++)
+        {
+            if((i*i)>x)
+            {
+                return (int)(i-1);
+            }
+            if((i*i)==x)
+            {
+                return (int)i;
+            }
+        }
+        return 0;
+    }
+}
