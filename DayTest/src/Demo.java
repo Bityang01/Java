@@ -1,5 +1,5 @@
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.List;
 
 
 //public class Demo {
@@ -462,7 +462,7 @@ public class Demo{
 
 
 //实现交换两个变量的值。要求：需要交换实参的值。
-public class Demo{
+/*public class Demo{
     public static void swap(int[] array){
         array[0]=array[0]^array[1];
         array[1]=array[0]^array[1];
@@ -474,12 +474,276 @@ public class Demo{
         swap(arr);
         System.out.println("交换之后的数arr[0] "+arr[0]+"和arr[1] "+arr[1]);
     }
+}*/
+
+
+
+
+//顺序表
+
+/*
+class MyArrayList{
+    public int usedSize;
+    public int[] elem;
+
+    public final int CAPACITY = 10;
+
+    public MyArrayList() {
+        this.usedSize = 0;
+        this.elem = new int[CAPACITY];
+    }
+    public void add(int pos, int data) {//插入
+        if(pos<0||pos>this.usedSize)
+        {
+            return ;
+        }
+        if(this.usedSize==this.elem.length){//扩容
+            this.Capacity(elem);
+        }else{
+            for (int i = this.usedSize-1; i >=pos ; i--) {
+                elem[i+1]=elem[i];
+            }
+            this.elem[pos]=data;
+            this.usedSize++;
+        //1、pos是否合法
+        //2、挪数据
+        //3、插入数据
+        //4、usedSize++
+        }
+
+    }
+
+    public boolean contains(int toFind){//查找
+        for(int i=0;i<this.usedSize;i++){
+            if(this.elem[i]==toFind){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int search(int toFind) { // 查找某个元素对应的位置
+        for (int i = 0; i <this.usedSize ; i++) {
+            if(this.elem[i]==toFind){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // 获取 pos 位置的元素
+    public int getPos(int pos) {
+        for (int i = 0; i <this.usedSize ; i++) {
+            if(pos==i){
+                return this.elem[i];
+            }
+        }
+        return -1;
+    }
+
+    // 给 pos 位置的元素设为 value
+    public void setPos(int pos, int value) {
+        for (int i = 0; i <this.usedSize ; i++) {
+            if(pos==i){
+                this.elem[i]=value;
+            }
+        }
+    }
+
+    //删除第一次出现的关键字key
+    public void remove(int toRemove) {
+        for (int i = 0; i <this.usedSize ; i++) {
+            if(this.elem[i]==toRemove){
+                for (int j = i; j <this.usedSize ; j++) {
+                    this.elem[j]=this.elem[j+1];
+                }
+                this.elem[this.usedSize-1]=0;
+                this.usedSize--;
+                break;
+            }
+        }
+    }
+
+    //删除第一次出现的关键字key
+    public void remove1(int toRemove) {
+        if(this.usedSize==0){
+            System.out.println("顺序表儿没有数据！");
+        }
+        for (int i = 0; i <this.usedSize ; i++) {
+            if(this.elem[i]==toRemove){
+                for (int j = i; j <this.usedSize-1 ; j++) {
+                    this.elem[j]=this.elem[j+1];
+                }
+                this.elem[this.usedSize-1]=0;
+                this.usedSize--;
+                break;
+            }
+        }
+    }
+
+    // 获取顺序表长度
+    public int size() {
+        return this.usedSize;
+    }
+
+    // 清空顺序表
+    public void clear() {
+        this.usedSize=0;
+    }
+
+
+
+
+    public void Capacity(int[] array){
+        this.elem=Arrays.copyOf(this.elem,this.elem.length*2);
+    }
+
+
+    public void Show(){
+        for (int i=0;i<this.usedSize;i++) {
+            System.out.println(this.elem[i]);
+        }
+    }
+
+
+}
+
+public class Demo{
+
+    public static void main(String[] args) {
+        MyArrayList myArrayList=new MyArrayList();
+        myArrayList.add(0,13);
+        myArrayList.add(1,43);
+        myArrayList.add(2,3);
+        myArrayList.add(3,23);
+        myArrayList.Show();
+        myArrayList.remove(23);
+        myArrayList.Show();
+        System.out.println("++++++++++++++++++++");
+        System.out.println(myArrayList.size());
+        myArrayList.clear();
+        myArrayList.Show();
+    }
+}*/
+
+
+class ListNode{
+    public int data;
+    public ListNode next;
+
+    public ListNode(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+
+class MySignalList{
+    public ListNode head;
+    public MySignalList(){
+        this.head=null;
+    }
+
+    //头插法
+    public void addFirst(int data){
+        ListNode pGet=new ListNode(data);
+        if(this.head==null){
+            this.head=pGet;
+        }else{
+            pGet.next=this.head;
+            this.head=pGet;
+        }
+    }
+
+    //尾插法
+    public void addTail(int data){
+        ListNode pCur=this.head;
+        ListNode pGet=new ListNode(data);
+        if(this.head==null){
+            this.head=pGet;
+        }else{
+            while(pCur.next!=null){
+                pCur=pCur.next;
+            }
+            pCur.next=pGet;
+        }
+    }
+
+    //看链表中是否包含key
+    public boolean contains(int key){
+        ListNode pCur=this.head;
+        while(pCur.data!=key){
+            if(pCur.next==null){
+                return false;
+            }
+            pCur=pCur.next;
+        }
+        return true;
+    }
+
+    //得到长度
+    public int getLength(){
+        ListNode pCur=this.head;
+        int count=0;
+        while(pCur.next!=null){
+            count++;
+            pCur=pCur.next;
+        }
+        return count;
+    }
+
+
+
+    private ListNode searchIndex(int index) {
+        ListNode cur = this.head;
+        int count=index-1;
+        while(cur.next!=null&&count!=0){
+            cur=cur.next;
+            count--;
+        }
+        return cur;
+        //cur -> index-1
+
+    }
+    public void addIndex(int index,int data){
+        if(index<0||index>getLength()){
+            System.out.println("不合法的下标!");
+            return ;
+        }else{
+            if(index==0){
+                addFirst(data);
+            }else{
+                ListNode pCur=searchIndex(index);
+                ListNode pGet=new ListNode(data);
+                pGet.next=pCur.next;
+                pCur.next=pGet;
+            }
+        }
+    }
+    public void disPlay(){
+        ListNode Cur=this.head;
+        while(Cur.next!=null){
+            System.out.println(Cur.data);
+            Cur=Cur.next;
+        }
+    }
 }
 
 
 
-
-
+public class Demo{
+    public static void main(String[] args) {
+        MySignalList mySignalList=new MySignalList();
+        mySignalList.addFirst(13);
+        mySignalList.addFirst(23);
+        mySignalList.addFirst(33);
+        mySignalList.addFirst(43);
+        mySignalList.addFirst(53);
+        mySignalList.disPlay();
+        System.out.println("++++++++++++++++++++");
+        mySignalList.addIndex(2,14);
+        mySignalList.disPlay();
+    }
+}
 
 
 
