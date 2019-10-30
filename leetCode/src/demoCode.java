@@ -167,3 +167,34 @@ class Solution {
     return f3;
     }
 }
+
+
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20191030leetcode206反转链表
+    public ListNode reverseList(ListNode head) {
+        ListNode cur=head;
+        ListNode prev=null;
+        ListNode newHead=null;
+        while(cur!=null)
+        {
+            ListNode curNext=cur.next;
+            if(curNext==null){
+                newHead=cur;
+            }
+            cur.next=prev;
+            prev=cur;
+            cur=curNext;
+        }
+        return newHead;
+    }
+}
