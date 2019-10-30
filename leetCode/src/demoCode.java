@@ -198,3 +198,26 @@ class Solution {
         return newHead;
     }
 }
+
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20191030leetcode876链表的中间节点
+    public ListNode middleNode(ListNode head) {
+    ListNode pFast = head;
+	ListNode pSlow = head;
+	while ((pFast) != null && (pFast.next != null)){
+            pSlow = pSlow.next;
+            pFast = pFast.next.next;
+        }
+	    return pSlow;
+    }
+}
