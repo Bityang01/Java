@@ -221,3 +221,33 @@ class Solution {
 	    return pSlow;
     }
 }
+
+
+class Solution {
+	//20191031leetcode88合并两个有序数组
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int count=0;
+        for(int i=nums1.length-1;i>=0;i--){
+            if(count!=n){
+                nums1[i]=nums2[count];
+                count++;
+            }
+        }
+        /*for(int i=0;i<nums1.length;i++){
+            if(nums1[i]==0){
+                nums1[i]=nums2[count];
+                count++;
+            }
+        }*/
+        //Arrays.sort(nums1);	//可以用工具包快速排序，下面用的是冒泡排序
+        for(int j=0;j<nums1.length;j++){
+            for(int k=nums1.length-1;k>j;k--){
+                if(nums1[k]<nums1[k-1]){
+                    nums1[k]=nums1[k]^nums1[k-1];
+                    nums1[k-1]=nums1[k]^nums1[k-1];
+                    nums1[k]=nums1[k]^nums1[k-1];
+                }
+            }
+        }
+    }
+}
