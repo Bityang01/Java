@@ -251,3 +251,33 @@ class Solution {
         }
     }
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20191101leetcode83删除排序链表中的重复元素
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode pCur=head;
+        ListNode pre=head;
+        while(pCur!=null){
+            while(pCur!=null&&pCur.val==pre.val){
+                pCur=pCur.next;
+            }
+            pre.next=pCur;
+            pre=pCur;
+            if(pCur==null)
+            {
+                break;
+            }
+            pCur=pCur.next;
+        }
+        return head;
+    }
+}
