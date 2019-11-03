@@ -345,3 +345,63 @@ public class Solution {
         return false;
     }
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+	//20191102leetcode160相交链表
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode aCur=headA;
+        ListNode bCur=headB;
+        ListNode pl=headA;
+        int countA=0;
+        int countB=0;
+        int flg=0;
+        while(aCur!=null){
+            aCur=aCur.next;
+            countA++;
+        }
+        while(bCur!=null){
+            bCur=bCur.next;
+            countB++;
+        }
+        int count=0;
+        if(countA>countB){
+            count=countA-countB;
+        }else{
+            count=countB-countA;
+        }
+        if(countB>countA){
+            pl=headB;
+            flg=1;
+        }
+        while(count!=0){
+            pl=pl.next;
+            count--;
+        }
+        while(pl!=null){
+            if(flg==1&&pl==headA){
+                return pl;
+            }
+            if(flg==0&&pl==headB){
+                return pl;
+            }
+            pl=pl.next;
+            headA=headA.next;
+            headB=headB.next;
+        }
+        return pl;
+    }
+}
+
+
