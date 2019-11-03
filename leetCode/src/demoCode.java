@@ -405,3 +405,71 @@ public class Solution {
 }
 
 
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20191102leetcode21合并两个有序链表
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode node=new ListNode(-1);
+        ListNode tmp=node;
+        ListNode curA=l1;
+        ListNode curB=l2;
+        while(curA!=null&&curB!=null){
+            if(curA.val<curB.val){
+                tmp.next=curA;
+                curA=curA.next;
+                tmp=tmp.next;
+            }else{
+                tmp.next=curB;
+                curB=curB.next;
+                tmp=tmp.next;
+            }
+        }
+        if(curA==null){
+            tmp.next=curB;
+        }else{
+            tmp.next=curA;
+        }
+        return node.next;
+    }
+}
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20191102leetcode21合并两个有序链表
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode node =new ListNode(-1);
+        ListNode tmp=node;
+        while(l1!=null&&l2!=null){
+            if(l1.val<l2.val){
+                tmp.next=l1;
+                tmp=tmp.next;
+                l1=l1.next;
+            }else{
+                tmp.next=l2;
+                tmp=tmp.next;
+                l2=l2.next;
+            }
+        }
+        if(l1==null){
+            tmp.next=l2;
+        }else{
+            tmp.next=l1;
+        }
+        return node.next;
+    }
+}
