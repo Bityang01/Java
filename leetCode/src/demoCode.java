@@ -588,3 +588,58 @@ class Solution {
         return head;
     }
 }
+
+
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public Node next;
+    public Node random;
+
+    public Node() {}
+
+    public Node(int _val,Node _next,Node _random) {
+        val = _val;
+        next = _next;
+        random = _random;
+    }
+};
+*/
+class Solution {
+	//20191106leetcode138复制带随机指针的链表
+    public Node copyRandomList(Node head) {
+        if(head==null){
+            return null;
+        }
+        //1,将两个链表串起来
+        Node cur=head;
+        while(cur!=null){
+            Node curNext=cur.next;
+            Node node=new Node(cur.val,cur.next,null);
+            cur.next=node;
+            cur=curNext;
+        }
+        //2，处理random
+        cur=head;
+        while(cur!=null){
+            if(cur.random!=null){
+                cur.next.random=cur.random.next;
+                cur=cur.next.next;
+            }else{
+                cur.next.random=null;
+                cur=cur.next.next;
+            }
+        }
+        //3，拆分两个链表
+        cur=head;
+        Node newHead=cur.next;
+        Node tmp=cur.next;
+        while(cur.next!=null){
+            tmp=cur.next;
+            cur.next=tmp.next;
+            cur=tmp;
+        }
+        return newHead;
+    }
+}
