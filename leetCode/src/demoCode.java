@@ -551,3 +551,40 @@ class Solution {
         return true;
     }
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20191106leetcode19删除链表的倒数第N个节点
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if(head==null||head.next==null){
+            if(head.next==null&&n==1){
+                return null;
+            }
+        }
+        ListNode cur=head;
+        ListNode pre=head;
+        while(n!=0){
+            cur=cur.next;
+            n--;
+        }
+        ListNode before=head;
+        while(cur!=null&&pre!=null){
+            before=pre;
+            pre=pre.next;
+            cur=cur.next;
+        }
+        before.next=pre.next;
+        if(pre==head){
+            head=head.next;
+        }
+        return head;
+    }
+}
