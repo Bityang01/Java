@@ -643,3 +643,52 @@ class Solution {
         return newHead;
     }
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20191107leetcode86分隔链表
+    public ListNode partition(ListNode head, int x) {
+        ListNode afterStart=null;
+        ListNode afterEnd=null;
+        ListNode BeforStart=null;
+        ListNode BeforEnd=null;
+        ListNode headNext=null;
+        while(head!=null){
+            headNext=head.next;
+            if(head.val<x){
+                if(BeforStart==null){
+                    BeforStart=BeforEnd=head;
+                }else{
+                    BeforEnd.next=head;
+                    BeforEnd=head;
+                }
+                BeforEnd.next=null;
+            }else{
+                if(afterStart==null){
+                    afterStart=afterEnd=head;
+                }else{
+                    afterEnd.next=head;
+                    afterEnd=head;
+                }
+                afterEnd.next=null;
+            }
+            head=headNext;
+        }
+        if(afterStart==null){
+            return BeforStart;
+        }
+        if(BeforStart==null){
+            return afterStart;
+        }
+        BeforEnd.next=afterStart;
+        return BeforStart;
+    }
+}
