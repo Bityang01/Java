@@ -725,3 +725,44 @@ class Solution {
         return node.next;
     }
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20191108leetcode143重排链表
+    public void reorderList(ListNode head) {
+        ListNode cur=head;
+        ListNode before=null;
+        ListNode curNext=cur;
+        if(head==null||head.next==null||head.next.next==null){
+            head=head;
+        }else{
+            while(curNext!=before&&cur!=before){
+                before=cur;
+                curNext=cur.next;
+                while(before.next!=null&&before.next.next!=null){
+                    before=before.next;
+                }
+                /*if(before.next==null){
+                    cur.next=before;
+                }*/
+                if(cur==before){
+
+                }else{
+                    cur.next=before.next;
+                    cur=before.next;
+                    before.next=null;
+                    cur.next=curNext;
+                    cur=cur.next;
+                }
+            }
+        }
+    }
+}
