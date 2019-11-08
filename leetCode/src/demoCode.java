@@ -766,3 +766,54 @@ class Solution {
         }
     }
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20191108leetcode328奇偶链表
+    public ListNode oddEvenList(ListNode head) {
+        ListNode beforeStart=null;
+        ListNode beforeEnd=null;
+        ListNode afterStart=null;
+        ListNode afterEnd=null;
+        ListNode headNext=null;
+        int count=1;
+        while(head!=null){
+            headNext=head.next;
+            if(count%2!=0){//奇数
+                if(beforeStart==null){
+                    beforeStart=beforeEnd=head;
+                }else{
+                    beforeEnd.next=head;
+                    beforeEnd=head;
+                }
+                beforeEnd.next=null;
+            }else{
+                if(afterStart==null){
+                    afterStart=afterEnd=head;
+                }else{
+                    afterEnd.next=head;
+                    afterEnd=head;
+                }
+                afterEnd.next=null;
+            }
+            head=headNext;
+            count++;
+        }
+        if(afterStart==null){
+            return beforeStart;
+        }
+        if(beforeStart==null){
+            return afterStart;
+        }
+        beforeEnd.next=afterStart;
+        return beforeStart;
+    }
+}
