@@ -817,3 +817,43 @@ class Solution {
         return beforeStart;
     }
 }
+
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20191109leetcode61旋转链表
+    public ListNode rotateRight(ListNode head, int k) {
+        ListNode cur=head;
+        int count=0;
+        while(cur!=null){
+            cur=cur.next;
+            count++;
+        }
+        if(count!=0&&k>count){
+            k=k%count;
+        }
+        cur=head;
+        while(k!=0){
+            cur=head;
+            while(cur!=null){
+                if(cur.next!=null&&cur.next.next==null){
+                    cur.next.next=head;
+                    head=cur.next;
+                    cur.next=null;
+                }else{
+                    cur=cur.next;
+                }
+            }
+            k--;
+        }
+        return head;
+    }
+}
