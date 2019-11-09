@@ -857,3 +857,24 @@ class Solution {
         return head;
     }
 }
+
+
+class Solution {
+	//20191109leetcode977有序数组的平方
+    public int[] sortedSquares(int[] A) {
+        int[] array=new int[A.length];
+        for(int i=0;i<A.length;i++){
+            array[i]=(int)Math.pow(A[i],2);
+        }
+        for(int j=0;j<A.length;j++){
+            for(int k=0;k<A.length-1-j;k++){
+                if(array[k]>array[k+1]){
+                    array[k]=array[k]^array[k+1];
+                    array[k+1]=array[k]^array[k+1];
+                    array[k]=array[k]^array[k+1];
+                }
+            }
+        }
+        return array;
+    }
+}
