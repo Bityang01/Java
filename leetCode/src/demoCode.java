@@ -878,3 +878,23 @@ class Solution {
         return array;
     }
 }
+
+
+
+class Solution {
+	//20191110leetcode1108IP地址无效化
+    public String defangIPaddr(String address) {
+        String newer=new String();
+        int count=0;
+        for(int i=0;i<address.length();i++){
+            if(address.charAt(i)=='.'){
+                newer=newer+'[';
+                newer=newer+'.';
+                newer=newer+']';
+            }else{
+                newer=newer+address.charAt(i);
+            }
+        }
+        return newer;
+    }
+}
