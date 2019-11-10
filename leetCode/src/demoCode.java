@@ -898,3 +898,40 @@ class Solution {
         return newer;
     }
 }
+
+class Solution {
+	//20191110leetcode1207独一无二的出现次数
+    public boolean uniqueOccurrences(int[] arr) {
+        int flag=0;
+        int ret=0;
+        int[] array=new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            int count=0;
+            flag=0;
+            for(int j=0;j<i;j++){
+                if(arr[i]==arr[j]){
+                    flag=1;
+                }
+            }
+            if(flag==1){
+                continue;
+            }else{
+                for(int k=i;k<arr.length;k++){
+                    if(arr[i]==arr[k]){
+                        count++;
+                    }
+                }
+                array[ret]=count;
+                ret++;
+            }
+        }
+        for(int i=0;i<ret;i++){
+            for(int j=ret-1;j>i;j--){
+                if(array[i]==array[j]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
