@@ -947,3 +947,24 @@ class Solution {
         }
     }
 }
+
+
+class Solution {
+	//20191112leetcode重复N次的元素
+    public int repeatedNTimes(int[] A) {
+        int N=A.length/2;
+        int count=0;
+        for(int i=0;i<A.length;i++){
+            count=0;
+            for(int j=0;j<A.length;j++){
+                if(A[i]==A[j]){
+                    count++;
+                }
+            }
+            if(count==N){
+                return A[i];
+            }
+        }
+        return 0;
+    }
+}
