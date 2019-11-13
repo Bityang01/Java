@@ -1010,3 +1010,22 @@ class Solution {
         return maxNum;
     }
 }
+
+
+class Solution {
+	//20191113leetcode693交替位二进制数
+    public boolean hasAlternatingBits(int n) {
+        int tmp=n;
+        int count=0;
+        while(tmp!=0){
+            count++;
+            tmp=tmp/2;
+        }
+        for(int i=0;i<count-1;i++){
+            if(((n>>i)&1)==((n>>(i+1))&1)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
