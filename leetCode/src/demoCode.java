@@ -983,3 +983,30 @@ public class Solution {
         return count;
     }
 }
+
+
+class Solution {
+	//20191113leetcode169求众数
+    public int majorityElement(int[] nums) {
+        int count=nums.length/2;
+        int num=0;
+        int max=0;
+        int maxNum=0;
+        for(int i=0;i<nums.length;i++){
+            int ret=0;
+            for(int j=i;j<nums.length;j++){
+                if(nums[i]==nums[j]){
+                    ret++;
+                }
+            }
+            if(ret>=count){
+                num=ret;
+                if(num>max){
+                    max=ret;
+                    maxNum=nums[i];
+                }
+            }
+        }
+        return maxNum;
+    }
+}
