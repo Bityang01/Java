@@ -1084,3 +1084,24 @@ class Solution {
         return (char)num;
     }
 }
+
+
+class Solution {
+	//20191114leetcode868二进制间距
+    public int binaryGap(int N) {
+        int res=0;
+        int tmp=0;
+        while((N&1)!=1){
+            N=N>>1;
+        }      
+        while(N>0){
+            if((N&1)==1){
+                res=res>tmp?res:tmp;
+                tmp=0;
+            }
+            tmp++;
+            N=N>>1;
+        }
+        return res;
+    }
+}
