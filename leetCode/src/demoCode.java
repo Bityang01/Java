@@ -1029,3 +1029,58 @@ class Solution {
         return true;
     }
 }
+
+
+class Solution {
+	//20191114leetcode389找不同（暴力破解法，通过测试用例1）
+    public char findTheDifference(String s, String t) {
+        char sc;
+        int flag=0;
+        for(int i=0;i<((s.length()>t.length())?s.length():t.length());i++){
+            flag=0;
+            for(int j=0;j<((s.length()<t.length())?s.length():t.length());j++){
+                if(s.length()>t.length()){
+                    if(s.charAt(i)==t.charAt(j)){
+                        flag=1;
+                        break;
+                    }
+                }else{
+                    if(t.charAt(i)==s.charAt(j)){
+                        flag=1;
+                        break;
+                    }
+                }
+            }
+            if(flag==0){
+                if(s.length()>t.length()){
+                    sc=s.charAt(i);
+                }else{
+                    sc=t.charAt(i);
+                }
+                return sc;
+            }
+        }
+        return 0;
+    }
+}
+
+class Solution {
+	//20191114leetcode389找不同
+    public char findTheDifference(String s, String t) {
+        int sNum=0;
+        int tNum=0;
+        int num=0;
+        for(int i=0;i<s.length();i++){
+            sNum=sNum+s.charAt(i);
+        }
+        for(int j=0;j<t.length();j++){
+            tNum=tNum+t.charAt(j);
+        }
+        if(sNum>tNum){
+            num=sNum-tNum;
+        }else{
+            num=tNum-sNum;
+        }
+        return (char)num;
+    }
+}
