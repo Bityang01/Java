@@ -1105,3 +1105,37 @@ class Solution {
         return res;
     }
 }
+
+
+class Solution {
+	//20191116leetcode283移动零（解法一：时间复杂度太高）
+    public void moveZeroes(int[] nums) {
+        for(int k=0;k<nums.length;k++){
+            for(int i=0;i<nums.length;i++){
+                if(nums[i]==0){
+                    for(int j=i;j<nums.length-1;j++){
+                        nums[j]=nums[j+1];
+                    }
+                    nums[nums.length-1]=0;
+                }
+            }
+        }
+    }
+}
+
+
+class Solution {
+	//20191116leetcode283移动零（解法二）
+    public void moveZeroes(int[] nums) {
+        int j=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=0){
+                if(i!=j){
+                    nums[j]=nums[i];
+                    nums[i]=0;
+                }
+                j++;
+            }
+        }
+    }
+}
