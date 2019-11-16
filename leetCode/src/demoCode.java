@@ -1139,3 +1139,14 @@ class Solution {
         }
     }
 }
+
+class Solution {
+	//20191116leetcode1009十进制整数的反码
+    public int bitwiseComplement(int N) {
+        int num=1;
+        while(num<N){
+            num=(num<<1)+1;
+        }
+        return N^num;
+    }
+}
