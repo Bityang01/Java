@@ -1185,3 +1185,21 @@ class Solution {
         return array[j];
     }
 }
+
+
+class Solution {
+	//20191117leetcode1185一周中的第几天
+    public String dayOfTheWeek(int day, int month, int year) {
+        if(month==1||month==2)
+        {
+            year--;
+            month+=12;
+        }
+        String[] array={"Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        int i=0;
+        i=((year%100)+(year%100)/4+(year/100)/4-2*(year/100)+(26*(month+1)/10)+day-1)%7;
+        int j=(int)Math.abs(i);
+        j=i>=0?(i%7):(i%7+7);
+        return array[j];
+    }
+}
