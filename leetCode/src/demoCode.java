@@ -1203,3 +1203,31 @@ class Solution {
         return array[j];
     }
 }
+
+class Solution {
+	//20191118leetcode202快乐数
+    public boolean isHappy(int n) {
+        int[] array=new int[100];
+        int count=0;
+        while(n!=0){
+            if(n==1){
+                return true;
+            }
+            int sum=0;
+            int num=n;
+            while(num!=0){
+                sum=sum+(int)Math.pow(num%10,2);
+                num=num/10;
+            }
+            for(int i=0;i<count;i++){
+                if(array[i]==sum){
+                    return false;
+                }
+            }
+            array[count]=sum;
+            count++;
+            n=sum;
+        }
+        return false;
+    }
+}
