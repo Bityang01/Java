@@ -1270,3 +1270,36 @@ class Solution {
         return 0;
     }
 }
+
+class Solution {
+	//20191119leetcode520检测大写字母
+    public boolean detectCapitalUse(String word) {
+        if(word.length()<2){
+            return true;
+        }
+        if(word.charAt(0)>=65&&word.charAt(0)<=90){
+            if(word.charAt(1)>=65&&word.charAt(1)<=90){
+                for(int k=1;k<word.length();k++){
+                    if(word.charAt(k)<65||word.charAt(k)>90){
+                        return false;
+                    }
+                }
+            }
+            if(word.charAt(1)>=97&&word.charAt(1)<=122){
+                for(int j=1;j<word.length();j++){
+                    if(word.charAt(j)<97||word.charAt(j)>122){
+                        return false;
+                    }
+                }
+            }
+        }
+        if(word.charAt(0)>=97&&word.charAt(0)<=122){
+            for(int i=0;i<word.length();i++){
+                if(word.charAt(i)<97||word.charAt(i)>122){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
