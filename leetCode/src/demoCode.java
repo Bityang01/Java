@@ -1250,3 +1250,23 @@ class Solution {
         return max>count?max:count;
     }
 }
+
+
+class Solution {
+	//20191119leetcode976三角形的最大周长
+    public int largestPerimeter(int[] A) {
+        if(A.length<3){
+            return 0;
+        }
+        Arrays.sort(A);
+        for(int i=A.length-1;i>=0;i--){
+            if(i<2){
+                return 0;
+            }
+            if((A[i-1]+A[i-2])>A[i]){
+                return A[i-1]+A[i-2]+A[i];
+            }
+        }
+        return 0;
+    }
+}
