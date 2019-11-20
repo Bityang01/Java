@@ -1303,3 +1303,38 @@ class Solution {
         return true;
     }
 }
+
+
+class Solution {
+	//20191120leetcode268缺失数字（30%）
+    public int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length-1;i++){
+            if(nums[i]+1!=nums[i+1]){
+                return nums[i]+1;
+            }
+        }
+        if((nums[nums.length-1]+1)==nums.length){
+            return nums.length;
+        }
+        return 0;
+    }
+}
+
+
+class Solution {
+	//20191120leetcode268缺失数字（进阶版100%）
+    public int missingNumber(int[] nums) {
+        int count=1;
+        int sumBig=0;
+        int sumLow=0;
+        int i=0;
+        while(count<=nums.length){//count!=2?
+            sumBig=sumBig+count;
+            sumLow=sumLow+nums[i];
+            i++;
+            count++;
+        }
+        return sumBig-sumLow;
+    }
+}
