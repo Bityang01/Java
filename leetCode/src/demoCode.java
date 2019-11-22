@@ -1413,3 +1413,35 @@ public class Solution {
         return num;
     }
 }
+
+class Solution {
+	//20191122leetcode217存在重复元素
+    public boolean containsDuplicate(int[] nums) {
+        for(int i=0;i<nums.length;i++){
+            int count=0;
+            for(int j=i;j<nums.length;j++){
+                if(nums[i]==nums[j]){
+                    count++;
+                    if(count>=2){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+class Solution {
+	//20191122leetcode217存在重复元素（法二：时间复杂度98.38%）
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for(int i=0;i<nums.length-1;i++){
+            if(nums[i]==nums[i+1]){
+                return true;
+            }
+        }
+        return false;
+    }
+}
