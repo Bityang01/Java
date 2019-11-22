@@ -1398,3 +1398,18 @@ class Solution {
         return null;
     }
 }
+
+
+public class Solution {
+	//20191122leetcode190颠倒二进制位
+    // you need treat n as an unsigned value
+    public int reverseBits(int n) {
+        int num=0;
+        for(int i=0;i<=32;i++){
+            int tmp=(n>>i)&1;   //取n的每一位
+            tmp=tmp<<(31-i);    //将n的每一位存放到高位去
+            num=num|tmp;        //采用|运算累加每一位
+        }
+        return num;
+    }
+}
