@@ -1495,3 +1495,20 @@ class Solution {
         return true;
     }
 }
+
+
+class Solution {
+	//20191123leetcode405数字转换为十六进制数
+    public String toHex(int num) {
+        if(num==0){
+            return "0";
+        }
+        String str="0123456789abcdef";
+        String ret="";
+        while(ret.length()<8&&num!=0){
+            ret=str.charAt(num & 0xf)+ret;
+            num=num>>4;
+        }
+        return ret;
+    }
+}
