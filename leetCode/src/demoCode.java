@@ -1445,3 +1445,53 @@ class Solution {
         return false;
     }
 }
+
+class Solution {
+	//383赎金信
+    private static String removeCharAt(String str, int i) {
+		return str.substring(0, i)+str.substring(i+1);
+	}
+    public boolean canConstruct(String ransomNote, String magazine) {
+        for(int i=0;i<ransomNote.length();i++){
+            for(int j=0;j<magazine.length();j++){
+                if((j==magazine.length()-1)&&(ransomNote.charAt(i)!=magazine.charAt(j))){
+                    return false;
+                }
+                if(ransomNote.charAt(i)==magazine.charAt(j)){
+                    removeCharAt(magazine,j);
+                    if(i==(ransomNote.length()-1)){
+                        return true;
+                    }
+                    continue;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+class Solution {
+	//20191123leetcode551学生出勤记录I
+    public boolean checkRecord(String s) {
+        int count=0;
+        int countl=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='A'){
+                count++;
+                if(count>1){
+                    return false;
+                }
+            }
+            if(s.charAt(i)=='L'){
+                countl++;
+            }
+            if(s.charAt(i)!='L'){
+                countl=0;
+            }
+            if(countl>2){
+                return false;
+            }
+        }
+        return true;
+    }
+}
