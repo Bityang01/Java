@@ -1531,3 +1531,17 @@ class Solution {
         return num==1;
     }
 }
+
+
+class Solution {
+	//20191124leetcode628三个数的最大乘积
+    public int maximumProduct(int[] nums) {
+        Arrays.sort(nums);
+        int ret=0;
+        if(nums[0]<0&&nums[1]<0){
+            ret=nums[0]*nums[1]*nums[nums.length-1];
+        }
+        int flg=nums[nums.length-1]*nums[nums.length-2]*nums[nums.length-3];
+        return ret>flg?ret:flg;
+    }
+}
