@@ -1567,3 +1567,29 @@ class Solution {
         return true;
     }
 }
+
+class Solution {
+	//20191125leetocde392判断子序列
+    public boolean isSubsequence(String s, String t) {
+        if(s.length()<1){
+            return true;
+        }
+        if(t.length()<1){
+            return false;
+        }
+        int count=0;
+        int i=0;
+        while(count!=t.length()){
+            if(s.charAt(i)==t.charAt(count)){
+                if(i==(s.length()-1)){
+                    return true;
+                }
+                i++;
+                count++;
+            }else{
+                count++;
+            }
+        }
+        return false;
+    }
+}
