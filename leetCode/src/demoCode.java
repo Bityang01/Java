@@ -1545,3 +1545,25 @@ class Solution {
         return ret>flg?ret:flg;
     }
 }
+
+class Solution {
+	//20191125leetcode1232缀点成线
+    public boolean checkStraightLine(int[][] coordinates) {
+        /*
+        由斜率公式得
+        (y1-y0)/(x1-x0)=(yi-y0)/(xi-x0)
+        防止除0，变换成相乘的形式
+        (y1-y0)*(xi-x0)==(x1-x0)*(yi-y0)
+        */
+        if(coordinates==null||coordinates.length<3){
+            return true;
+        }
+        for(int i=0;i<coordinates.length;i++){
+            if((coordinates[1][1]-coordinates[0][1])*(coordinates[i][0]-coordinates[0][0])
+            !=(coordinates[i][1]-coordinates[0][1])*(coordinates[1][0]-coordinates[0][0])){
+                return false;
+            }
+        }
+        return true;
+    }
+}
