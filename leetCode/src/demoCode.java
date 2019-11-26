@@ -1593,3 +1593,29 @@ class Solution {
         return false;
     }
 }
+
+class Solution {
+	//20191126leetcode504七进制数
+    public String convertToBase7(int num) {
+        if(num==0){
+            return "0";
+        }
+        int a=(num>>31)&1;  //符号位
+        int count=0;
+        int[] array=new int[100];
+        num=Math.abs(num);
+        while(num!=0){
+            array[count]=num%7;
+            count++;
+            num=num/7;
+        }
+        String str="";
+        if(a==1){
+            str+="-";
+        }
+        for(int i=count-1;i>=0;i--){
+            str+=array[i];
+        }
+        return str;
+    }
+}
