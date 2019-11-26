@@ -1619,3 +1619,38 @@ class Solution {
         return str;
     }
 }
+
+class Solution {
+	//20191126leetcode231 2的幂
+    public boolean isPowerOfTwo(int n) {
+        if(n==0){
+            return false;
+        }
+        int count=0;
+        if(((n>>31)&1)==1){
+            return false;
+        }
+        for(int i=0;i<32;i++){
+            if(((n>>i)&1)==1){
+                count++;
+                if(count>1){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+
+class Solution {
+	//20191126leetcode231 2的幂（递归）
+    public boolean isPowerOfTwo(int n) {
+        if(n==1)
+            return true;
+        if(n==0)
+            return false;
+        if(n%2!=0)
+            return false;
+        return isPowerOfTwo(n/2);
+    }
+}
