@@ -1654,3 +1654,18 @@ class Solution {
         return isPowerOfTwo(n/2);
     }
 }
+
+
+class Solution {
+	//20191127leetcode342 4的幂
+    public boolean isPowerOfFour(int num) {
+        if(num==1)
+            return true;
+        if(num==0)
+            return false;
+        if(num%4!=0){
+            return false;
+        }
+        return isPowerOfFour(num/4);
+    }
+}
