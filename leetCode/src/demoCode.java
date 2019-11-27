@@ -1669,3 +1669,31 @@ class Solution {
         return isPowerOfFour(num/4);
     }
 }
+
+
+class Solution {
+	//20191127leetcode299猜数字游戏（bulls and cows公牛和奶牛）
+    public String getHint(String secret, String guess) {
+        char[] secretArray=secret.toCharArray();
+        char[] guessArray=guess.toCharArray();
+        int countA=0;
+        int countB=0;
+        for(int i=0;i<guessArray.length;i++){
+            if(secretArray[i]==guessArray[i]){
+                countA++;
+                secretArray[i]='*';
+                guessArray[i]='#';
+            }
+        }
+        for(int i=0;i<guessArray.length;i++){
+            for(int j=0;j<secretArray.length;j++){
+                if(guessArray[i]==secretArray[j]){
+                    countB++;
+                    guessArray[i]='#';
+                    secretArray[j]='*';
+                }
+            }
+        }
+        return countA+"A"+countB+"B";
+    }
+}
