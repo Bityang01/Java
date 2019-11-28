@@ -1749,3 +1749,46 @@ class Solution {
         return sumA>sumB?sumB:sumA;
     }
 }*/
+
+class Solution {
+	//相交数组
+    public int[] intersect(int[] nums1, int[] nums2) {
+        if(nums1.length>nums2.length){
+            int[] longArr=new int[nums1.length];
+            for(int i=0;i<nums1.length;i++){
+                longArr[i]=nums1[i];
+            }
+            int[] lowArr=new int[nums2.length];
+            for(int i=0;i<nums2.length;i++){
+                lowArr[i]=nums2[i];
+            } 
+        }else{
+            int[] longArr=new int[nums2.length];
+            for(int i=0;i<nums2.length;i++){
+                longArr[i]=nums2[i];
+            }
+            int[] lowArr=new int[nums1.length];
+            for(int i=0;i<nums1.length;i++){
+                lowArr[i]=nums1[i];
+            } 
+        }
+        int[] array=new int[nums1.length];
+        int count=0;
+        int longLen=nums1.length>nums2.length?nums1.length:nums2.length;
+        int lowLen=nums1.length<nums2.length?nums1.length:nums2.length;
+        for(int i=0;i<lowLen;i++){
+            for(int j=0;j<longLen;j++){
+                if(lowArr[i]==longArr[j]){
+                    array[count]=lowArr[i];
+                    count++;
+                    break;
+                }
+            }
+        }
+        int[] arr=new int[count];
+        for(int i=0;i<count;i++){
+            arr[i]=array[i];
+        }
+        return arr;
+    }
+}
