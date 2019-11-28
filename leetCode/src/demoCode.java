@@ -1697,3 +1697,55 @@ class Solution {
         return countA+"A"+countB+"B";
     }
 }
+
+class Solution {
+	//20191128leetcode746使用最小花费爬楼梯
+    public int minCostClimbingStairs(int[] cost) {
+        int f1 = 0, f2 = 0;
+        for (int i = cost.length - 1; i >= 0; --i) {
+            int f0 = cost[i] + Math.min(f1, f2);
+            f2 = f1;
+            f1 = f0;
+        }
+        return Math.min(f1, f2);
+    }
+}
+/*class Solution {
+    public int minCostClimbingStairs(int[] cost) {
+        int retA=cost.length;  
+        int sumA=0;
+        while(retA>2){
+            if((cost[retA-1])<(cost[retA-2])){
+                sumA=sumA+cost[retA-1];
+                retA=retA-1;
+            }else{
+                sumA=sumA+cost[retA-2];
+                retA=retA-2;
+            }
+        }
+        int retB=-1;
+        int sumB=0;
+        while(retB<cost.length-2){
+            if(cost[retB+1]<cost[retB+2]){
+                sumB=sumB+cost[retB+1];
+                retB=retB+1;
+            }else{
+                sumB=sumB+cost[retB+2];
+                retB=retB+2;
+            }
+        }
+        int sumC=0;
+        int retC=0;
+        while(retC<cost.length-2){
+            if(cost[retC+1]<cost[retC+2]){
+                sumC=sumC+cost[retC+1];
+                retC=retC+1;
+            }else{
+                sumC=sumC+cost[retC+2];
+                retC=retC+2;
+            }
+        }
+        sumB=(sumB>sumC?sumC:sumB);
+        return sumA>sumB?sumB:sumA;
+    }
+}*/
