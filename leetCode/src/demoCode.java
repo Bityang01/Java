@@ -1792,3 +1792,16 @@ class Solution {
         return arr;
     }
 }
+
+class Solution {
+	//20191129leetcode326 3的幂
+    public boolean isPowerOfThree(int n) {
+        if(n==1)
+            return true;
+        if(n==0)
+            return false;
+        if(n%3!=0)
+            return false;
+        return isPowerOfThree(n/3);
+    }
+}
