@@ -1805,3 +1805,31 @@ class Solution {
         return isPowerOfThree(n/3);
     }
 }
+
+
+class Solution {
+	//20191130leetcode367有效的完全平方数
+    public boolean isPerfectSquare(int num) {
+        int i=1;
+        while(num>=0){
+            num=num-i;
+            i=i+2;
+            if(num==0){
+                return true;
+            }
+        }
+        return false;
+        /*int sum=0;
+        for(int i=1;true;){
+            sum=sum+i;
+            if(sum==num){
+                return true;
+            }else{
+                if(sum>num){
+                    return false;
+                }
+            }
+            i=i+2;
+        }*/
+    }
+}
