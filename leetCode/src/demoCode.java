@@ -1833,3 +1833,25 @@ class Solution {
         }*/
     }
 }
+
+class Solution {
+	//20191130leetcode387字符串中的第一个唯一字符
+    public int firstUniqChar(String s) {
+        int count=0;
+        for(int i=0;i<s.length();i++){
+            count=0;
+            for(int j=0;j<s.length();j++){
+                if(s.charAt(i)==s.charAt(j)){
+                    count++;
+                    if(count>1){
+                        break;
+                    }
+                }
+            }
+            if(count<2){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
