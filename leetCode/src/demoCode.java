@@ -1855,3 +1855,31 @@ class Solution {
         return -1;
     }
 }
+
+import java.util.*;
+public class Main{
+	//20191201牛客网 字符串连连看
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.next();
+        int count=1;
+        for(int i=1;i<str.length();i++){
+            if(str.charAt(i)==str.charAt(i-1)){
+                count++;
+                if(i==str.length()-1&&count>2){
+                    str=str.substring(0,i-2);
+                    count=0;
+                    i=0;
+                }
+                continue;
+            }
+            if(count>2){
+                str=str.substring(0,i-3)+
+                    str.substring(i);
+                i=0;
+            }
+            count=1;
+        }
+        System.out.println(str);
+    }
+}
