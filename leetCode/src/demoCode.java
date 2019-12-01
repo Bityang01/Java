@@ -1883,3 +1883,21 @@ public class Main{
         System.out.println(str);
     }
 }
+
+import java.util.*;
+public class Main{
+	//20191201牛客网 字符串提取
+    public static void main(String[] args){
+        Scanner sca=new Scanner(System.in);
+        String str=sca.next();
+        
+        int i=str.lastIndexOf("[img]");
+        int j=str.lastIndexOf("[\\img]");
+        
+        if(i<0||j<0||i>j){
+            System.out.println("null");
+        }else{
+            System.out.println(str.substring(i,j+6));
+        }
+    }
+}
