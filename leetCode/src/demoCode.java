@@ -1928,3 +1928,27 @@ class Solution{
         return A.length()==B.length()&&(A+A).contains(B);
     }
 }
+
+class Solution {
+	//20191202leetcode205同构字符串
+    public boolean isIsomorphic(String s, String t) {
+        for(int i=0;i<s.length();i++){
+            if(s.indexOf(s.charAt(i))!=t.indexOf(t.charAt(i))){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+/*class Solution {
+	//同构字符串
+    public boolean isIsomorphic(String s, String t) {
+        for(int i=0;i<s.length();i++){
+            t=t.replace(t.charAt(i),s.charAt(i));
+        }
+        if(s.equals(t)){
+            return true;
+        }
+        return false;
+    }
+}*/
