@@ -1901,3 +1901,30 @@ public class Main{
         }
     }
 }
+
+/*class Solution {
+	//20191202leetcode796旋转字符串（11%）
+    public boolean rotateString(String A, String B) {
+        if(A.length()==0&&B.length()==0){
+            return true;
+        }
+        int count=A.length();
+        for(int i=0;i<A.length();i++){
+            A=A.charAt(A.length()-1)+A.substring(0,A.length()-1);
+            if(A.equals(B)){
+                return true;
+            }
+            if(count<0){
+                return false;
+            }
+            count--;
+        }
+        return false;
+    }
+}*/
+class Solution{
+	//20191202leetcode796旋转字符串（100%）
+    public boolean rotateString(String A,String B){
+        return A.length()==B.length()&&(A+A).contains(B);
+    }
+}
