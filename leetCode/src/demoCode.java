@@ -1952,3 +1952,24 @@ class Solution {
         return false;
     }
 }*/
+
+import java.util.*;
+public class Main{
+	//20191203牛客 字符串连接
+    
+    public static String func(String str){
+        String[] ret=str.split(" ");
+        String str1="";
+        for(String c:ret){
+            str1=str1+c;
+        }
+        return str1;
+    }
+    
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        String str=scanner.nextLine();
+        String str2=func(str);
+        System.out.println(str2);
+    }
+}
