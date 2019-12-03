@@ -1973,3 +1973,24 @@ public class Main{
         System.out.println(str2);
     }
 }
+
+import java.util.*;
+public class Main{
+	//20191203牛客网 字符串反转
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        char[] arr=str.toCharArray();
+        int left=0;
+        int right=arr.length-1;
+        while(left<right){
+            char tmp=arr[left];
+            arr[left]=arr[right];
+            arr[right]=tmp;
+            left++;
+            right--;
+        }
+        System.out.println(arr);
+        //return String.copyValueOf(arr);
+    }
+}
