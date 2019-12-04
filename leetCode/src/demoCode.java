@@ -1994,3 +1994,39 @@ public class Main{
         //return String.copyValueOf(arr);
     }
 }
+
+import java.util.*;
+public class Main{
+	//20191204牛客网 字符串比较（未通过）
+    
+    public static boolean func(String str1,String str2){
+        int a=0;
+        if(str1.length()!=str2.length()){
+            return false;
+        }
+        while(a<str1.length()){
+            int count1=0;
+            int count2=0;
+            for(int i=0;i<str1.length();i++){
+                if(str1.charAt(a)==str1.charAt(i)){
+                    count1++;
+                }
+                if(str2.charAt(a)==str2.charAt(i)){
+                    count2++;
+                }
+            }
+            if(count1!=count2){
+                return false;
+            }
+            a++;
+        }
+        return true;
+    }
+    
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str1=sc.next();
+        String str2=sc.next();
+        System.out.println(func(str1,str2));
+    }
+}
