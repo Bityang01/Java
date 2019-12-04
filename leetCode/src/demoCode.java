@@ -2030,3 +2030,56 @@ public class Main{
         System.out.println(func(str1,str2));
     }
 }
+
+import java.util.*;
+public class Main{
+	//20191204牛客网 字符串比较
+    
+    /*public static boolean func(String str1,String str2){
+        int a=0;
+        if(str1.length()!=str2.length()){
+            return false;
+        }
+        while(a<str1.length()){
+            int count1=0;
+            int count2=0;
+            for(int i=0;i<str1.length();i++){
+                if(str1.charAt(a)==str1.charAt(i)){
+                    count1++;
+                }
+                if(str2.charAt(a)==str2.charAt(i)){
+                    count2++;
+                }
+            }
+            if(count1!=count2){
+                return false;
+            }
+            a++;
+        }
+        return true;
+    }*/
+    
+    public static boolean func2(String str1,String str2){
+        if(str1.length()!=str2.length()){
+            return false;
+        }
+        char[] array1=str1.toCharArray();
+        char[] array2=str2.toCharArray();
+        Arrays.sort(array1);
+        Arrays.sort(array2);
+        String str3=String.copyValueOf(array1);
+        String str4=String.copyValueOf(array2);
+        if(str3.contains(str4)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str1=sc.next();
+        String str2=sc.next();
+        System.out.println(func2(str1,str2));
+    }
+}
