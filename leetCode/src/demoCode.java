@@ -2083,3 +2083,21 @@ public class Main{
         System.out.println(func2(str1,str2));
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20191205牛客网 字符串包含
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){//sc.hasNext()方法，表示读入示你是否有输入数据，
+							//while语句块 表示当你输入数据的时候，就执行输出sc.next()（输出内容）
+							//所以只要你输入数据了，它就可以执行，
+							//所以后台只是开了一块内存，一直未关闭，不算死循环
+            String str1=sc.next();
+            String str2=sc.next();
+            System.out.println((str1.contains(str2) || str2.contains(str1)) ? 1 : 0);
+        }
+    }
+}
