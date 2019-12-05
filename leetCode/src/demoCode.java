@@ -2101,3 +2101,32 @@ public class Main{
         }
     }
 }
+
+import java.util.*;
+
+public class Main{
+	//20191205牛客网 字符串分隔
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str1=sc.next();
+        String str2=sc.next();
+        int n=8-str1.length()%8;
+        while(str1.length()>8){
+            System.out.println(str1.substring(0,8));
+            str1=str1.substring(8);
+        }
+        for(int i=0;i<n;i++){
+            str1=str1+"0";
+        }
+        System.out.println(str1);
+        int n2=8-str2.length()%8;
+        while(str2.length()>8){
+            System.out.println(str2.substring(0,8));
+            str2=str2.substring(8);
+        }
+        for(int i=0;i<n;i++){
+            str2=str2+"0";
+        }
+        System.out.println(str2);
+    }
+}
