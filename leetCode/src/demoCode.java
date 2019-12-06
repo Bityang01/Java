@@ -2130,3 +2130,34 @@ public class Main{
         System.out.println(str2);
     }
 }
+
+import java.util.*;
+public class Main{
+	//20191206牛客网 验证字符串
+    
+    public static boolean func(String str1){
+        if(str1.length()<2){
+            return true;
+        }
+        if((str1.charAt(1)>='A')&&(str1.charAt(1)<='Z')){
+            for(int i=1;i<str1.length();i++){
+                if(str1.charAt(i)<'A'||str1.charAt(i)>'Z'){
+                    return false;
+                }
+            }
+        }
+        if(str1.charAt(1)>='a'&&str1.charAt(1)<='z'){
+            for(int i=1;i<str1.length();i++){
+                if(str1.charAt(i)<'a'||str1.charAt(i)>'z'){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        System.out.println(func(str));
+    }
+}
