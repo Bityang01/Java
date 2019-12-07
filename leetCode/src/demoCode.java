@@ -2161,3 +2161,46 @@ public class Main{
         System.out.println(func(str));
     }
 }
+
+import java.util.*;
+public class Main{
+	//20191207牛客网 翻转字符串
+    
+    public static String reverse(String str){
+        char[] arr=str.toCharArray();
+        int left=0;
+        int right=arr.length-1;
+        while(left<right){
+            char tmp=arr[left];
+            arr[left]=arr[right];
+            arr[right]=tmp;
+            left++;
+            right--;
+        }
+        return String.copyValueOf(arr);
+    }
+    
+    public static String func(String str){
+        String str1="";
+        int count=0;
+        for(int i=0;i<str.length();i++){
+            if(i==str.length()-1){
+                str1=str1+reverse(str.substring(i-count-1));
+                break;
+            }
+            if(str.charAt(i)==' '){
+                str1=str1+reverse(str.substring(i-count,i))+' ';
+                count=0;
+            }else{
+                count++;
+            }
+        }
+        return str1.substring(0,str1.length()-1);
+    }
+    
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        System.out.println(func(str));
+    }
+}
