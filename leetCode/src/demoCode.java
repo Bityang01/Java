@@ -2204,3 +2204,23 @@ public class Main{
         System.out.println(func(str));
     }
 }
+
+class Solution {
+	//20191208leetcode1221分割平衡字符串
+    public int balancedStringSplit(String s) {
+        int ret=0;
+        int num=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='R'){
+                num++;
+            }
+            if(s.charAt(i)=='L'){
+                num--;
+            }
+            if(num==0){
+                ret++;
+            }
+        }
+        return ret;
+    }
+}
