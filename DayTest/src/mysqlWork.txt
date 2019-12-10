@@ -1,0 +1,72 @@
+create table stu_score(
+	name varchar(20) comment '姓名',
+	sn int comment '学号',
+	Chinese int,
+	Math int,
+	English int,
+	DataStructure int,
+	mySQL int
+);
+
+全列插入
+insert into stu_score values('zhao',2019001,78,87,99,89,100);
+insert into stu_score values('wang',2019002,88,77,97,95,80);
+insert into stu_score values('yang',2019003,48,97,67,100,90);
+insert into stu_score values('zhao',2019004,98,27,89,68,100
+
+指定字段插入
+insert into stu_score(sn,Chinese,English) values
+(2019005,34,76),
+(2019006,49,93),
+(2019007,9,65);
+
+查询学生总成绩
+select Chinese+Math+English+DataStructure+mySQL from stu_score;
+
+按照总分排序
+select * from stu_score order by Chinese+Math+English+DataStructure+mySQL;
+
+按照英语排序
+select * from stu_score order by English;
+
+查询英语成绩、数学成绩都小于 60 分的同学
+select * from stu_score where English < 60 and Math < 60;
+
+查询数学成绩在区间80——90的学生
+select * from stu_score where Math between 80 and 90;
+
+查询数学没有成绩的同学
+select * from stu_score where Math is NULL;
+
+练习limit分页查询
+select name,sn,Chinese,Math from stu_score order by sn limit 3 offset 0;
+select name,sn,Chinese,Math from stu_score order by sn limit 3 offset 3;
+select name,sn,Chinese,Math from stu_score order by sn limit 3 offset 6;
+
+练习修改语句
+update stu_score set Chinese = Chinese * 2;
+
+练习删除语句
+delete form stu_score where name = 'zhao';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
