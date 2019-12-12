@@ -2260,3 +2260,26 @@ public class Solution{
 	return node.next;
 	}
 }
+
+
+class Solution {
+	//20191212leetcode942增减字符串匹配
+    public int[] diStringMatch(String S) {
+        int[] array=new int[S.length()+1];
+        array[0]=0;
+        int min=0;
+        int max=S.length();
+        for(int i=0;i<S.length();i++){
+            if(S.charAt(i)=='I'){
+                array[i]=min;
+                min++;
+            }
+            if(S.charAt(i)=='D'){
+                array[i]=max;
+                max--;
+            }
+        }
+        array[S.length()]=max;
+        return array;
+    }
+}
