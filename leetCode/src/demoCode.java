@@ -2283,3 +2283,44 @@ class Solution {
         return array;
     }
 }
+
+
+class Solution {
+	//20191213leetcode415字符串相加
+    public String addStrings(String num1, String num2) {
+        StringBuilder sb=new StringBuilder();
+        int i=num1.length()-1;
+        int j=num2.length()-1;
+        int sum=0;
+        while(i>=0||j>=0||sum!=0){//两个字符串从后往前每一位相加，存入sb中，最后反转字符串
+            if(i>=0)
+                sum=sum+(num1.charAt(i--)-48);
+            if(j>=0)
+                sum=sum+(num2.charAt(j--)-48);
+            sb.append(sum%10);
+            sum=sum/10;
+        }
+        return sb.reverse().toString();
+    }
+}
+
+/*class Solution {
+    public String addStrings(String num1, String num2) {
+        int[] arrayNum1=new int[num1.length()];
+        int[] arrayNum2=new int[num2.length()];
+        long SumNum1=0;
+        long SumNum2=0;
+        for(int i=0;i<num1.length();i++){
+            arrayNum1[i]=num1.charAt(i)-48;
+            SumNum1=SumNum1+arrayNum1[i]*(long)Math.pow(10,num1.length()-i-1);
+        }
+        for(int i=0;i<num2.length();i++){
+            arrayNum2[i]=num2.charAt(i)-48;
+            SumNum2=SumNum2+arrayNum2[i]*(long)Math.pow(10,num2.length()-i-1);
+        }
+        long Sum=SumNum1+SumNum2;
+        String str="";
+        str=str+Sum;
+        return str;
+    }
+}*/
