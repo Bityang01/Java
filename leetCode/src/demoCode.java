@@ -2324,3 +2324,58 @@ class Solution {
         return str;
     }
 }*/
+
+
+class Solution {
+	//20191214leetcode443压缩字符串
+    public int compress(char[] chars) {
+        StringBuilder sb=new StringBuilder();
+        int count=1;
+        char ch=chars[0];
+        for(int i=0;i<chars.length-1;i++){
+            if(chars[i]==chars[i+1]){
+                count++;
+                ch=chars[i];
+            }else{
+                sb.append(ch);
+                if(count>1){
+                    sb.append(count);
+                }
+                count=1;
+                ch=chars[i+1];
+            }
+        }
+        if(count>1){
+            sb.append(ch);
+            sb.append(count);
+        }else{
+            sb.append(ch);
+        }
+        char[] array=sb.toString().toCharArray();
+        for(int i=0;i<array.length;i++){
+            chars[i]=array[i];
+        }
+        return sb.toString().length();
+    }
+}
+
+/*class Solution {
+    public int compress(char[] chars) {
+        int count=0;
+        int i=0;
+        int sum=0;
+        while(i<chars.length-1){
+            count=0;
+            for(int j=i;j<chars.length;j++){
+                if(chars[i]==chars[j]){
+                    count++;
+                }else{
+                    i=j;
+                    sum=sum+count+1;
+                    break;
+                }
+            }
+        }
+        return sum;
+    }
+}*/
