@@ -2379,3 +2379,65 @@ class Solution {
         return sum;
     }
 }*/
+
+
+//官方题解, 其实情况没有那么多, 就三种情况:
+//1.字符串长度不相等, 直接返回false
+//2.字符串相等的时候, 只要有重复的元素就返回true
+//3.A, B字符串有不相等的两个地方, 需要查看它们交换后是否相等即可.
+class Solution {
+	//20191215leetcode859亲密字符串
+    public boolean buddyStrings(String A, String B) {
+        //1.字符串长度不相等, 直接返回false
+        if(A.length()!=B.length()){
+            return false;
+        }
+        //2.字符串相等的时候, 只要有重复的元素就返回true
+        if(A.equals(B)){
+            for(int i=0;i<A.length();i++){
+                int count=0;
+                for(int j=i;j<A.length();j++){
+                    if(A.charAt(i)==B.charAt(j)){
+                        count++;
+                        if(count>1){
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }else{
+            //3.A, B字符串有不相等的两个地方, 需要查看它们交换后是否相等即可.
+            /*int first = -1, second = -1;
+            for (int i = 0; i < A.length(); ++i) {
+                if (A.charAt(i) != B.charAt(i)) {
+                    if (first == -1)
+                        first = i;
+                    else if (second == -1)
+                        second = i;
+                    else
+                        return false;
+                }
+            }
+
+            return (second != -1 && A.charAt(first) == B.charAt(second) &&
+                    A.charAt(second) == B.charAt(first));*/
+           int first=-1,second=-1;
+           for(int i=0;i<A.length();++i){
+               if(A.charAt(i)!=B.charAt(i)){
+                   if(first==-1){
+                       first=i;
+                   }else{
+                        if(second==-1){
+                            second=i;
+                        }else{
+                            return false;
+                        }
+                   }
+               }
+           }
+           return (second!=-1&&(A.charAt(first)==B.charAt(second))
+                            &&(A.charAt(second)==B.charAt(first)));
+        }
+    }
+}
