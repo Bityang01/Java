@@ -2441,3 +2441,11 @@ class Solution {
         }
     }
 }
+
+
+# Write your MySQL query statement below
+//SQL20191216leetcode182查找重复的电子邮箱
+select Email
+from Person
+group by Email
+having count(Email) > 1;
