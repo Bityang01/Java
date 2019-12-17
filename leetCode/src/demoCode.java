@@ -2449,3 +2449,14 @@ select Email
 from Person
 group by Email
 having count(Email) > 1;
+
+
+# Write your MySQL query statement below
+//20191217leetcode178分数排名
+select s1.Score,count(distinct(s2.score)) Rank
+from
+Scores s1,Scores s2
+where
+s1.score<=s2.score
+group by s1.Id
+order by Rank
