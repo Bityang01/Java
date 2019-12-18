@@ -2460,3 +2460,14 @@ where
 s1.score<=s2.score
 group by s1.Id
 order by Rank
+
+
+
+# Write your MySQL query statement below
+//20191218leetcode183从不订购的客户
+select customers.name as 'Customers'
+from customers
+where customers.id not in
+(
+    select customerid from orders
+);
