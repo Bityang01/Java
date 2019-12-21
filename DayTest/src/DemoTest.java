@@ -43,7 +43,7 @@ public class DemoTest{
     }
 }*/
 
-/*class ListNode{
+class ListNode{
     int val;
     ListNode next;
 
@@ -64,7 +64,27 @@ class MySinalList{
         node.next=this.head;
         this.head=node;
     }
-}*/
+
+    public ListNode reverse(ListNode head){
+        ListNode pre=null;
+        ListNode Cur=this.head;
+        while(Cur!=null){
+            ListNode CurNext=Cur.next;
+            Cur.next=pre;
+            pre=Cur;
+            Cur=Cur.next;
+        }
+        return pre;
+    }
+
+
+}
+public class DemoTest{
+    public static void main(String[] args) {
+
+    }
+}
+/*
 import java.util.*;
 public class DemoTest{
 
@@ -105,4 +125,32 @@ public class DemoTest{
         String str=sc.nextLine();
         System.out.println(func(str));
     }
-}
+}*/
+/*public class DemoTest{
+
+
+
+    public static int Search(int[] arr,int key){
+        int left=0;
+        int right=arr.length-1;
+        int mid=0;
+        while(left<=right){
+            mid=(left+right)/2;
+            if(arr[mid]<key){
+                left=mid++;
+            }
+            if(arr[mid]>key){
+                right=mid--;
+            }
+            if(arr[mid]==key){
+                return mid;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] arr={1,2,3,4,5,6,7,8,9};
+        System.out.println(Search(arr,1));
+    }
+}*/
