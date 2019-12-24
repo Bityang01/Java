@@ -2485,3 +2485,101 @@ class Solution {
         }
     }
 }
+
+//1.首先去除字符串左右空格,不符合条件的直接return 0;
+//2.sign是符号位,start指针指向第一个数字的位置,如果第一位为数字,则sign=1,start=0,否则firstChar接收字符串第一个字符,若为“+”、“-”,sign分别赋值1、-1,start自增1,
+//3.从字符串第一个为数字的位置开始遍历,res为无符号结果,如果res大于Integer最大值且sign=1,输出Integer的最大值,反之输出Integer最小值,如果遍历到不为数字的字符,则直接返回res*sign;
+//4.如果遍历时该字符串未超范围,且无非数字字符,则返回res * sign;
+//5.完结。
+class Solution {
+	//20191224leetcode8字符串转换整数（atoi）
+    public int myAtoi(String str) {
+        str=str.trim();
+        if(str.length()==0||str==null){
+            return 0;
+        }
+        char firstChar=str.charAt(0);
+        int sign=1;
+        int start=0;
+        long res=0;
+        if(firstChar=='+'){
+            sign=1;
+            start++;
+        }else if(firstChar=='-'){
+            sign=-1;
+            start++;
+        }
+        for(int i=start;i<str.length();i++){
+            if(!Character.isDigit(str.charAt(i))){//Character.isDigit(ch)方法如果字符ch为数字，则返回 true；否则返回 false。
+                return (int)res*sign;
+            }
+            res=res*10+str.charAt(i)-48;
+            if (sign == 1 && res > Integer.MAX_VALUE)
+                return Integer.MAX_VALUE;
+            if (sign == -1 && res > Integer.MAX_VALUE)
+                return Integer.MIN_VALUE;
+        }
+        return (int)res*sign;
+    }
+}
+
+/*class Solution {
+    public int myAtoi(String str) {
+        int[] arr=new int[100];
+        int retOut=0;//代表初始ret
+        int retIn=0;
+        int count=0;
+        int sum=0;
+        int flg=1;
+        //1、去除空格
+        str=str.trim();
+        if((str.charAt(0)>58||str.charAt(0)<47)&&(str.charAt(0)!='-')){
+                return 0;
+        }
+        //2、看第一位是否是‘-’
+        if(str.charAt(0)=='-'){
+            flg=-1;
+        }
+        //3、将每一位存入数组
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)<58&&str.charAt(i)>47){
+                arr[count]=str.charAt(i)-48;
+                count++;
+                retOut=1;
+                retIn=0;
+            }else{
+                retIn=2;
+            }
+            if(retIn==2&&retOut==1){
+                break;
+            }
+        }
+        //4、相乘相加
+        for(int i=0;i<count;i++){
+            sum=sum+arr[i]*(int)Math.pow(10,count-i-1);
+        }
+        return sum*flg;
+    }
+}
+
+class Solution {
+    public int myAtoi(String str) {
+        int flg=0;
+        int[] arr=new int[100];
+        int count=0;
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)!=' '){
+                if(str.charAt(i)=='-'){
+                    flg=(flg>>32)&1;
+                }else{
+
+                    if(str.charAt(i)>47&&str.charAt(i)<58){
+                        arr[count]=str.charAt(i)-48;
+                        count++;
+                    }
+                }
+            }
+        }
+
+    }
+}*/
