@@ -2583,3 +2583,48 @@ class Solution {
 
     }
 }*/
+
+
+//双指针，一个从前往后i，一个从后往前j，当i是字母的时候，从后往前找一个字母append到sb中
+class Solution {
+	//20191225leetcode917仅仅反转字母
+    public String reverseOnlyLetters(String S) {
+        StringBuilder sb = new StringBuilder();
+        int j = S.length()-1;
+        for(int i=0;i<S.length();i++){
+            if(Character.isLetter(S.charAt(i))){//Character.isLetter(ch)方法判断一个字符ch是不是字母，是返回true，不是返回false
+                while(!Character.isLetter(S.charAt(j)))
+                    j--;
+                sb.append(S.charAt(j--));
+            }else{
+                sb.append(S.charAt(i));
+            }
+        }
+        return sb.toString();
+    }
+}
+
+/*class Solution {
+    public String reverseOnlyLetters(String S) {
+        int count=0;
+        char[] array=new char[S.length()];
+        for(int i=0;i<S.length();i++){
+            for(int j=S.length()-1-count;j>=0;j--){
+                if(S.charAt(j)<65||(S.charAt(j)>90&&S.charAt(j)<97)||S.charAt(j)>122){
+                    count++;
+                    continue;
+                }
+                if((S.charAt(i)>64&&S.charAt(i)<91)||(S.charAt(i)>96&&S.charAt(i)<123)){
+                    count++;
+                    array[i]=S.charAt(j);
+                    break;
+                }else{
+                    array[i]=S.charAt(i);
+                    break;
+                }
+            }
+        }
+        return String.valueOf(array);
+        //return Arrays.toString(array);
+    }
+}*/
