@@ -2628,3 +2628,35 @@ class Solution {
         //return Arrays.toString(array);
     }
 }*/
+
+
+
+//思路：每次sort排序之后，最大的两个数都会在最后的两个位置，只需要比较这两个数的大小并且
+//重新赋值，比较完之后再进行排序，一直比较，只到数组中的数只出现一个大于0的数或者全部是0的时侯
+class Solution {
+	//20191226leetcode1046最后一块石头的重量
+    public int lastStoneWeight(int[] stones) {
+        //排除数组只有一个元素的情况
+        if(stones.length<2){
+            return stones[0];
+        }
+        Arrays.sort(stones);//注意此处sort排序是升序排序
+        int len=stones.length-1;
+        //定义死循环，一直进行排序
+        while(true){
+            //如果倒数第二个数的值是0的话，说明数组中最大的数就是倒数第一个数
+            if(stones[len-1]==0){
+                return stones[len];
+            }
+            //比较两个数的大小，相等的话两个数都赋值0，否则的话，一个赋值0，一个赋值（大数-小数）
+            if(stones[len]==stones[len-1]){
+                stones[len]=stones[len-1]=0;
+            }else{
+                stones[len]=stones[len]-stones[len-1];
+                stones[len-1]=0;
+            }
+            //比较完再排序，再循环
+            Arrays.sort(stones);
+        }
+    }
+}
