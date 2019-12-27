@@ -2660,3 +2660,22 @@ class Solution {
         }
     }
 }
+
+
+
+class Solution {
+	//20191227leetcode242有效的字母异位词
+    public boolean isAnagram(String s, String t) {
+        char[] arrS=s.toCharArray();
+        char[] arrT=t.toCharArray();
+        Arrays.sort(arrS);
+        Arrays.sort(arrT);
+        /*String strS=Arrays.toString(arrS);
+        String strT=Arrays.toString(arrT);
+        if(strS.equals(strT)){
+            return true;
+        }
+        return false;*/
+        return Arrays.toString(arrS).equals(Arrays.toString(arrT));//简化上述注释代码
+    }
+}
