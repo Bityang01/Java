@@ -2679,3 +2679,17 @@ class Solution {
         return Arrays.toString(arrS).equals(Arrays.toString(arrT));//简化上述注释代码
     }
 }
+
+class Solution {
+	//20191228leetcode1281整数的各位积和之差
+    public int subtractProductAndSum(int n) {
+        int sumH=0;
+        int sumJ=1;
+        while(n!=0){
+            sumJ=sumJ*(n%10);
+            sumH=sumH+(n%10);
+            n=n/10;
+        }
+        return sumJ-sumH;
+    }
+}
