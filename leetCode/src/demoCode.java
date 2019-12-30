@@ -2707,3 +2707,52 @@ class Solution {
         return sum;
     }
 }
+
+class Solution {
+	//20191230leetcode557反转字符串中的单词III
+    public static String reverse(String str){//反转单词
+        char[] arr=str.toCharArray();
+        int left=0;
+        int right=arr.length-1;
+        while(left<right){
+            char tmp=arr[left];
+            arr[left]=arr[right];
+            arr[right]=tmp;
+            left++;
+            right--;
+        }
+        return String.copyValueOf(arr);//数组转换String
+    }
+    public String reverseWords(String s) {
+        StringBuilder str=new StringBuilder();
+        //str="";
+        int j=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)==' '||i==s.length()-1){
+                if(i==s.length()-1){
+                    str=str.append(reverse(s.substring(j,i+1)));
+                }else{
+                    str=str.append(reverse(s.substring(j,i))+" ");
+                    j=i+1;
+                }
+            }
+        }
+        return str.toString();//StringBuilder转换String
+        /*String str1="";
+        int count=0;
+        for(int i=0;i<s.length();i++){
+            if(i==s.length()-1){
+                str1=str1+reverse(s.substring(i-count-1));
+                break;
+            }
+            if(s.charAt(i)==' '){
+                str1=str1+reverse(s.substring(i-count,i))+' ';
+                count=0;
+            }else{
+                count++;
+            }
+        }
+        return str1.substring(0,str1.length()-1);
+        */
+    }
+}
