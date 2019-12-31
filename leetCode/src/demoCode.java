@@ -1,7 +1,7 @@
 public class demoCode {
 }
 class Solution {
-    //leetcode移除元素
+    //leetcode27移除元素
     public int removeElement(int[] nums, int val) {
         int i=0;
         int j=0;
@@ -2756,3 +2756,50 @@ class Solution {
         */
     }
 }
+
+
+class Solution {
+	//20191231leetcode118杨辉三角
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<>();
+        for(int i=0;i<numRows;i++){
+            List<Integer> Row = new ArrayList();
+            for(int j=0;j <= i;j++){
+                if(j==0||i==j){
+                    //Row.set(i,1);
+                    Row.add(1);
+                    //不可以使用set，设置元素的时候如果Row(i)本身没有元素，那么就不可以被set
+                }else{
+                    //Row.set(i,1);
+                    Row.add(0);
+                }
+            }
+            ret.add(Row);
+        }
+        //设置其他位置的数据
+        for(int i=2;i<numRows;i++){
+            List<Integer> cur = ret.get(i);
+            List<Integer> pre = ret.get(i-1);
+            for(int j=1;j<i;j++){
+                cur.set(j,pre.get(j)+pre.get(j-1));
+            }
+        }
+        return ret;
+    }
+}
+
+/*class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        int[][] array=new int[numRows][numRows];
+        for(int i=0;i<numRows;i++){
+            for(int j=0;j<=i;j++){
+                if(j==0||i==j){
+                    array[i][j]=1;
+                }else{
+                    array[i][j]=array[i-1][j-1]+array[i-1][j];
+                }
+            }
+        }
+        return array;
+    }
+}*/
