@@ -2803,3 +2803,36 @@ class Solution {
         return array;
     }
 }*/
+
+class Solution {
+	//20200101leetcode821字符的最短距离
+    public int[] shortestToChar(String S, char C) {
+        int[] arr = new int[S.length()];
+        int count=0;
+        for(int i=0;i<S.length();i++){
+            int numRight=0;
+            int numLeft=0;
+            for(int j=i;j<S.length();j++){  //往后找
+                if(S.charAt(j)==C){
+                    break;
+                }
+                if(j==S.length()-1){    //加一层条件，防止循环因为j=S.length()-1而退出循环
+                    numRight=S.length();
+                }
+                numRight++;
+            }
+            for(int k=i;k>=0;k--){      //往前找
+                if(S.charAt(k)==C){
+                    break;
+                }
+                if(k==0){           //加一层条件，防止循环因为k=0而退出循环
+                    numLeft=S.length();
+                }
+                numLeft++;
+            }
+            arr[count]=(numRight>numLeft)?numLeft:numRight;
+            count++;
+        }
+        return arr;
+    }
+}
