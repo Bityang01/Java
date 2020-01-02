@@ -2836,3 +2836,73 @@ class Solution {
         return arr;
     }
 }
+
+
+class Solution {
+	//20200102leetcode682棒球比赛
+    public int calPoints(String[] ops) {
+        int[] array = new int [ops.length];
+        int i=0;
+        for(String s:ops){
+            switch(s){
+                case "C":array[i-1]=0;i--;break;
+                case "D":array[i]=2*array[i-1];i++;break;
+                case "+":array[i]=array[i-1]+array[i-2];i++;break;
+                default:
+                    array[i]=Integer.valueOf(s);    //Intteger包装类，将s转换成int型
+                    i++;
+                    break;
+            }
+        }
+        int sum=0;
+        for(i=0;i<array.length;i++){
+            sum +=array[i];
+        }
+        return sum;
+    }
+}
+
+/*class Solution {
+    public int calPoints(String[] ops) {
+        int[] array = new int[ops.length];
+        for(int i=0;i<ops.length;i++){
+            if((ops.charAt(i)<58)&&(ops.charAt(i)>47)){
+                array[i]=ops[i]-48;
+            }
+            if(ops.charAt(i)=='C'){
+                for(int j=i;j>=0;j--){
+                    if(array[j]>0){
+                        array[j]=0;
+                        array[i]=0;
+                        break;
+                    }
+                }
+            }
+            if(ops.charAt(i)=='D'){
+                for(int k=i;k>=0;k--){
+                    if(array[k]>0){
+                        array[i]=array[k]*2;
+                        break;
+                    }
+                }
+            }
+            if(ops.charAt(i)=='+'){
+                int tmp=0;
+                for(int l=i;l>=0;l--){
+                    if(array[l]>0){
+                        array[i]=array[l]+array[i];
+                        tmp++;
+                        if(tmp>1){
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        int sum=0;
+        for(int i=0;i<ops.length();i++){
+            sum=sum+array[i];
+        }
+        return sum;
+    }
+}*/
