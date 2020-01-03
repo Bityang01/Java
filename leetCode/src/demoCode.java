@@ -2906,3 +2906,71 @@ class Solution {
         return sum;
     }
 }*/
+
+
+//思路：1.拆分arr1数组，分成一个包含arr2的数组arr1Con[]和不包含arr2的数组arr1NoCon[]
+//      2.分割时对包含的数组按照arr2的相对顺序排序
+//      3.取出arr1中不包含arr2的数放入arr1NoCon[]
+//      4.再对不包含的数组进行sort排序（升序排序）
+//      5.将排序后的不包含的数组往包含的数组上拼接
+//      6.return arr1Con数组；
+class Solution {
+	//20200103leetcode1122数组的相对排序
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        //拆分arr1数组，包含arr2的和不包含arr2的
+        int[] arr1Con= new int[arr1.length];
+        int[] arr1NoCon= new int[arr1.length];
+        int con=0;
+        //往arr1Con[]中按照arr2的相对顺序放值
+        for(int i=0;i<arr2.length;i++){
+            for(int j=0;j<arr1.length;j++){
+                if(arr2[i]==arr1[j]){
+                    arr1Con[con]=arr1[j];
+                    con++;
+                }
+            }
+        }
+        //取出arr1中不包含arr2数组的值，放入arr1NoCon[]
+        int k=0;
+        for(int i=0;i<arr1.length;i++){
+            for(int j=0;j<arr2.length;j++){
+                if(arr1[i]==arr2[j]){
+                    break;
+                }
+                if(j==arr2.length-1){
+                    arr1NoCon[k]=arr1[i];
+                    k++;
+                }
+            }
+        }
+        /*int[] arrLeft= new int[arr1Con.length];
+        int countL=0;
+        for(int i=0;i<arr2.length;i++){
+            for(int j=0;j<arr1Con.length;j++){
+                if(arr1Con[j]==arr2[i]){
+                    arrLeft[countL]=arr1Con[j];
+                    countL++;
+                }
+            }
+        }*/
+        //排序arr1NoCon[],sort排序：sort(int[] a, int fromIndex, int toIndex) 按升序排列数组的指定范围
+        //从0——k范围内升序排序
+        Arrays.sort(arr1NoCon,0,k);
+        //Arrays.sort(arr1NoCon,arr1NoCon.length-noCon,arr1NoCon.length);
+        /*int[] arr=new int[arr1.length];
+        arr=Arrays.copyOfRange(arr1Con,0,arr1Con.length-1);
+        int j=0;
+        for(int i=arr1Con.length;i<arr1.length;i++){
+            arr[i]=arr1NoCon[j];
+            j++;
+        }*/
+        //将排序后的arr1NoCon[]拼接到arr1Con[]
+        int count=0;
+        for(int i=con;i<arr1.length;i++){
+            arr1Con[i]=arr1NoCon[count];
+            count++;
+        }
+        //返回
+        return arr1Con;
+    }
+}
