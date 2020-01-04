@@ -2974,3 +2974,35 @@ class Solution {
         return arr1Con;
     }
 }
+
+
+class Solution {
+	//20200104leetcode20有效的括号
+    public boolean isValid(String s) {
+        Stack<Character> ss=new Stack();
+        for(int i=0;i<s.length();i++){
+            //左括号入栈
+            char ch = s.charAt(i);
+            if(ch=='('||ch=='{'||ch=='['){
+                ss.push(ch);
+            }else{
+                //ch时右括号
+                //如果栈是空，直接return
+                if(ss.empty()){
+                    return false;
+                }
+                char chLeft=ss.peek();
+                if(chLeft=='('&&ch==')'||chLeft=='['&&ch==']'||chLeft=='{'&&ch=='}'){
+                    ss.pop();
+                }else{
+                    //匹配次序有问题
+                    return false;
+                }
+            }
+        }
+        if(ss.empty()){
+            return true;
+        }
+        return false;
+    }
+}
