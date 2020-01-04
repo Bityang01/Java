@@ -3006,3 +3006,76 @@ class Solution {
         return false;
     }
 }
+
+	
+class MyStack {
+	//20200104leetcode225用队列实现栈
+    private Queue<Integer> q1;
+    private Queue<Integer> q2;
+    /** Initialize your data structure here. */
+    public MyStack() {
+        //构造两个队列，用链式
+        //队列q1用于保存所有元素，q2用于出栈时 临时储存队列
+        q1 = new LinkedList<>();
+        q2 = new LinkedList<>();
+    }
+    
+    /** Push element x onto stack. */
+    public void push(int x) {
+        //入栈直接把元素x压入队列q1
+        q1.offer(x);
+    }
+    
+    /** Removes the element on top of the stack and returns that element. */
+    public int pop() {
+        //出栈时，先将size()-1个元素移入q2，这样q1的队头就是要出栈的元素
+        while(q1.size()>1){
+            q2.offer(q1.poll());
+        }
+
+        //要出栈的元素用ret保存
+        int ret = q1.poll();
+
+        //再把q2的元素移回q1
+        Queue tmp = q1;
+        q1=q2;
+        q2=tmp;
+
+        //返回出栈元素ret
+        return ret;
+    }
+    
+    /** Get the top element. */
+    public int top() {
+        //获取栈顶元素，步骤同pop，只是不把栈顶元素移除，只是取出元素
+        while(q1.size()>1){
+            q2.offer(q1.poll());
+        }
+
+        //用ret保存栈顶元素
+        int ret = q1.peek();
+        //再把栈顶元素压入q2
+        q2.offer(q1.poll());
+
+        Queue<Integer> tmp = q1;
+        q1=q2;
+        q2=tmp;
+
+        return ret;
+    }
+    
+    /** Returns whether the stack is empty. */
+    public boolean empty() {
+        //所有的元素都在q1中，q1为空时，栈为空
+        return q1.isEmpty();
+    }
+}
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack obj = new MyStack();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.top();
+ * boolean param_4 = obj.empty();
+ */
