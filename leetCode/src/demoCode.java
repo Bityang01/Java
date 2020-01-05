@@ -3079,3 +3079,69 @@ class MyStack {
  * int param_3 = obj.top();
  * boolean param_4 = obj.empty();
  */
+ 
+ 
+ class MyQueue {
+	 //20200105leetcode232用栈实现队列
+    Stack<Integer> s1;
+    Stack<Integer> s2;
+
+    /** Initialize your data structure here. */
+    public MyQueue() {
+        //构造两个栈，s1用于保存直接入队的元素，s2用于保存出队顺序的栈
+        s1 = new Stack<>();
+        s2 = new Stack<>();
+        
+    }
+    
+    /** Push element x to the back of queue. */
+    public void push(int x) {
+        //入队的元素直接入s1
+        s1.push(x);
+    }
+    
+    /** Removes the element from in front of queue and returns that element. */
+    public int pop() {
+        //出队时需要判断s2是否为空，s2为空时s1为空说明没有元素，直接返回-1
+        //s1不为空时，将s1的元素依次出栈到s2
+        //不为空的时候，直接返回s2的栈顶元素
+        if(s2.empty()){
+            if(s1.empty()){
+                return -1;
+            }
+            while(s1.size()>0){
+                s2.push(s1.pop());
+            }
+        }
+        //返回s2的栈顶元素
+        return s2.pop();
+    }
+    
+    /** Get the front element. */
+    public int peek() {
+        //步骤同pop(),返回peek()元素
+        if(s2.empty()){
+            if(s1.empty()){
+                return -1;
+            }
+            while(s1.size()>0){
+                s2.push(s1.pop());
+            }
+        }
+        return s2.peek();
+    }
+    
+    /** Returns whether the queue is empty. */
+    public boolean empty() {
+        return (0==s1.size())&&(0==s2.size());
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
