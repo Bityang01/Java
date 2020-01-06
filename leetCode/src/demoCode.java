@@ -3145,3 +3145,58 @@ class MyStack {
  * int param_3 = obj.peek();
  * boolean param_4 = obj.empty();
  */
+ 
+ class MinStack {
+	 //20200106leetcode155最小栈
+    Stack<Integer> s1;
+    Stack<Integer> s2;
+    /** initialize your data structure here. */
+    public MinStack() {
+        //构造两个栈，数据栈和辅助栈
+        s1=new Stack<>();
+        s2=new Stack<>();
+    }
+    
+    public void push(int x) {
+        //入栈时，数据栈总是需要入元素，当辅助栈为空时，第一个元素总是要入辅助栈
+        //辅助栈peek元素总是数据栈中最小值
+        //当入数据栈元素小于辅助栈peek()元素，将新元素入辅助栈
+        s1.push(x);
+        if(s2.empty() || x<=s2.peek()){
+            s2.push(x);
+        }
+    }
+    
+    public void pop() {
+        //pop时，s1总是要pop出一个元素，当s1pop出的元素和辅助栈最上的元素相等时，则辅助栈也需要将元素pop出去
+        //且此处比较不可以用==，需要用equals方法，因为有一个拆箱的过程，是一个对象，不是一个值，是地址
+        if((s1.peek()).equals(s2.peek())){
+            s2.pop();
+        }
+        s1.pop();
+
+
+        /*int top = s1.peek();
+        if(top==s2.peek()){
+            s2.pop();
+        }
+        s1.pop();*/
+    }
+    
+    public int top() {
+        return s1.peek();
+    }
+    
+    public int getMin() {
+        return s2.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
