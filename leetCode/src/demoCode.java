@@ -3200,3 +3200,32 @@ class MyStack {
  * int param_3 = obj.top();
  * int param_4 = obj.getMin();
  */
+ 
+ 
+//思路：统计balon各个字母在text字符串中出现的次数，取出现最小的数
+//balloon中l和o出现两次，需要对相应的字母除以2
+class Solution {
+	//20200107leetcode1189“气球”的最大数量
+    public int maxNumberOfBalloons(String text) {
+        int[] arr=new int[5];
+        String str="balon";
+        for(int i=0;i<str.length();i++){
+            int count=0;
+            for(int j=0;j<text.length();j++){
+                if(str.charAt(i)==text.charAt(j)){
+                    count++;
+                }
+            }
+            arr[i]=count;
+        }
+        arr[2]=arr[2]/2;
+        arr[3]=arr[3]/2;
+        int min=arr[0];
+        for(int i=0;i<5;i++){
+            if(arr[i]<min){
+                min=arr[i];
+            }
+        }
+        return min;
+    }
+}
