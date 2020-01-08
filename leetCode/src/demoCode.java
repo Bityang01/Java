@@ -3229,3 +3229,36 @@ class Solution {
         return min;
     }
 }
+
+
+class Solution {
+	//20200108leetcode1170比较字符串最小字母出现频次
+    public static int count(String str){
+        int[] al=new int[26];
+        for(int i=0;i<str.length();i++){
+            al[str.charAt(i)-'a']++;
+            //将每个字母的次数存在字母表中的相应位置
+        }
+        for(int count:al){
+            if(count!=0){
+                return count;
+                //从字母表开始，返回第一个出现不为0的数，即为最小的出现次数
+            }
+        }
+        return 0;
+    }
+    public int[] numSmallerByFrequency(String[] queries, String[] words) {
+        int[] ans = new int[queries.length];
+        int[] array = new int[words.length];
+        for(int i=0;i<array.length;i++){
+            array[i]=count(words[i]);
+        }
+        for(int i=0;i<ans.length;i++){
+            int count = count(queries[i]);
+            for(int j=array.length-1;j>=0;j--){
+                ans[i]+=count<array[j]?1:0;
+            }
+        }
+        return ans;
+    }
+}
