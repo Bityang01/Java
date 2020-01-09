@@ -3262,3 +3262,33 @@ class Solution {
         return ans;
     }
 }
+
+
+class Solution {
+	//20200109leetcode985查询后的偶数和
+    //Func方法：将一个整数数组中所有的偶数加起来
+    public static int Func(int[] array){
+        int sum=0;
+        for(int i=0;i<array.length;i++){
+            if(array[i]%2==0){
+                sum +=array[i];
+            }
+        }
+        return sum;
+    }
+
+    public int[] sumEvenAfterQueries(int[] A, int[][] queries) {
+        int[] arr = new int[queries.length];
+        int val=0;
+        int index=0;
+        int count=0;
+        for(int i=0;i<queries.length;i++){
+            val=queries[i][0];
+            index=queries[i][1];
+            A[index] +=val;
+            arr[count]=Func(A);
+            count++;
+        }
+        return arr;
+    }
+}
