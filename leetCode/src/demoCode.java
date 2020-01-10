@@ -3292,3 +3292,36 @@ class Solution {
         return arr;
     }
 }
+
+
+class Solution {
+	//20200110leetcode788旋转数字
+    public static boolean Func(int num){
+        int tmp=0;
+        int flg=0;
+        while(num!=0){
+            tmp=num%10;
+            //每位都在(2, 5, 6, 9, 0, 1, 8)内，至少一位在(2, 5, 6, 9)内
+            if((tmp!=0)&&(tmp!=1)&&(tmp!=8)&&(tmp!=2)&&(tmp!=5)&&(tmp!=6)&&(tmp!=9)){
+                return false;
+            }
+            if(tmp==2||tmp==5||tmp==6||tmp==9){
+                flg=1;
+            }
+            num=num/10;
+        }
+        if(flg==1){
+            return true;
+        }
+        return false;
+    }
+    public int rotatedDigits(int N) {
+        int count=0;
+        for(int i=1;i<=N;i++){
+            if(Func(i)){
+                count++;
+            }
+        }
+        return count;
+    }
+}
