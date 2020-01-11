@@ -3325,3 +3325,28 @@ class Solution {
         return count;
     }
 }
+
+
+
+//思路：范围在  1 ≤ a[i] ≤ n ( n = 数组大小 ) 的 整型数组，说明数组的所有数都在1——n范围内
+//      那么，将每一个数当成数组的下标，那么没有出现的下标就是数组中没有的数
+//      细致操作为：对每一个数当成数组下标，进行取负操作，那么对数组遍历一遍之后，
+//      大于0的数的下标就是原数组中没有出现的数字
+class Solution {
+	//20200111leetcode448找到所有数组中消失的数字
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> L = new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            //将每个数字当成数组下标进行取负操作
+            nums[Math.abs(nums[i])-1]=-Math.abs(nums[Math.abs(nums[i])-1]);
+        }
+        for(int j=0;j<nums.length;j++){
+            //此时，数组大于0的数的下标就是原数组没有出现的数
+            if(nums[j]>0){
+                //需要+1，j只是下标，add到List中
+                L.add(j+1);
+            }
+        }
+        return L;
+    }
+}
