@@ -3350,3 +3350,27 @@ class Solution {
         return L;
     }
 }
+
+
+
+class Solution {
+	//20200112leetcode371两整数之和
+    public int getSum(int a, int b) {
+        while(b!=0){
+            int tmp = a^b;
+            b=(a&b)<<1;
+            a=tmp;
+        }
+        return a;
+        /*int sum=0;
+        sum=a^b;
+        int carry = a&b;
+        carry=carry<<1;
+        while(carry!=0){ 
+            carry = carry&(Integer.MAX_VALUE);
+            sum=sum^carry;
+            carry = carry<<1;
+        }
+        return sum;*/
+    }
+}
