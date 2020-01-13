@@ -3374,3 +3374,26 @@ class Solution {
         return sum;*/
     }
 }
+
+
+//思路：非常机智的方法，如果前一个数比后一个数小，那么a=1；如果前一个数比后一个数大，那么b=1
+//      如果a和b都等于1的化，那么就不符合单调的要求
+class Solution {
+	//20200113leetcode896单调数列
+    public boolean isMonotonic(int[] A) {
+        int a=0;
+        int b=0;
+        for(int i=0;i<A.length-1;i++){
+            if(A[i]<A[i+1]){    //此处注意，不能<=，如果加上=，那么只要出现重复元素就会进入条件
+                a=1;
+            }
+            if(A[i]>A[i+1]){
+                b=1;
+            }
+        }
+        if(a==1&&b==1){
+            return false;
+        }
+        return true;
+    }
+}
