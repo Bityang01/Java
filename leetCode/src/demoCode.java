@@ -3419,3 +3419,39 @@ class Solution {
         return minA*minB;
     }
 }
+
+//思路：构造两个栈，不是#就入栈，是#就出栈
+class Solution {
+	//20200115leetcode844比较含退格的字符串
+    public boolean backspaceCompare(String S, String T) {
+        Stack<Character> s1 = new Stack<>();
+        Stack<Character> s2 = new Stack<>();
+        for(int i=0;i<S.length();i++){
+            if(S.charAt(i)=='#'){
+                if(!s1.empty()){
+                    s1.pop();
+                } 
+            }else{
+                s1.push(S.charAt(i));
+            }
+        }
+        for(int j=0;j<T.length();j++){
+            if(T.charAt(j)=='#'){
+                if(!s2.empty()){
+                    s2.pop();
+                }
+            }else{
+                s2.push(T.charAt(j));
+            }
+        }
+        if(s1.size()!=s2.size()){
+            return false;
+        }
+        while((!s1.empty())&&(!s2.empty())){
+            if(!s1.pop().equals(s2.pop())){
+                return false;
+            }
+        }
+        return true;
+    }
+}
