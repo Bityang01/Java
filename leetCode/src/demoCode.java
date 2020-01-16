@@ -3455,3 +3455,35 @@ class Solution {
         return true;
     }
 }
+
+
+
+//两种方法：StringBuilder和String
+class Solution {
+	//20200116leetcode709转换成小写字母
+    public String toLowerCase(String str) {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)>64&&str.charAt(i)<91){
+                sb.append((char)(str.charAt(i)+32));//此处强制类型转换需要把char（）起来，写成（char），否则会报错
+            }else{
+                sb.append(str.charAt(i));
+            }
+        }
+        return sb.toString();
+    }
+}
+
+/*class Solution {
+    public String toLowerCase(String str) {
+        String s = "";
+        for(int i=0;i<str.length();i++){
+            char c = str.charAt(i);
+            if(c>64&&c<91){
+                c += 32;
+            }
+            s += c;
+        }
+        return s;
+    }
+}*/
