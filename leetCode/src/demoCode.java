@@ -3487,3 +3487,52 @@ class Solution {
         return s;
     }
 }*/
+
+
+
+//思路：将ransomNote中和magazine中的所有字母出现次数记入对应的数组中，
+//      然后再判断对应下标位置的数组值是否后者大于前者
+class Solution {
+	//20200117leetcode383赎金信
+    public boolean canConstruct(String ransomNote, String magazine) {
+        int[] ransomNoteArr = new int[26];  //为ransomNote分配数组空间
+        int[] magazineArr = new int[26];    //为magazine分配数组空间
+        for(int i=0;i<ransomNote.length();i++){
+            ransomNoteArr[ransomNote.charAt(i)-'a']++;  
+            //将ransomNote中的所有字母出现次数记录在数组相应的位置
+        }
+        for(int j=0;j<magazine.length();j++){
+            magazineArr[magazine.charAt(j)-'a']++;  //记录magazine
+        }
+        for(int i=0;i<26;i++){
+            if(ransomNoteArr[i]>0){ 
+                //将ransomNote数组遍历一遍，看magazine数组中的相应数组值是否大于ransomNote的数组值
+                if(ransomNoteArr[i]>magazineArr[i]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+
+/*class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        for(int i=0;i<ransomNote.length();i++){
+            for(int j=0;j<magazine.length();j++){
+                if((j==magazine.length()-1)&&(ransomNote.charAt(i)!=magazine.charAt(j))){
+                    return false;
+                }
+                if(ransomNote.charAt(i)==magazine.charAt(j)){
+                    String Magazine=magazine.replace(magazine.charAt(j),"0");
+                    magazine=Magazine;
+                    if(i==(ransomNote.length()-1)){
+                        return true;
+                    }
+                    continue;
+                }
+            }
+        }
+        return false;
+    }
+}*/
