@@ -3536,3 +3536,31 @@ class Solution {
         return false;
     }
 }*/
+
+
+//思路：按题意，负数不是回文数，小于10的数一定是回文数，
+//      对于其他数，存入数组中，遍历一遍，从两头往中间比较，不相等的不是回文数
+class Solution {
+	//20200118leetcode9回文数
+    public boolean isPalindrome(int x) {
+        if(x<0){    //小于0的不是回文数
+            return false;
+        }
+        if(x<10){   //小于10的是回文数
+            return true;
+        }
+        int i=0;
+        int[] array = new int[100];
+        while(x>0){ //将每位数都存入数组中
+            array[i++] = x%10;
+            x=x/10;
+        }
+        int count=i;
+        for(int j=0;j<=count/2;j++){    //从两头往中间比较
+            if(array[j]!=array[--i]){   //不相等就不是回文数
+                return false;
+            }
+        }
+        return true;
+    }
+}
