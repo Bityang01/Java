@@ -3564,3 +3564,25 @@ class Solution {
         return true;
     }
 }
+
+
+
+//思路：先删除先后所有的空格，然后从后往前找，找到第一个空格的时候返回长度
+class Solution {
+	//20200119leetcode58最后一个单词的长度
+    public int lengthOfLastWord(String s) {
+        String str = s.trim();
+        if(str.length()==0){
+            return 0;
+        }
+        for(int i=str.length()-1;i>=0;i--){
+            if(i==0){
+                return str.length()-i;
+            }
+            if(str.charAt(i)==' '){
+                return str.length()-1-i;
+            }
+        }
+        return 0;
+    }
+}
