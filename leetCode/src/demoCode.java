@@ -3586,3 +3586,50 @@ class Solution {
         return 0;
     }
 }
+
+
+
+//思路：双指针大法，i遍历name，j遍历typed
+//      当字母相等时，两指针同时往后走，如果不相等，j往后走
+//      判断当j走到typed.length()时，i没有走到name.length()，说明不符合要求，返回false
+class Solution {
+	//20200120leetcode925长按键入
+    public boolean isLongPressedName(String name, String typed) {
+        int i=0;
+        int j=0;
+        while(i<name.length()&&j<typed.length()){
+            //遍历两字符串，字母相等时i和j同时++
+            if(name.charAt(i)==typed.charAt(j)){
+                i++;
+                j++;
+            }else{
+                //不相等时，j++，i不动
+                j++;
+            }
+        }
+        //如果最后j走到末尾，而i没有走到末尾，返回false
+        if(j==typed.length()&&i!=name.length()){
+            return false;
+        }
+        return true;
+    }
+}
+
+/*class Solution {
+    public boolean isLongPressedName(String name, String typed) {
+        int[] arrName = new int[26];
+        int[] arrTyped = new int[26];
+        for(int i=0;i<name.length();i++){
+            arrName[name.charAt(i)-'a']++;
+        }
+        for(int j=0;j<typed.length();j++){
+            arrTyped[typed.charAt(j)-'a']++;
+        }
+        for(int i=0;i<26;i++){
+            if(arrName[i]>arrTyped[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+}*/
