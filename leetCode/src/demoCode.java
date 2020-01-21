@@ -3633,3 +3633,40 @@ class Solution {
         return true;
     }
 }*/
+
+
+class Solution {
+	//20200121leetcode905按奇偶排序数组
+    public int[] sortArrayByParity(int[] A) {
+        for(int left=0;left<A.length;left++){
+            if(A[left]%2!=0){
+                for(int right=A.length-1;right>left;right--){
+                    if(A[right]%2==0){
+                        A[left] = A[left]^A[right];
+                        A[right] = A[left]^A[right];
+                        A[left] = A[left]^A[right];
+                    }
+                }
+            }
+        }
+        return A;
+    }
+}
+
+/*class Solution {
+    public int[] sortArrayByParity(int[] A) {
+        int[] array = new int[A.length];
+        int count = 0;
+        for(int i=0;i<A.length;i++){
+            if(A[i]%2==0){
+                array[count++] = A[i];
+            }
+        }
+        for(int j=0;j<A.length;j++){
+            if(A[j]%2!=0){
+                array[count++] = A[j];
+            }
+        }
+        return array;
+    }
+}*/
