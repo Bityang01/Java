@@ -3670,3 +3670,29 @@ class Solution {
         return array;
     }
 }*/
+
+
+//思路：定义rightSum和leftSum，先把所有的数组值和存入rightSum，再从nums[0]开始加值存入leftSum
+//      当左右相等时返回下标
+class Solution {
+	//20200122leetcode724寻找数组的中心索引
+    public int pivotIndex(int[] nums) {
+        int leftSum = 0;
+        int rightSum = 0;
+        //将数组和存入rightSum
+        for(int i=0;i<nums.length;i++){
+            rightSum += nums[i];
+        }
+        //从nums[0]开始每个值加入leftSum
+        for(int i=0;i<nums.length;i++){
+            //把rightSum值减掉相应的数组值
+            rightSum = rightSum - nums[i];
+            //如果左右相等，找到中心索引
+            if(rightSum==leftSum){
+                return i;
+            }
+            leftSum += nums[i];
+        }
+        return -1;
+    }
+}
