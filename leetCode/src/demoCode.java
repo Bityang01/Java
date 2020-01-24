@@ -3696,3 +3696,20 @@ class Solution {
         return -1;
     }
 }
+
+class Solution {
+	//20200124leetcode1两数之和
+    public int[] twoSum(int[] nums, int target) {
+        int[] array = new int[2];
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
+                if(nums[i]+nums[j]==target){
+                    array[0]=i;
+                    array[1]=j;
+                    return array;
+                }
+            }
+        }
+        return null;
+    }
+}
