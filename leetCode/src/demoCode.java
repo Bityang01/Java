@@ -3713,3 +3713,42 @@ class Solution {
         return null;
     }
 }
+
+
+//思路：先补零（可以不补，补零思路清晰点），取出两个字符串的每一个字母，从后往前加，
+//      需要判断是否需要进位，不需要进位的话，直接append到sb中，需要进位的话，定义一个进位标志位ca
+//      每次需要进位时，ca置为1，在下一位相加时加上ca
+//      最后反转sb返回
+class Solution {
+	//20200125leetcode67二进制求和
+    public String addBinary(String a, String b) {
+        //补零
+        while(a.length()>b.length()){
+            b = '0'+b;
+        }
+        while(a.length()<b.length()){
+            a = '0'+a;
+        }
+        StringBuilder sb = new StringBuilder();
+        int ca = 0;//进位标志符
+        for(int i=a.length()-1;i>=0;i--){//从后往前加
+            int sum=ca;
+            //sum存储本次字母相加的和,带上上一位运算的标志位相加
+            sum += (a.charAt(i)-'0')+(b.charAt(i)-'0');
+            //存储本次相加完毕后是否需要进位
+            ca=sum/2;
+            //sum>1说明需要进位，且本位为0；不需要进位，直接append sum
+            if(sum>1){
+                sb.append(sum%2);
+            }else{
+                sb.append(sum);
+            }
+        }
+        //第0位需要特殊考虑，如果需要进位，将会比原两个字符串长1，即需要将1 append到第0位
+        //否则不需要进位，直接反转返回
+        if(ca==1){
+            sb.append(1);
+        }
+        return sb.reverse().toString();
+    }
+}
