@@ -3752,3 +3752,56 @@ class Solution {
         return sb.reverse().toString();
     }
 }
+
+
+//思路：二分查找到一个target值，再分别往前往后查找，返回数组下标就ok
+class Solution {
+	//20200126leetcode34在排序数组中查找元素的第一个和最后一个位置
+    //二分查找
+    public int binarySearch(int[] array,int tar){
+        int left = 0;
+        int right = array.length-1;
+        while(left <= right){
+            int mid  = (left+right)/2;
+            if(array[mid] == tar){
+                return mid;
+            }
+            if(array[mid]>tar){
+                right = mid-1;
+            }
+            if(array[mid]<tar){
+                left = mid+1;
+            }
+        }
+        return -1;
+    }
+
+    public int[] searchRange(int[] nums, int target) {
+        int[] arr = new int[2];
+        int tmp = binarySearch(nums,target);
+        if(tmp == -1){
+            arr[0] = -1;
+            arr[1] = -1;
+            return arr;
+        }
+        //往前查找
+        for(int i = tmp;i>=0;i--){
+            if(nums[i]==target){
+                arr[0] = i;
+            }
+            if(nums[i]!=target){
+                break;
+            }
+        }
+        //往后查找
+        for(int i = tmp;i<nums.length;i++){
+            if(nums[i]==target){
+                arr[1] = i;
+            }
+            if(nums[i]!=target){
+                break;
+            }
+        }
+        return arr;
+    }
+}
