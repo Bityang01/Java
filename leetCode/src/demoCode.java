@@ -3805,3 +3805,29 @@ class Solution {
         return arr;
     }
 }
+
+//思路：先全部转换成小写字母，遍历一次将所有的字母和数字append到sb中，
+//      然后从两头往中间遍历，不相等的返回false
+class Solution {
+	//20200127leetcode125验证回文串
+    public boolean isPalindrome(String s) {
+        //s.trim();
+        //转换成小写字母（或者大写字母也ok）
+        String str = s.toLowerCase();
+        StringBuilder sb = new StringBuilder();
+        //遍历一次，将所有的字母和数字存入sb中
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)>='a'&&str.charAt(i)<='z'||
+                    str.charAt(i)>='0'&&str.charAt(i)<='9'){
+                sb.append(str.charAt(i));
+            }
+        }
+        //从两头往中间遍历，不相等的返回false
+        for(int i=0,j=sb.length()-1;i<=j;i++,j--){
+            if(sb.charAt(i)!=sb.charAt(j)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
