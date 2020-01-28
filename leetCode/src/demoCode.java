@@ -3831,3 +3831,36 @@ class Solution {
         return true;
     }
 }
+
+
+//思路：开辟一个和nums值一样的新数组，对新数组进行排序，排序后与原数组比较，不相等的下标返回
+class Solution {
+	//20200128leetcode581最短无序连续子数组
+    public int findUnsortedSubarray(int[] nums) {
+        //开辟和nums值一样的新数组
+        int[] array = new int[nums.length];
+        for(int i=0;i<nums.length;i++){
+            array[i] = nums[i];
+        }
+        //对新数组排序
+        Arrays.sort(array);
+        int left = 0;
+        int right = 0;
+        //新数组和原数组进行比较，找到开始不一样的左下标
+        for(int i=0;i<nums.length;i++){
+            if(array[i]!=nums[i]){
+                left = i;
+                break;
+            }
+        }
+        //比较，找到不一样的右下标
+        for(int i=nums.length-1;i>=0;i--){
+            if(array[i]!=nums[i]){
+                right = i+1;
+                break;
+            }
+        }
+        //返回子数组元素的个数
+        return right-left;
+    }
+}
