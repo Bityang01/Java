@@ -3864,3 +3864,34 @@ class Solution {
         return right-left;
     }
 }
+
+//思路：当做栈，数字则压栈，运算符则出栈2个数字，计算完之后压栈一个数字。
+class Solution {
+	//20200128leetcode150逆波兰表达式求值
+    public int evalRPN(String[] tokens) {
+        Stack<Integer> s = new Stack<Integer>();
+        for(String s1 : tokens){
+            switch(s1){
+                case "+":
+                    s.push(s.pop()+s.pop());
+                    break;
+                case "-":
+                    s.push(-s.pop()+s.pop());
+                    break;
+                case "/":
+                    int tmp = s.pop();
+                    s.push(s.pop()/tmp);
+                    break;
+                case "*":
+                    s.push(s.pop()*s.pop());
+                    break;
+                    default:
+                    //parseInt()方法，用于将字符串参数作为有符号的十进制整数进行解析。
+                        s.push(Integer.parseInt(s1));
+                        break;
+
+            }
+        }
+        return s.pop();
+    }
+}
