@@ -3895,3 +3895,21 @@ class Solution {
         return s.pop();
     }
 }
+
+
+class Solution {
+	//20200129leetcode78子集
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> l = new ArrayList<>();
+        l.add(new ArrayList<>());
+        for(int i=0;i<nums.length;i++){
+            int all = l.size();
+            for(int j=0;j<all;j++){
+                List<Integer> tmp = new ArrayList<>(l.get(j));
+                tmp.add(nums[i]);
+                l.add(tmp);
+            }
+        }
+        return l;
+    }
+}
