@@ -3950,3 +3950,25 @@ class Solution {
         return res;
     }
 }
+
+
+class Solution {
+	//20200131leetcode997小镇的法官
+    public int findJudge(int N, int[][] trust) {
+        int[] out = new int[N+1];
+        int[] in = new int[N+1];
+        for(int i=0;i<trust.length;i++){
+            //你相信的人的个数
+            out[trust[i][0]] += 1;
+            //相信你的人的个数
+            in[trust[i][1]] += 1;
+        }
+        for(int i=1;i<=N;i++){
+            //你相信的人数为0并且相信你的人有N-1个时是法官
+            if(out[i] == 0&&in[i] == N-1){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
