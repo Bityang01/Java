@@ -3972,3 +3972,36 @@ class Solution {
         return -1;
     }
 }
+
+
+//思路：将两个数组排序，定义三个指针，i指向nums1，j指向nums2，如果两者相等，同时加1
+class Solution {
+	//20200201leetcode350两个数组的交集II
+    public int[] intersect(int[] nums1, int[] nums2) {
+        //排序数组
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int i=0,j=0,k=0;
+        int[] array = new int[nums1.length];
+        while(i<nums1.length&&j<nums2.length){
+            //如果小于，则i向后走一步
+            if(nums1[i]<nums2[j]){
+                i++;
+            }else{
+                //如果大于，则j向后走一步
+                if(nums1[i]>nums2[j]){
+                    j++;
+                }else{
+                    //如果相等，则把值赋给array，三个指针同时向后走一步
+                    //有一个节省内存的方法，不开辟新数组，直接把值赋给nums1
+                        if(nums1[i] == nums2[j]){
+                        array[k++] = nums1[i++];
+                        j++;
+                    }
+                }
+            }
+        }
+        //返回array的0——k的值
+        return Arrays.copyOfRange(array,0,k);
+    }
+}
