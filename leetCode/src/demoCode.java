@@ -4005,3 +4005,29 @@ class Solution {
         return Arrays.copyOfRange(array,0,k);
     }
 }
+
+//思路：定义一个计数器，当大于三的时候就说明符合条件
+class Solution {
+	//20200202leetcode830较大分组的位置
+    public List<List<Integer>> largeGroupPositions(String S) {
+        List<List<Integer>> res = new ArrayList<>();
+        //在S字符串的末尾加一个字符，这样可以不用考虑原字符串的末尾
+        S=S+"A";
+        int count=1;
+        for(int i=1;i<S.length();i++){
+            if(S.charAt(i)==S.charAt(i-1)){
+                count++;
+            }
+            if(S.charAt(i)!=S.charAt(i-1)||i==S.length()-1){
+                if(count>2){
+                    List<Integer> tmp = new ArrayList<>();
+                    tmp.add(i-count);
+                    tmp.add(i-1);
+                    res.add(tmp);
+                }
+                count=1;
+            }
+        }
+        return res;
+    }
+}
