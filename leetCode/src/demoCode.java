@@ -4051,3 +4051,68 @@ class Solution {
         return false;
     }
 }
+
+
+//思路：把一个数组中的值放入map中，
+//      然后对另一个数组遍历一遍，如果map中包含，就放入List中，并保存i+j的值
+//      如果i+j小于num的话，清空List中的值，重新重复上述操作
+class Solution {
+	//20200204leetcode599两个列表的最小索引总和
+    public static String[] findRestaurant(String[] list1, String[] list2) {
+        //map储存list1中的值
+        Map<String,Integer> map = new HashMap<>();
+        //List储存两数组相同且索引最小的值
+        List<String> res = new ArrayList<>();
+        //定义索引相加值num
+        int num = Integer.MAX_VALUE;
+        for(int i=0;i<list1.length;i++){
+            map.put(list1[i],i);
+        }
+        for(int i=0;i<list2.length;i++){
+            //如果map中包含list2中的值，且num==i+j，则放入res中
+            if(map.containsKey(list2[i])){
+                if(num == i+map.get(list2[i])){
+                    res.add(list2[i]);
+                }else{
+                    //当有i+j比num小的时候，更新num和List中的值
+                    if(num > i + map.get(list2[i])){
+                        num = i+map.get(list2[i]);
+                        res.clear();
+                        res.add(list2[i]);
+                    }
+                }
+            }
+        }
+        return res.toArray(new String[res.size()]);
+    }
+}
+
+/*class Solution {
+    public static String[] findRestaurant(String[] list1, String[] list2) {
+        String[] sArr = new String[list1.length];
+        int count = 0;
+        int min = 100000;
+        for(int i=0;i<list1.length;i++){
+            for(int j=0;j<list2.length;j++){
+                if(list1[i] == list2[j]){
+                    count = i+j;
+                    if(count<min){
+                        min = count;
+                        sArr[0] = list1[i];
+                    }
+                }
+            }
+        }
+        count = 0;
+        for(int i=0;i<list1.length;i++){
+            for(int j=0;j<list2.length;j++){
+                if(list1[i] == list2[j]){
+                    if(i+j == min){
+                        sArr[count++] = list1[i];
+                    }
+                }
+            }
+        }
+        return Arrays.copyOfRange(sArr,0,count);
+    }
+}*/
