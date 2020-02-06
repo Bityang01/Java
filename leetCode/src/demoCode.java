@@ -4133,3 +4133,20 @@ class Solution {
         return "";
     }
 }
+
+class Solution {
+	//20200206leetcode7171比特与2比特字符
+    public boolean isOneBitCharacter(int[] bits) {
+        for(int i=0;i<bits.length;i++){
+            //当i走到length-1时就必定为1比特字符
+            if(i==bits.length-1){
+                return true;
+            }
+            //i总是指向1比特或者2比特开始字符位置，不会指到2比特第二个字符位置
+            if(bits[i] == 1){
+                i++;
+            }
+        }
+        return false;
+    }
+}
