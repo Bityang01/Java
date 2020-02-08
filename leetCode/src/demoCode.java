@@ -4168,3 +4168,28 @@ class Solution {
         return letters[left%letters.length];
     }
 }
+
+
+//思路：定义两个计数器；count为当前最长的连续子序列，tmp为当前的连续子序列；
+//      当tmp>count时，tmp赋给count
+class Solution {
+	//20200208leetcode674最长连续递增序列
+    public int findLengthOfLCIS(int[] nums) {
+        if(nums.length<1){
+            return 0;
+        }
+        int count = 1;
+        int tmp = 1;
+        for(int i=0;i<nums.length-1;i++){
+            if(nums[i]<nums[i+1]){
+                tmp++;
+                if(tmp>count){
+                    count=tmp;
+                }
+            }else{
+                tmp=1;
+            }
+        }
+        return count;
+    }
+}
