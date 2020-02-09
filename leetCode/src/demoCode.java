@@ -4193,3 +4193,47 @@ class Solution {
         return count;
     }
 }
+
+
+class Solution {
+	//20200209leetcode989数组形式的整数加法
+    public List<Integer> addToArrayForm(int[] A, int K) {
+        int len = A.length;
+        int lastNum = K;
+        LinkedList<Integer> res = new LinkedList<>();
+        int i = len-1;
+        while( i>= 0||lastNum>0){
+            if(i>=0){
+                lastNum += A[i];
+            }
+            res.addFirst(lastNum%10);
+            lastNum /= 10;
+            i--;
+        }
+        return res;
+    }
+}
+
+/*class Solution {
+    public List<Integer> addToArrayForm(int[] A, int K) {
+        /*int[] array = new int[];
+        int count = 0;
+        while(K>0){
+            array[count++] = K%10;
+            K /= 10;
+        }
+        List<Integer> res = new ArrayList<>();
+        int tmp = 0;
+        int i = A.length-1;
+        while(i>=0||K>0){
+            if(i>=0){
+                tmp = tmp + A[i];
+            }
+            res.add(tmp%10);
+            tmp = tmp/10;
+            i--;
+        }
+        Collections.reverse(res);
+        return res;
+    }
+}*/
