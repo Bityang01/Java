@@ -4237,3 +4237,38 @@ class Solution {
         return res;
     }
 }*/
+
+
+class Solution {
+	//20200210leetcode1010总持续时间可被60整除的歌曲
+    public int numPairsDivisibleBy60(int[] time) {
+        int count = 0;
+        int[] array = new int[60];
+        //把数组中得每个余数对应的出现次数放入新开辟的数组中
+        for(int i=0;i<time.length;i++){
+            array[time[i]%60]++;
+        }
+        for(int i=1;i<30;i++){
+            //除开0和30以外的配对次数
+            count += array[i] * array[60-i];
+        }
+        //0和30的配对次数
+        count += (array[0]*(array[0]-1) + array[30]*(array[30]-1))/2;
+        return count;
+    }
+}
+
+//暴力法：超时
+/*class Solution {
+    public int numPairsDivisibleBy60(int[] time) {
+        int count = 0;
+        for(int i=0;i<time.length;i++){
+            for(int j=i+1;j<time.length;j++){
+                if((time[i]+time[j])%60 == 0){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}*/
