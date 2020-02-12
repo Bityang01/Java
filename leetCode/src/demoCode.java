@@ -4315,3 +4315,42 @@ class Solution {
         return curNum;
     }
 }*/
+
+
+//思路：题目为两个对应关系，用map<key->pattern,value->str>
+//      拿到一个pattern中的字母看map中有没有对应的key，没有的话判断有没有对应的value
+//      匹配则进入下一个，不匹配则返回false
+class Solution {
+	//20200212leetcode290单词规律
+    public boolean wordPattern(String pattern, String str) {
+        if(pattern == null ||str == null){
+            return false;
+        }
+        String[] string = str.split(" ");
+        if(pattern.length() != string.length){
+            return false;
+        }
+        Map<Character,String> map = new HashMap<>();
+        for(int i=0;i<pattern.length();i++){
+            char ch = pattern.charAt(i);
+            //key存在
+            if(map.containsKey(ch)){
+                //但是不对应
+                if(!map.get(ch).equals(string[i])){
+                    return false;
+                }
+            }
+            //key不存在
+            else{
+                //但是value一样，对应的key值不一样
+                if(map.containsValue(string[i])){
+                    return false;
+                }else{
+                    //key不存在，value值也不存在，放入map
+                    map.put(ch,string[i]);
+                }
+            }
+        }
+        return true;
+    }
+}
