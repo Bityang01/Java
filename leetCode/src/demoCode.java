@@ -4354,3 +4354,40 @@ class Solution {
         return true;
     }
 }
+
+
+class Solution {
+	//20200213leetcode645错误的集合
+    public int[] findErrorNums(int[] nums) {
+        int[] array = new int[nums.length+1];
+        for(int x : nums){
+            array[x]++;
+        }
+        int[] res = new int[2];
+        for(int i=0;i<array.length;i++){
+            if(array[i] == 0){
+                res[1] = i;
+            }else{
+                if(array[i] == 2){
+                    res[0] = i;
+                }
+            }
+        }
+        return res;
+    }
+}
+
+/*class Solution {
+    public int[] findErrorNums(int[] nums) {
+        int[] array = new int[nums.length];
+        Arrays.sort(nums);
+        int count = 0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i] != i+1){
+                array[count++] = nums[i];
+                array[count++] = i+1;
+            }
+        }
+        return Arrays.copyOfRange(array,0,count);
+    }
+}*/
