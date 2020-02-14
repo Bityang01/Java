@@ -4391,3 +4391,21 @@ class Solution {
         return Arrays.copyOfRange(array,0,count);
     }
 }*/
+
+class Solution {
+	//20200214leetcode441排列硬币
+    public int arrangeCoins(int n) {
+        long sum = 0;
+        int i=0;
+        if(n == 1){
+            return 1;
+        }
+        for(i=1;i<n;i++){
+            sum += i;
+            if(sum > n){
+                break;
+            }
+        }
+        return i-1;
+    }
+}
