@@ -4421,3 +4421,26 @@ class Solution {
         return count;
     }
 }
+
+class Solution {
+	//20200216leetcode747至少是其他数字两倍的最大数
+    public int dominantIndex(int[] nums) {
+        int maxFirst = nums[0];
+        int maxIndex = 0;
+        int maxSecond = 0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i] > maxFirst){
+                maxSecond = maxFirst;
+                maxFirst = nums[i];
+                maxIndex = i;
+            }
+            if(nums[i] > maxSecond && nums[i] != maxFirst){
+                maxSecond = nums[i];
+            }
+        }
+        if(maxFirst >= maxSecond*2){
+            return maxIndex;
+        }
+        return -1;
+    }
+}
