@@ -4444,3 +4444,23 @@ class Solution {
         return -1;
     }
 }
+
+
+
+class Solution {
+	//20200217leetcode219存在重复元素II
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        int maxK=0;
+        for(int i=0; i<nums.length;i++){
+            for(int j=i;j<nums.length;j++){
+                if(nums[i]==nums[j]&&i!=j){
+                    int tmp=(i>j?i-j:j-i);
+                    if(tmp<=k){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}
