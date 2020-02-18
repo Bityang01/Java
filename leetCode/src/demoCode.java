@@ -4464,3 +4464,22 @@ class Solution {
         return false;
     }
 }
+
+class Solution {
+	//20200218leetcode643子数组最大平均数I
+    public double findMaxAverage(int[] nums, int k) {
+        int max=0;
+        for(int i=0;i<nums.length-k+1;i++){
+            int count = 0;
+            for(int i1=0;i1<k;i1++){
+                count+=nums[i+i1];
+            }
+            if(i==0){
+                max=count;
+            }else{
+                max=Math.max(max,count);
+            }
+        }
+        return (double)max/k;
+    }
+}
