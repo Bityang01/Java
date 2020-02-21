@@ -4521,3 +4521,24 @@ public class Solution extends VersionControl {
         return right;
     }
 }
+
+class Solution {
+	//20200221leetcode680验证回文字符串II
+    public boolean validPalindrome(String s) {
+        for(int i=0,j=s.length()-1;i<=j;i++,j--){
+            if(s.charAt(i)!=s.charAt(j)){
+                return validPalindrome(s,i,j-1)||validPalindrome(s,i+1,j);
+            }
+        }
+        return true;
+    }
+
+    private boolean validPalindrome(String s,int i,int j){
+        while(i<j){
+            if(s.charAt(i++)!=s.charAt(j--)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
