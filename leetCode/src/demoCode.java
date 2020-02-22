@@ -4542,3 +4542,35 @@ class Solution {
         return true;
     }
 }
+
+class Solution {
+	//20200222leetcode941有效的山脉数组
+    public boolean validMountainArray(int[] A) {
+        if(A.length<3){
+            return false;
+        }
+        int i=0;
+        int tmp=Integer.MIN_VALUE;
+        for(i=0;i<A.length;i++){
+            if(A[i]>tmp){
+                tmp=A[i];
+            }else{
+                break;
+            }
+            if(i==A.length-1){
+                return false;
+            }
+        }
+        if(tmp==A[0]){
+            return false;
+        }
+        for(int j=i;j<A.length;j++){
+            if(tmp>A[j]){
+                tmp=A[j];
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+}
