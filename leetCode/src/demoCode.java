@@ -4588,3 +4588,25 @@ class Solution {
         return count;
     }
 }
+
+
+class Solution {
+	//20200224leetcode面试题10- I. 斐波那契数列
+    public int fib(int n) {
+        if(n==1){
+            return 1;
+        }
+        if(n==0){
+            return 0;
+        }
+        int f0 = 0;
+        int f1 = 1;
+        int f2 = 0;
+        for(int i=2;i<=n;i++){
+            f2 = (f0+f1)%1000000007;
+            f0 = f1;
+            f1 = f2;
+        }
+        return f2;
+    }
+}
