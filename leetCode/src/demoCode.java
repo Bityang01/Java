@@ -4610,3 +4610,22 @@ class Solution {
         return f2;
     }
 }
+
+
+class Solution {
+	//20200225leetcode1346检查整数及其两倍数是否存在
+    public boolean checkIfExist(int[] arr) {
+        int[] res = new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            res[i] = 2*arr[i];
+        }
+        for(int i = 0;i<arr.length;i++){
+            for(int j=0;j<res.length;j++){
+                if(res[j]==arr[i]&&i!=j){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
