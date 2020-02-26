@@ -4629,3 +4629,27 @@ class Solution {
         return false;
     }
 }
+
+
+class Solution {
+	//20200226leetcode605. 种花问题
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        int count = 1;
+        int num = 0;
+        for(int i=0;i<flowerbed.length;i++){
+            if(flowerbed[i] == 0){
+                count++;
+            }else{
+                count=0;
+            }
+            if(count==3){
+                num++;
+                count=1;
+            }
+        }
+        if(count == 2){
+            num++;
+        }
+        return n<=num;
+    }
+}
