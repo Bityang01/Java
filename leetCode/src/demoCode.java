@@ -4684,3 +4684,25 @@ class Solution {
         return true;
     }
 }
+
+
+class Solution {
+	//20200228leetcode633平方数之和
+    public boolean judgeSquareSum(int c) {
+        int left = 0;
+        int right = (int)Math.sqrt(c);
+        while(left<=right){
+            int tmp = left*left+right*right;
+            if(tmp>c){
+                right--;
+            }else{
+                if(tmp<c){
+                    left++;
+                }else{
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
