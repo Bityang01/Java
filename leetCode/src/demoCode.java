@@ -4744,3 +4744,61 @@ class Solution {
         return mat;
     }
 }
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20200302leetcode2两数相加
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode res = new ListNode(-1);
+        ListNode pre = res;
+        int t=0;
+        while(l1!=null||l2!=null||t!=0){
+            if(l1!=null){
+                t+=l1.val;
+                l1=l1.next;
+            }
+            if(l2!=null){
+                t+=l2.val;
+                l2=l2.next;
+            }
+            pre.next = new ListNode(t%10);
+            pre = pre.next;
+            t/=10;
+        }
+        return res.next;
+    }
+}
+
+/*class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode res = new ListNode(0);
+        ListNode head = res;
+        int cap=0;
+        while(l1!=null||l2!=null){
+            ListNode tmp = new ListNode(0);
+            head.next=tmp;
+            tmp.val=cap+(l1.val+l2.val)%10;
+            if(l1.val+l2.val>9){
+                cap=1;
+            }else{
+                cap=0;
+            }
+            head=tmp;
+            l1=l1.next;
+            l2=l2.next;
+        }
+        if(cap==1){
+            ListNode tmp = new ListNode(0);
+            head.next=tmp;
+            tmp.val=1;
+        }
+        return res.next;
+    }
+}*/
