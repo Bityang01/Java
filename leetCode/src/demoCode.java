@@ -4802,3 +4802,16 @@ class Solution {
         return res.next;
     }
 }*/
+
+
+class Solution {
+	//20200303leetcode面试题10.01.合并排序的数组
+    public void merge(int[] A, int m, int[] B, int n) {
+        int count = A.length-1;
+        int tmp = n-1;
+        while(tmp>=0){
+            A[count--]=B[tmp--];
+        }
+        Arrays.sort(A);
+    }
+}
