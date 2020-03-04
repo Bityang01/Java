@@ -4837,3 +4837,36 @@ class Solution {
         return leftHeight>rightHeight?leftHeight+1:rightHeight+1;
     }
 }
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20200304leetcode17相同的数
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        //两个树都为空
+        if(null == p && null == q){
+            return true;
+        }
+
+        //两个树有一个为空
+        if(null == p||null == q){
+            return false;    
+        }
+
+        //两棵树都不为空，分别检查左右子树
+        if(p.val != q.val){
+            return false;
+        }
+
+        return isSameTree(p.left,q.left)&&
+               isSameTree(p.right,q.right);
+    }
+}
