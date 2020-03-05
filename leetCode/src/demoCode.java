@@ -4870,3 +4870,39 @@ class Solution {
                isSameTree(p.right,q.right);
     }
 }
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20200304leetcode110平衡二叉树
+        public int maxDepth(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        int leftHeight = maxDepth(root.left);
+        int rightHeight = maxDepth(root.right);
+        return leftHeight>rightHeight?leftHeight+1:rightHeight+1;
+    }
+    public boolean isBalanced(TreeNode root) {
+        if(root == null){
+            return true;
+        }
+        //求左子树的高度
+        int leftHight = maxDepth(root.left);
+        //求右子树的高度
+        int rightHight = maxDepth(root.right);
+        //求左右子树是否满足情况
+        if(Math.abs(rightHight-leftHight)>1){
+            return false;
+        }
+        return isBalanced(root.left)&&isBalanced(root.right);
+    }
+}
