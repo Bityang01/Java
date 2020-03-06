@@ -4906,3 +4906,29 @@ class Solution {
         return isBalanced(root.left)&&isBalanced(root.right);
     }
 }
+
+
+class Solution {
+	//20200306leetcode面试题57-II.和为s的连续正数序列
+    public int[][] findContinuousSequence(int target) {
+        List<int[]> list = new ArrayList<>();
+        for(int l =1,r=1,sum =0;r<target;r++){
+            sum += r;
+            while(sum>target){
+                sum -= l++;
+            }
+            if(sum == target){
+                int[] tmp = new int[r-l+1];
+                for(int i=0;i<tmp.length;i++){
+                    tmp[i] = l+i; 
+                }
+                list.add(tmp);
+            }
+        }
+        int[][] res = new int[list.size()][];
+        for(int i=0;i<res.length;i++){
+            res[i] = list.get(i);
+        }
+        return res;
+    }
+}
