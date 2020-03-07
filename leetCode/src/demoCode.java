@@ -4932,3 +4932,20 @@ class Solution {
         return res;
     }
 }
+
+
+class Solution {
+	//20200307leetcode3无重复字符的最长子串
+    public int lengthOfLongestSubstring(String s) {
+        int count = 0;
+        Map<Character,Integer> map = new HashMap<>();
+        for(int i=0,j=0;j<s.length();j++){
+            if(map.containsKey(s.charAt(j))){
+                i = Math.max(map.get(s.charAt(j)), i);
+            }
+            count = Math.max(count,j-i+1);
+            map.put(s.charAt(j),j+1);
+        }
+        return count;
+    }
+}
