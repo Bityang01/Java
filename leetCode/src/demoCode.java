@@ -4984,3 +4984,22 @@ class Solution {
         return count;
     }
 }
+
+class Solution {
+	//20200310leetcode1295统计位数为偶数的数字
+    public int findNumbers(int[] nums) {
+        int count = 0;
+        for(int i=0;i<nums.length;i++){
+            int tmp=0;
+            int numTmp=nums[i];
+            while(numTmp>0){
+                tmp++;
+                numTmp /= 10;
+            }
+            if(tmp%2==0){
+                count++;
+            }
+        }
+        return count;
+    }
+}
