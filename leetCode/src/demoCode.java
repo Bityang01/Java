@@ -5003,3 +5003,37 @@ class Solution {
         return count;
     }
 }
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20200311leetcode1290二进制链表转整数
+    private int getLength(ListNode head){
+        ListNode cur = head;
+        int count = 0;
+        while(cur!=null){
+            count++;
+            cur=cur.next;
+        }
+        return count;
+    }
+    public int getDecimalValue(ListNode head) {
+        int count = getLength(head)-1;
+        ListNode cur = head;
+        int sum = 0;
+        while(cur!=null){
+            if(cur.val == 1){   
+                sum += Math.pow(2,count);
+            }
+            cur = cur.next;
+            count--;
+        }
+        return sum;
+    }
+}
