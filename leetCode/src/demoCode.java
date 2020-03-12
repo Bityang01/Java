@@ -5037,3 +5037,21 @@ class Solution {
         return sum;
     }
 }
+
+
+class Solution {
+	//20200312leetcode1266访问所有点的最小时间
+    public int minTimeToVisitAllPoints(int[][] points) {
+        //计算x与y的距离
+        int xLength = 0;
+        int yLength = 0;
+        int visitLength = 0;
+        for(int i=1;i<points.length;i++){
+            xLength = Math.abs(points[i][0]-points[i-1][0]);
+            yLength = Math.abs(points[i][1]-points[i-1][1]);
+            //取最大距离相加
+            visitLength += Math.max(xLength,yLength);
+        }
+        return visitLength;
+    }
+}
