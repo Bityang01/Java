@@ -5055,3 +5055,20 @@ class Solution {
         return visitLength;
     }
 }
+
+
+
+class Solution {
+	//20200313leetcode1351. 统计有序矩阵中的负数
+    public int countNegatives(int[][] grid) {
+        int count = 0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[i].length;j++){
+                if(grid[i][j]<0){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
