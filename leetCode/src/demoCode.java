@@ -5072,3 +5072,16 @@ class Solution {
         return count;
     }
 }
+
+
+class Solution {
+	//20200313leetcode面试题58 - II. 左旋转字符串
+    public String reverseLeftWords(String s, int n) {
+        if(n>s.length()){
+            return null;
+        }
+        String strLeft = s.substring(0,n);
+        String strRight = s.substring(n,s.length());
+        return strRight + strLeft;
+    }
+}
