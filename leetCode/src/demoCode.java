@@ -5103,3 +5103,35 @@ class Solution {
         return sb.toString();
     }
 }
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20200314leetcode面试题 02.02. 返回倒数第 k 个节点
+    private int getLength(ListNode head){
+        ListNode cur = head;
+        int count = 0;
+        while(cur!=null){
+            count++;
+            cur = cur.next;
+        }
+        return count;
+    }
+    public int kthToLast(ListNode head, int k) {
+        int count = getLength(head) - k + 1;
+        ListNode cur = head;
+        int res = 0;
+        while(count>0){
+           res = cur.val; 
+           cur = cur.next;
+           count--;
+        }
+        return res;
+    }
+}
