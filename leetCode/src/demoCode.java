@@ -5085,3 +5085,21 @@ class Solution {
         return strRight + strLeft;
     }
 }
+
+
+class Solution {
+	//20200314leetcode1021. 删除最外层的括号
+    public String removeOuterParentheses(String S) {
+        int left = 0;
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<S.length();i++){
+            if(S.charAt(i)=='(' && left++>0){
+                sb.append('(');
+            }
+            if(S.charAt(i)==')' && --left>0){
+                sb.append(')');
+            }
+        }
+        return sb.toString();
+    }
+}
