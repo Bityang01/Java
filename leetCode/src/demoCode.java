@@ -5135,3 +5135,29 @@ class Solution {
         return res;
     }
 }
+
+
+
+class Solution {
+	//20200315leetcode1323. 6 和 9 组成的最大数字
+    public int maximum69Number (int num) {
+        int[] array = new int[100];
+        int tmp = num;
+        int count = 0;
+        while(tmp>0){
+            array[count++] = tmp%10;//尾9 6 6 9头
+            tmp /= 10;
+        }
+        for(int i=count-1;i>=0;i--){
+            if(array[i] == 6){
+                array[i] = 9;
+                break;
+            }
+        }
+        int sum = 0;
+        for(int i=0;i<count;i++){
+            sum += array[i]*(int)Math.pow(10,i);
+        }
+        return sum;
+    }
+}
