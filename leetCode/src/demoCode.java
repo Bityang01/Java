@@ -5161,3 +5161,23 @@ class Solution {
         return sum;
     }
 }
+
+
+class Solution {
+	//20200316leetcode面试题 01.06. 字符串压缩
+    public String compressString(String S) {
+        StringBuilder sb = new StringBuilder();
+        S = S + 'A';
+        int count = 1;
+        for(int i =0;i<S.length()-1;i++){
+            if(S.charAt(i)==S.charAt(i+1)){
+                count++;
+            }else{
+                sb.append(S.charAt(i));
+                sb.append(count);
+                count = 1;
+            }
+        }
+        return S.length()-1<=sb.length()?S.substring(0,S.length()-1):sb.toString();
+    }
+}
