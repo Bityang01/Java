@@ -5181,3 +5181,52 @@ class Solution {
         return S.length()-1<=sb.length()?S.substring(0,S.length()-1):sb.toString();
     }
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+ class Solution {
+	 //20200317leetcode面试题22. 链表中倒数第k个节点
+     //双指针大法，双百
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        ListNode cur = head;
+        ListNode pre = head;
+        while(k > 0){
+            cur = cur.next;
+            k--;
+        }
+        while(cur != null){
+            pre = pre.next;
+            cur = cur.next;
+        }
+        return pre;
+    }
+ }
+/*class Solution {
+    //容易想到的方法，时间30%
+    private int getLength(ListNode head){
+        int count = 0;
+        ListNode cur = head;
+        while(cur != null){
+            count++;
+            cur = cur.next;
+        }
+        return count;
+    }
+
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        int count = getLength(head) - k;
+        ListNode cur = head;
+        while(count > 0){
+            cur = cur.next;
+            count--;
+        } 
+        return cur;
+    }
+}*/
