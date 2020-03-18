@@ -5230,3 +5230,28 @@ class Solution {
         return cur;
     }
 }*/
+
+
+class Solution {
+	//20200318leetcode836. 矩形重叠
+    public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
+        return !(rec1[2]<=rec2[0]||rec2[2]<=rec1[0]||rec1[3]<=rec2[1]||rec2[3]<=rec1[1]);
+    }
+}
+
+/*class Solution {
+    public boolean isRectangleOverlap(int[] rec1, int[] rec2) {
+        if(rec1[2]<rec2[0]){
+            return false;
+        }
+        int[] res = new int[4];
+        res[0] = rec1[0]>rec2[0]?rec1[0]:rec2[0];
+        res[1] = rec1[1]>rec2[1]?rec1[1]:rec2[1];
+        res[2] = rec1[2]>rec2[2]?rec2[2]:rec1[2];
+        res[3] = rec1[3]>rec2[3]?rec2[3]:rec1[3];
+        if(res[0]!=res[1]||res[2]!=res[3]){
+            return false;
+        }
+        return true;
+    }
+}*/
