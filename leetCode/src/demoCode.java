@@ -5255,3 +5255,29 @@ class Solution {
         return true;
     }
 }*/
+
+
+
+class Solution {
+	//20200319leetcode409. 最长回文串
+    public int longestPalindrome(String s) {
+        int[] res = new int[58];
+        int maxLength = 0;
+        int flg = 0;
+        for(int i=0;i<s.length();i++){
+            res[s.charAt(i)-'A']++;
+        }
+        for(int i=0;i<58;i++){
+            if(res[i]%2 == 0){
+                maxLength += res[i];
+            }else{
+                flg = 1;
+                maxLength += res[i]-1;
+            }
+        }
+        if(flg == 0){
+            return maxLength;
+        }
+        return maxLength + 1;
+    }
+}
