@@ -5281,3 +5281,31 @@ class Solution {
         return maxLength + 1;
     }
 }
+
+
+class Solution {
+	//20200320leetcode面试题40. 最小的k个数
+    public int[] getLeastNumbers(int[] arr, int k) {
+        int[] res = new int[k];
+        List<Integer> L = new ArrayList<>();
+        for(int i = 0;i < arr.length;i++){
+            L.add(arr[i]);
+        }
+        PriorityQueue<Integer> p = new PriorityQueue<>(L);
+        for(int i = 0;i<k;i++){
+            res[i] = p.poll();
+        } 
+        return res;
+    }
+}
+
+/*class Solution {
+    public int[] getLeastNumbers(int[] arr, int k) {
+        int[] res = new int[k];
+        Arrays.sort(arr);
+        for(int i=0;i<k;i++){
+            res[i]=arr[i];
+        }
+        return res;
+    }
+}*/
