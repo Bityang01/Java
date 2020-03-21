@@ -5309,3 +5309,36 @@ class Solution {
         return res;
     }
 }*/
+
+
+
+class Solution {
+	//20200321leetcode365. 水壶问题
+    public boolean canMeasureWater(int x, int y, int z) {
+        if(z == 0){
+            return true;
+        }
+        if(x+y<z){
+            return false;
+        }
+        int min = x>y?y:x;
+        int max = 0;
+        if(min == x){
+            max = y;
+        }else{
+            max = x;
+        }
+        int count = 0;
+        while(min>0){
+            if(x % min == 0 && y % min == 0){
+                count = min;
+                break;
+            }
+            min--;
+        }
+        if((count != 0 && z % count == 0)){
+            return true;
+        }
+        return false;
+    }
+}
