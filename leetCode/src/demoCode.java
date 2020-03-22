@@ -5342,3 +5342,23 @@ class Solution {
         return false;
     }
 }
+
+
+class Solution {
+	//20200322leetcode945. 使数组唯一的最小增量
+    public int minIncrementForUnique(int[] A) {
+        int count = 0;
+        Arrays.sort(A);
+        for(int i = 1;i<A.length;i++){
+            if(A[i]<=A[i-1]){
+                //先把原来的值储存（小值min），
+                int tmp = A[i];
+                //A[i]要变到的值（肯定比原来的值大，大值max）
+                A[i] = A[i-1]+1;
+                //因为每次只能+1，所以从原来的值到 要变到的值 需要用大值-小值（max-min）步
+                count += A[i] - tmp;
+            }
+        }
+        return count;
+    }
+}
