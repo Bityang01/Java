@@ -5362,3 +5362,21 @@ class Solution {
         return count;
     }
 }
+
+
+
+class Solution {
+	//20200323leetcode5364. 按既定顺序创建目标数组
+    public int[] createTargetArray(int[] nums, int[] index) {
+        int[] target = new int[index.length];
+        for(int i = 0 ;i < index.length ; i ++ ){
+            int j = index.length - 1 ;
+            while(j > index[i]){
+                target[j] = target[j-1];
+                j--;
+            }
+            target[index[i]] = nums[i];
+        }
+        return target;
+    }
+}
