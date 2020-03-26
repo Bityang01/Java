@@ -5407,3 +5407,88 @@ class Solution {
         return res;
     }
 }
+
+
+class Solution {
+	//20200326leetcode999车的可用捕获量
+
+    private boolean rowMinus(char[][] board,int row,int column){//行减
+        while(row >= 0){
+            if(board[row][column] == 'B'){
+                return false;
+            }else{
+                if(board[row][column] == 'p'){
+                    return true;
+                }
+            }
+            row--;
+        }
+        return false;
+    }
+
+    private boolean rowAdd(char[][] board,int row,int column){
+        while(row < 8){
+            if(board[row][column] == 'B'){
+                return false;
+            }else{
+                if(board[row][column] == 'p'){
+                    return true;
+                }
+            }
+            row++;
+        }
+        return false;
+    }
+
+    private boolean columnMinus(char[][] board,int row,int column){
+        while(column >= 0){
+            if(board[row][column] == 'B'){
+                return false;
+            }else{
+                if(board[row][column] == 'p'){
+                    return true;
+                }
+            }
+            column--;
+        }
+        return false;
+    }
+    
+    private boolean columnAdd(char[][] board,int row,int column){
+        while(column < 8){
+            if(board[row][column] == 'B'){
+                return false;
+            }else{
+                if(board[row][column] == 'p'){
+                    return true;
+                }
+            }
+            column++;
+        }
+        return false;
+    }
+
+    public int numRookCaptures(char[][] board) {
+        int count = 0;
+        for(int i = 0;i<board.length;i++){
+            for(int j = 0;j<board[i].length;j++){
+                if(board[i][j]=='R'){
+                    if(rowMinus(board,i,j)){
+                        count++;
+                    }
+                    if(rowAdd(board,i,j)){
+                        count++;
+                    }
+                    if(columnMinus(board,i,j)){
+                        count++;
+                    }
+                    if(columnAdd(board,i,j)){
+                        count++;
+                    }
+                    return count;
+                }
+            }
+        }
+        return 0;
+    }
+}
