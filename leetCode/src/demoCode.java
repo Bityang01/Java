@@ -5492,3 +5492,39 @@ class Solution {
         return 0;
     }
 }
+
+
+class Solution {
+	//20200327leetcode914卡牌分组
+    private int function(int x,int y){
+        int max = x>y?x:y;
+        int min = (max==x)?y:x;
+        int tmp=min;
+        while(min>0){
+            if(max%min==0&&tmp%min==0){
+                return min;
+            }
+            min--;
+        }
+        return 0;
+    }
+    public boolean hasGroupsSizeX(int[] deck) {
+        int[] res = new int[10000];
+        for(int i=0;i<deck.length;i++){
+            res[deck[i]]++;
+        }
+        int count = 0;
+        for(int i=0;i<res.length;i++){
+            if(res[i]>0){
+                count=res[i];
+                break;
+            }
+        }
+        for(int i=0;i<res.length;i++){
+            if(res[i]>0){
+                count=function(count,res[i]);
+            }
+        }
+        return count>1;
+    }
+}
