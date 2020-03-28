@@ -5528,3 +5528,26 @@ class Solution {
         return count>1;
     }
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20200328leetcode删除中间节点
+    public void deleteNode(ListNode node) {
+        ListNode cur = node.next;
+        while(cur.next!=null){
+            node.val = cur.val;
+            node = cur;
+            cur = cur.next;
+        }
+        node.val = cur.val;
+        node.next = null;
+    }
+}
