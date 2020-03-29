@@ -5567,3 +5567,45 @@ class Solution {
         return sb.toString();
     }
 }
+
+
+import java.util.Scanner;
+public class Main {
+	//牛客每日一题：统计回文
+    //判断是否是回文
+    private static boolean function(String s){
+        for(int i=0,j=s.length()-1;i<=j;i++,j--){
+            if(s.charAt(i)!=s.charAt(j)){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            String A = in.nextLine();
+            String B = in.nextLine();
+            StringBuilder sb = new StringBuilder();
+            int count = 0;
+            //先考虑一个特殊情况，判断字符串B+A是否是回文
+            sb.append(B);
+            sb.append(A);
+            if(function(sb.toString())){
+                count++;
+            }
+            //大众情况：每次在A的每两个字符之间插入B，判断是否是回文
+            for(int i=0;i<A.length();i++){
+                //这里每次开始插入时需要将sb清空
+                sb.delete(0,sb.length());
+                sb.append(A.substring(0,i));
+                sb.append(B);
+                sb.append(A.substring(i));
+                if(function(sb.toString())){
+                    count++;
+                }
+            }
+            System.out.println(count);
+        }
+    }
+}
