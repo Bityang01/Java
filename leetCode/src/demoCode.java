@@ -5571,7 +5571,7 @@ class Solution {
 
 import java.util.Scanner;
 public class Main {
-	//牛客每日一题：统计回文
+	//20200329牛客每日一题：统计回文
     //判断是否是回文
     private static boolean function(String s){
         for(int i=0,j=s.length()-1;i<=j;i++,j--){
@@ -5607,5 +5607,24 @@ public class Main {
             }
             System.out.println(count);
         }
+    }
+}
+
+
+import java.util.*;
+
+public class Finder {
+	//20200329牛客每日一题：寻找第K大
+    public int findKth(int[] a, int n, int K) {
+        // write code here
+        //此处快速排序还不了解，只知道sort底层就是快排，下来看看sort的源码
+        Arrays.sort(a);
+        for(int i=a.length-1;i>=0;i--){
+            K--;
+            if(K==0){
+                return a[i];
+            }
+        }
+        return 0;
     }
 }
