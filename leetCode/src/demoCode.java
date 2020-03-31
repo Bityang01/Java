@@ -5671,3 +5671,22 @@ public class Main {
         }
     }
 }
+
+
+import java.util.*;
+
+public class AntiOrder {
+	//20200331牛客每日一题：数组中的逆序对
+    public int count(int[] A, int n) {
+        // write code here
+        int count=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<i;j++){
+                if(A[j]>A[i]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
