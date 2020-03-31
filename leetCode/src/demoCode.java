@@ -5646,3 +5646,28 @@ class Solution {
         return list.get(0);
     }
 }
+
+
+import java.util.Scanner;
+public class Main {
+	//20200331牛客每日一题：汽水瓶
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNextInt()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            int handNum = in.nextInt();
+            if(handNum == 0){
+                break;
+            }
+            int count = 0;
+            while(handNum > 2){
+                int tmp = handNum/3;
+                count += handNum/3;
+                handNum = handNum % 3 + tmp;
+            }
+            if(handNum == 2){
+                count++;
+            }
+            System.out.println(count);
+        }
+    }
+}
