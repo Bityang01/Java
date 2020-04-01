@@ -5745,3 +5745,22 @@ public class Parenthesis {
         return true==stack.isEmpty();
     }
 }
+
+
+
+class Solution {
+	//20200401leetcode14. 最长公共前缀
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length==0){
+            return "";
+        }
+        String res = strs[0];
+        for(int i=0;i<strs.length;i++){
+            //indexOf()方法：返回指定子字符串第一次出现的字符串内的索引。 不包含的话返回-1
+            while(strs[i].indexOf(res)!=0){
+                res=res.substring(0,res.length()-1);
+            }
+        }
+        return res;
+    }
+}
