@@ -5719,3 +5719,29 @@ public class Main {
         }
     }
 }
+
+
+
+public class Parenthesis {
+	//20200401牛客每日一题：合法括号序列判断
+    public boolean chkParenthesis(String A, int n) {
+        // write code here
+        Stack<Character> stack=new Stack();
+        for(int i=0;i<n;i++){
+            char ch = A.charAt(i);
+            if(ch!='('&&ch!=')'){
+                return false;
+            }
+            if(ch=='('){
+                stack.push(ch);
+            }
+            if(ch==')'){
+                if(stack.isEmpty()){
+                    return false;
+                }
+                stack.pop();
+            }
+        }
+        return true==stack.isEmpty();
+    }
+}
