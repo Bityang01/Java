@@ -5764,3 +5764,41 @@ class Solution {
         return res;
     }
 }
+
+
+
+import java.util.Scanner;
+public class Main{
+	//20200402牛客每日一题：买苹果
+    public static void main(String[] args){
+        //纯数学解法：
+        //1、首先6和8都是偶数，那么输入奇数直接返回-1
+        //2、其次要用最少的袋子，那么先除8得到用8的袋子的个数
+        //3、接下来处理剩下的苹果，对8取余只会得到0，2，4，6；0和6不用过多考虑，
+        //   0的话，说明不需要6的袋子；6的话，只需要用一个6的袋子；4的话，需要回溯1次，
+        //   （8*1+4）/6=2，需要2个6的袋子；2的话，需要回溯两次，（8*2+2）/6=3，需要3个6的袋子
+        Scanner in = new Scanner(System.in);
+        int input = in.nextInt();
+        if(input%2!=0){
+            System.out.println(-1);
+        }
+        int tmp = input%8;
+        int count = input/8;
+        switch(tmp){
+            case 0:
+                System.out.println(count);
+                break;
+            case 2:
+                System.out.println(count-2+3);
+                break;
+            case 4:
+                System.out.println(count-1+2);
+                break;
+            case 6:
+                System.out.println(count+1);
+                break;
+            default:
+                break;
+        }
+    }
+}
