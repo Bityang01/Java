@@ -5802,3 +5802,34 @@ public class Main{
         }
     }
 }
+
+
+
+
+import java.util.Scanner;
+public class Main{
+	//20200402牛客每日一题：删除公共字符
+    public static void main(String[] args){
+        //思路：
+        //1、遍历字符串1，看每个字符在字符串2中是否出现过
+        //2、出现过直接跳过此字符，进入下一个字符
+        //3、没出现过append到sb中
+        //4、返回sb
+        Scanner in = new Scanner(System.in);
+        String str1 = in.nextLine();
+        String str2 = in.nextLine();
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<str1.length();i++){
+            for(int j=0;j<str2.length();j++){
+                if(str1.charAt(i)==str2.charAt(j)){
+                    break;
+                }else{
+                    if(j==str2.length()-1){
+                        sb.append(str1.charAt(i));
+                    }
+                }
+            }
+        }
+        System.out.println(sb.toString());
+    }
+}
