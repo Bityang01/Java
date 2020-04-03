@@ -5833,3 +5833,33 @@ public class Main{
         System.out.println(sb.toString());
     }
 }
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.Scanner;
+public class Main {
+	//20200403nowcoder每日一题：神奇的口袋
+    public static void main(String[] args) {
+        //思路：
+        //1、每接收一个物品的体积，都把所有可以达到的体积按下标存入数组
+        //   比如：输入20，20，20三次体积，第一次输入20，把dp[20]存入；
+        //        第二次输入20，需要加上第一次的20即40，把dp[40]存入，再把dp[20]存入
+        //        第三次输入20，把第一次和第二次的20加上，有2次40，即dp[40]+=dp[20]，还有一次60，dp[60]++,再把dp[20]存入
+        //2、返回达到dp[40]的次数
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        //其实此处可以直接定义40大小的数组，800太多，但定义800可以不受40的约束，可以找到任何一个可以达到的体积
+        int[] dp = new int[800];
+        while(n>0){
+            int num = in.nextInt();
+            for(int i=dp.length-1;i>=0;i--){//此处必须是倒序，否则会递加执行if，会造成数组下标越界
+                if(dp[i]!=0){
+                    dp[i+num] += dp[i];//此处需要加上dp[i]的次数，不可以直接++，否则会漏加
+                }
+            }
+            dp[num]++;//执行完后再把本身的下标++
+            n--;
+        }
+        System.out.println(dp[40]);//达到40的次数
+    }
+}
