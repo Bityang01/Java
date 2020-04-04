@@ -5891,3 +5891,27 @@ public class Solution {
         return stack1.pop();
     }
 }
+
+
+import java.util.Scanner;
+public class Main{
+	//20200404nowcoder每日一题：计算糖果
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        int num1 = in.nextInt();
+        int num2 = in.nextInt();
+        int num3 = in.nextInt();
+        int num4 = in.nextInt();
+        int A,B,C;
+        //解方程，已知四个方程求三个未知数
+        B = (num3-num1)/2;
+        A = num1 + B;
+        C = num4 - B;
+        //最后输出的时候判断是否是符合题意的解
+        if((A-B!=num1)||(B-C!=num2)||(A+B!=num3)||(B+C!=num4)){
+            System.out.println("No");
+        }else{
+            System.out.println(A+" "+B+" "+C);
+        }
+    }
+}
