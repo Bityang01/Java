@@ -5915,3 +5915,34 @@ public class Main{
         }
     }
 }
+
+
+
+import java.util.Scanner;
+import java.util.Arrays;
+public class Main{
+	//20200304nowcoder每日一题：n个数里出现次数大于等于n/2的数
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        //不知道n的个数，直接接收一行的数据
+        String str = in.nextLine();
+        //以空格为界，把数据分割为一个个的String类型的数据
+        String[] stringArray = str.split(" ");
+        int[] array = new int[stringArray.length];
+        for(int i=0;i<array.length;i++){
+            //Integer.parseInt(String s)方法:将字符串参数解析为带符号的十进制整数。
+            array[i] = Integer.parseInt(stringArray[i]);
+        }
+        //重新定义一个数组,将数据当成数组的下标的存入,数组的值代表出现的次数
+        int[] res = new int[100];
+        for(int i=0;i<array.length;i++){
+            res[array[i]]++;
+        }
+        for(int i=0;i<100;i++){
+            //遍历数组,找到出现次数也就是数组值大于等于n/2的数据
+            if(res[i]>=array.length/2){
+                System.out.println(i);
+            }
+        }
+    }
+}
