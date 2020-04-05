@@ -5946,3 +5946,35 @@ public class Main{
         }
     }
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	//20200405leetcode面试题06. 从尾到头打印链表
+    private int getLength(ListNode head){
+        ListNode cur = head;
+        int count = 0;
+        while(cur!=null){
+            count++;
+            cur = cur.next;
+        }
+        return count;
+    }
+    public int[] reversePrint(ListNode head) {
+        int count = getLength(head);
+        int[] array = new int[count];
+        while(head!=null){
+            count--;
+            array[count] = head.val;
+            head = head.next;
+        }
+        return array;
+    }
+}
