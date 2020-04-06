@@ -6018,3 +6018,24 @@ public class Main{
         System.out.println(count);
     }
 }
+
+
+import java.util.Scanner;
+
+public class Main{
+	//20200406nowcoder每日一题：求最小公倍数
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        int numA = in.nextInt();
+        int numB = in.nextInt();
+        int count = 0;
+        for(int i=(numA>numB?numA:numB);i<numA*numB;i++){
+            if((i%numA==0)&&(i%numB==0)){
+                count = i;
+                break;
+            }
+        }
+        count = (count==0?numA*numB:count);
+        System.out.println(count);
+    }
+}
