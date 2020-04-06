@@ -5978,3 +5978,43 @@ class Solution {
         return array;
     }
 }
+
+
+import java.util.Scanner;
+
+public class Main{
+	//20200406nowcoder每日一题：不要二
+    public static void main(String[] args){
+        //数学方法：
+        //可知欧几里得距离是以四行四列为周期
+        //1、先定义二维数组，将二维数组全部置为1；
+        //2、遍历2维数组，数组值为1时，将加减2单位的位置置为0
+        //3、最后看数组中有多少个1
+        Scanner in = new Scanner(System.in);
+        int wide = in.nextInt(); //宽
+        int high = in.nextInt(); //长
+        int[][] array = new int[high][wide];
+        for(int i=0;i<high;i++){
+            for(int j=0;j<wide;j++){
+                array[i][j]=1;
+            }
+        }
+        int count=0;
+        for(int i=0;i<high;i++){
+            for(int j=0;j<wide;j++){
+                if(array[i][j]==1){
+                    if((i-2)>=0)
+                        array[i-2][j]=0;
+                    if((i+2)<high)
+                        array[i+2][j]=0;
+                    if((j+2)<wide)
+                        array[i][j+2]=0;
+                    if((j-2)>=0)
+                        array[i][j-2]=0;
+                    count++;
+                }
+            }
+        }
+        System.out.println(count);
+    }
+}
