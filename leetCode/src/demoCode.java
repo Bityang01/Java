@@ -6069,3 +6069,26 @@ public class Main{
         }
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200407nowcoder每日一题：n个数里最小的k个
+    public static void main(String[] args){
+        //split()方法和parseInt()方法的应用
+        Scanner in = new Scanner(System.in);
+        String str = in.nextLine();
+        String[] string = str.split(" ");
+        int key = Integer.parseInt(string[string.length-1]);
+        int[] array = new int[string.length-1];
+        for(int i=0;i<string.length-1;i++){
+            array[i] = Integer.parseInt(string[i]);
+        }
+        int[] res = new int[key];
+        Arrays.sort(array);
+        for(int i=0;i<key;i++){
+            System.out.print(array[i]+" ");
+        }
+    }
+}
