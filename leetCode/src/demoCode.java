@@ -6039,3 +6039,33 @@ public class Main{
         System.out.println(count);
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200407nowcoder每日一题：删除
+    public static void main(String[] args){
+        //用list清楚明了
+        //1、先把0-N-1的数全部存入list
+        //2、对list进行删除，每隔两个数删一个（index = (index+2)%list.size();）
+        //3、当list只剩一个数时返回这个数
+        Scanner in = new Scanner(System.in);
+        while(in.hasNextInt()){
+            int N = in.nextInt();
+            if(N>1000){
+                N = 999;
+            }
+            List<Integer> list = new ArrayList<>();
+            for(int i=0;i<N;i++){
+                list.add(i);
+            }
+            int index = 0;
+            while(list.size()>1){
+                index = (index+2)%list.size();
+                list.remove(index);
+            }
+            System.out.println(list.get(0));
+        }
+    }
+}
