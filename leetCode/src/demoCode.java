@@ -6092,3 +6092,48 @@ public class Main{
         }
     }
 }
+
+
+
+import java.util.Scanner;
+
+public class Main{
+	//20200408nowcoder末尾0的个数
+    public static void main(String[] args){
+        //求5的个数
+        Scanner in = new Scanner(System.in);
+        int num = in.nextInt();
+        int count = 0;
+        while(num>0){
+            count += num/5;
+            num /= 5;
+        }
+        System.out.println(count);
+    }
+}
+
+/*public class Main{
+    //此种方式太过暴力，一旦输入值过大，很容易超出范围
+    private static long function(int num){
+        long sum = 1;
+        for(int i=1;i<=num;i++){
+            sum = sum*i;
+        }
+        return sum;
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        int count = 0;
+        int num = in.nextInt();
+        long sum = function(num);
+        while(sum>0){
+            if(sum%10==0){
+                count++;
+                sum /= 10;
+            }else{
+                break;
+            }
+        }
+        System.out.println(count);
+    }
+}*/
