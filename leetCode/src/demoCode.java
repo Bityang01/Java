@@ -6137,3 +6137,28 @@ public class Main{
         System.out.println(count);
     }
 }*/
+
+
+
+import java.util.Scanner;
+import java.util.Queue;
+import java.util.LinkedList;
+
+public class Main{
+	//20200408nowcoder数字颠倒
+    public static void main(String[] args){
+        //用队列实现
+        Scanner in = new Scanner(System.in);
+        int num = in.nextInt();
+        Queue<Integer> queue = new LinkedList<>();
+        while(num>0){
+            queue.offer(num%10);
+            num /= 10;
+        }
+        StringBuilder sb = new StringBuilder();
+        while(queue.size()>0){
+            sb.append(queue.poll());
+        }
+        System.out.println(sb.toString());
+    }
+}
