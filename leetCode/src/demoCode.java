@@ -6184,3 +6184,22 @@ public class Main {
         System.out.println((num-f0)>(f2-num)?(f2-num):(num-f0));
     }
 }
+
+
+
+import java.util.*;
+
+public class Robot {
+	//20200409nowcoder每日一题：机器人走方格I
+    public int countWays(int x, int y) {
+        //递归的思想：
+        //只有往下和往右两种走法，那么分析这两种走法
+        //第一步往下走，那么后续的矩阵变成x*(y-1)
+        //第一步往右走，那么后续的矩阵变成(x-1)*y
+        //同理后续的每一步都如此
+        //当只有x或者y只有1的时候，只有一种走法，返回1，递归的结束条件
+        if(x==1||y==1)
+            return 1;
+        return countWays(x-1,y)+countWays(x,y-1);
+    }
+}
