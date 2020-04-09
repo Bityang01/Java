@@ -6162,3 +6162,25 @@ public class Main{
         System.out.println(sb.toString());
     }
 }
+
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.Scanner;
+
+public class Main {
+	//20200409nowcoder每日一题：Fibonacci数列
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int num = in.nextInt();
+        int f0 = 0;
+        int f1 = 1;
+        int f2 = 0;
+        for(int i=2;f2<=num;i++){
+            f2 = f1 + f0;
+            f0 = f1;
+            f1 = f2;
+        }
+        System.out.println((num-f0)>(f2-num)?(f2-num):(num-f0));
+    }
+}
