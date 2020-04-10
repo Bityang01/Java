@@ -6203,3 +6203,27 @@ public class Robot {
         return countWays(x-1,y)+countWays(x,y-1);
     }
 }
+
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.*;
+
+public class Main {
+	//20200410nowcoder每日一题：个位数统计（15）
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String num = in.nextLine();
+            int[] array = new int[10];
+            for(int i=0;i<num.length();i++){
+                array[num.charAt(i)-'0']++;
+            }
+            for(int i=0;i<10;i++){
+                if(array[i]>0){
+                    System.out.println(i+":"+array[i]);
+                }
+            }
+        }
+    }
+}
