@@ -6227,3 +6227,25 @@ public class Main {
         }
     }
 }
+
+
+
+import java.util.ArrayList;
+
+public class Solution {
+	//20200410nowcoder每日一题：构建乘积数组
+    public int[] multiply(int[] A) {
+        //剑指offer上下三角
+        int[] res = new int[A.length];
+        res[0]=1;
+        for(int i=1;i<A.length;i++){
+            res[i] = res[i-1]*A[i-1];
+        }
+        int tmp = 1;
+        for(int i=A.length-2;i>=0;i--){
+            tmp *= A[i+1];
+            res[i] *= tmp;
+        }
+        return res;
+    }
+}
