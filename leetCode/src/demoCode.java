@@ -6263,3 +6263,25 @@ public class Exchange {
         return AB;
     }
 }
+
+
+import java.util.*;
+
+public class GrayCode {
+	//20200411nowcoder每日一题：生成格雷码
+    public String[] getGray(int n) {
+        // write code here
+        String[] res = null;
+        if(n==1){
+            res = new String[]{"0","1"};
+            return res;
+        }
+        String[] tmp = getGray(n-1);
+        res = new String[tmp.length*2];
+        for(int i=0;i<tmp.length;i++){
+            res[i] = "0"+tmp[i];
+            res[res.length-1-i] = "1"+tmp[i];
+        }
+        return res;
+    }
+}
