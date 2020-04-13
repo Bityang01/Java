@@ -6308,3 +6308,45 @@ public class Main {
         }
     }
 }
+
+
+
+import java.util.*;
+
+public class Main{
+	//20200413nowcoder每日一题：超长正整数相加
+    public static String AddLongInteger(String addend,String augend){
+        //补零
+        while(addend.length()>augend.length()){
+            augend = '0'+augend;
+        }
+        while(addend.length()<augend.length()){
+            addend = '0'+addend;
+        }
+        StringBuilder sb = new StringBuilder();
+        //进位标志位
+        int ca = 0;
+        for(int i=addend.length()-1;i>=0;i--){
+            int sum = ca;
+            sum += (addend.charAt(i)-'0')+(augend.charAt(i)-'0');
+            ca = sum/10;
+            if(sum>9){
+                sb.append(sum%10);
+            }else{
+                sb.append(sum);
+            }
+        }
+        if(ca == 1){
+            sb.append(1);
+        }
+        return sb.reverse().toString();
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String addend = in.nextLine();
+            String augend = in.nextLine();
+            System.out.println(AddLongInteger(addend,augend));
+        }
+    }
+}
