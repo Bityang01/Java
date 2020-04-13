@@ -6285,3 +6285,26 @@ public class GrayCode {
         return res;
     }
 }
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.Scanner;
+
+public class Main {
+	//20200413nowcoder每日一题：跟奥巴马一起编程
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int num = in.nextInt();
+        char ch  = in.next().charAt(0);
+        for(int i=0;i<(num+1)/2;i++){
+            for(int j=0;j<num;j++){
+                if(i==0 || j==0 || i==((num+1)/2-1) || j==num-1){
+                    System.out.print(ch);
+                }else{
+                    System.out.print(" ");
+                }
+            } 
+            System.out.println();
+        }
+    }
+}
