@@ -6412,3 +6412,33 @@ public class Main {
         }
     }
 }*/
+
+
+import java.util.*;
+
+public class Main{
+	//20200414nowcoder每日一题：尼科彻斯定理
+    public static String GetSequeOddNum(int m){
+        int[] array = new int[m];
+        int sum = (int)Math.pow(m,3);
+        int arg = sum/m;
+        int tmp = 0;
+        tmp = arg-m+1;
+        for(int i=0;i<m;i++){
+            array[i] = tmp;
+            tmp += 2;
+        }
+        String res = "";
+        for(int i=0;i<m;i++){
+            res = res + array[i] + "+";
+        }
+        return res.substring(0,res.length()-1);
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            int m = in.nextInt();
+            System.out.println(GetSequeOddNum(m));
+        }
+    }
+}
