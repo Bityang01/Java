@@ -6350,3 +6350,65 @@ public class Main{
         }
     }
 }
+
+
+import java.util.*;
+
+public class Main {
+	//20200414nowcoder每日一题：组个最小数
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int[] arr = new int[10];
+        for(int i=0;i<10;i++){
+            arr[i] = in.nextInt();
+        }
+        for(int i=1;i<10;i++){
+            if(arr[i]!=0){
+                System.out.print(i);
+                arr[i]--;
+                break;
+            }
+        }
+        for(int i=0;i<10;i++){
+            for(int j=0;j<arr[i];j++){
+                System.out.print(i);
+            }
+        }
+    }
+}
+
+/*public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            String str = in.nextLine();
+            String[] res = str.split(" ");
+            int[] arr = new int[res.length];
+            int sum = 0;
+            for(int i=0;i<res.length;i++){
+                arr[i] = Integer.parseInt(res[i]);
+                sum += arr[i];
+            }
+            int count = 0;
+            int[] array = new int[sum];
+            for(int i=0;i<arr.length;i++){
+                if(arr[i]!=0){
+                    while(arr[i]>0){
+                        array[count++] = i;
+                        arr[i]--;
+                    }
+                }
+            }
+            String tmp = "";
+            Arrays.sort(array);
+            for(int i=0;i<array.length;i++){
+                if(array[i]!=0){
+                    tmp = array[i]+tmp;
+                }else{
+                    tmp += array[i];
+                }
+            }
+            System.out.println(tmp);
+        }
+    }
+}*/
