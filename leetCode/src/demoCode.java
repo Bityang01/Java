@@ -6442,3 +6442,19 @@ public class Main{
         }
     }
 }
+
+
+import java.util.*;
+
+public class UnusualAdd {
+	//20200415nowcoder每日一题：另类加法
+    public int addAB(int A, int B) {
+        // write code here
+        while(B!=0){
+            int tmp = A^B;
+            B=(A&B)<<1;
+            A=tmp;
+        }
+        return A;
+    }
+}
