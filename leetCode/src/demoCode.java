@@ -6458,3 +6458,22 @@ public class UnusualAdd {
         return A;
     }
 }
+
+
+
+import java.util.*;
+
+public class Main{
+	//20200415nowcoder每日一题：饥饿的小易
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        int x = in.nextInt();
+        int count = 0;
+        while(x!=0&&count<=300000){
+            x = (x*2+1)%1000000007;
+            count++;
+        }
+        int res = (count+2)/3;
+        System.out.println(res>100000?-1:res);
+    }
+}
