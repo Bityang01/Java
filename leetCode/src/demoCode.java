@@ -6519,3 +6519,30 @@ public class Main{
         }
     }
 }
+
+
+
+
+import java.util.*;
+
+public class Main{
+	//20200416nowcoder每日一题：统计同成绩学生人数
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            int N = in.nextInt();//学生人数
+            int[] array = new int[N];
+            for(int i=0;i<N;i++){
+                array[i] = in.nextInt();//读入每个学生成绩
+            }
+            int count = 0;
+            int target = in.nextInt();
+            for(int i=0;i<N;i++){
+                if(array[i]==target){
+                    count++;
+                }
+            }
+            System.out.println(count);
+        }
+    }
+}
