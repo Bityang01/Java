@@ -6477,3 +6477,45 @@ public class Main{
         System.out.println(res>100000?-1:res);
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200416nowcoder每日一题：洗牌
+    public static void main(String[] args){
+        Scanner in =new Scanner(System.in);
+        int T = in.nextInt();
+        for(int i=0;i<T;i++){
+            int n = in.nextInt();//牌的数量——2n
+            int k = in.nextInt();//洗牌次数
+            List<Integer> card = new ArrayList<>();//大牌堆
+            List<Integer> cardLeft = new ArrayList<>();//左手拿上半堆
+            List<Integer> cardRight = new ArrayList<>();//右手拿下半堆
+            for(int j=0;j<2*n;j++){//获得所有牌
+                card.add(in.nextInt());
+            }
+            for(int j=0;j<k;j++){//洗牌，洗k次
+                cardLeft.clear();
+                cardRight.clear();
+                for(int x=0;x<n;x++){//往左手放上半堆牌
+                    cardLeft.add(card.get(x));
+                }
+                for(int x=n;x<2*n;x++){//往右手放下半堆牌
+                    cardRight.add(card.get(x));
+                }
+                card.clear();
+                for(int x=n-1;x>=0;x--){//重新往大牌堆放牌
+                    card.add(cardRight.get(x));
+                    card.add(cardLeft.get(x));
+                }
+                Collections.reverse(card);//反转一下，以便于下一次洗牌
+            }
+            String res = "";//输出洗牌结果
+            for(int x=0;x<2*n;x++){
+                res += card.get(x)+" ";
+            }
+            System.out.println(res.substring(0,res.length()-1));
+        }
+    }
+}
