@@ -6609,3 +6609,22 @@ public class Main{
         }
     }
 }
+
+
+
+public class Main{
+	//20200418nowcoder每日一题：百万富翁问题
+    public static void main(String[] args){
+        int richMan = 0;
+        int poorMan = 0;
+        for(int i=0;i<30;i++){
+            poorMan += 10;//穷人得到的钱，即富人交出的钱
+        }
+        int tmpMoney = 1;
+        for(int i=0;i<30;i++){
+            richMan += tmpMoney;
+            tmpMoney = 2*tmpMoney;
+        }
+        System.out.println(poorMan+" "+richMan);
+    }
+}
