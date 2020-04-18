@@ -6571,3 +6571,41 @@ class Solution {
         return root;
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200418nowcoder每日一题：DNA序列
+    
+    //查找GC所占比例
+    private static double getGCLength(String string){
+        double count = 0;
+        for(int i=0;i<string.length();i++){
+            if(string.charAt(i)=='G' || string.charAt(i)=='C'){
+                count++;
+            }
+        }
+        return count/string.length();
+    }
+    
+    public static void main(String[] args){
+        //滑动窗口法
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String DNA = in.nextLine();
+            int minLength = in.nextInt();
+            double maxLength = 0;
+            String res = "";
+            for(int j=0;j<=DNA.length()-minLength;j++){
+                String tmp = DNA.substring(j,j+minLength);
+                double count = getGCLength(tmp);
+                if(count>maxLength){
+                    res = tmp;
+                    maxLength = count;
+                }
+            }
+            System.out.println(res);
+        }
+    }
+}
