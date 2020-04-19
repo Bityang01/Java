@@ -6628,3 +6628,34 @@ public class Main{
         System.out.println(poorMan+" "+richMan);
     }
 }
+
+
+import java.util.*;
+
+public class Substr {
+	//20200419nowcoder每日一题：子串判断
+    public boolean[] chkSubStr(String[] p, int n, String s) {
+        boolean[] res = new boolean[n];
+        for(int i=0;i<n;i++){
+            res[i] = s.contains(p[i]);
+        }
+        return res;
+    }
+}
+/*public class Substr {
+    //不高效
+    public boolean[] chkSubStr(String[] p, int n, String s) {
+        // write code here
+        boolean[] res = new boolean[n];
+        for(int i=0;i<n;i++){
+            String str = p[i];
+            for(int j=0;j<n-str.length();j++){
+                if(str.equals(s.substring(j,j+str.length()))){
+                    res[i] = true;
+                    break;
+                }
+            }
+        }
+        return res;
+    }
+}*/
