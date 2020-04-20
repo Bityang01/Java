@@ -6659,3 +6659,74 @@ public class Substr {
         return res;
     }
 }*/
+
+
+import java.util.*;
+
+public class Main{
+	//20200420nowcoder每日一题：成绩排序
+    private static void insertSort2(int[] arr2,String[] arr1){
+        int tmp2 = 0;
+        String tmp1 = null;
+        int k = 0;
+        for(int i=1;i<arr2.length;i++){
+            tmp2 = arr2[i];
+            tmp1 = arr1[i];
+            k = i;
+            for(int j=i;j>0;j--){
+                if(arr2[j-1]>=tmp2){
+                    arr2[k] = arr2[j-1];
+                    arr1[k--] = arr1[j-1];
+                }else{
+                    break;
+                }
+                arr2[k] = tmp2;
+                arr1[k] = tmp1;
+            }
+        }
+    }
+    public static void insertSort1(int[] arr2,String[] arr1){
+        int tmp2 = 0;
+        String tmp1 = null;
+        int k =0;
+        for(int i=1;i<arr2.length;i++){
+            tmp2 = arr2[i];
+            tmp1 = arr1[i];
+            k = i;
+            for(int j=i;j>0;j--){
+                if(arr2[j-1]>tmp2){
+                    arr2[k] = arr2[j-1];
+                    arr1[k--] = arr1[j-1];
+                }else{
+                    break;
+                }
+                arr2[k] = tmp2;
+                arr1[k] = tmp1;
+            }
+        }
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            int n = in.nextInt();
+            int b = in.nextInt();
+            String[] nameArr = new String[n];
+            int[] scoreArr = new int[n];
+            for(int i=0;i<n;i++){
+                nameArr[i] = in.next();
+                scoreArr[i] = in.nextInt();
+            }
+            if(b==1){
+                insertSort1(scoreArr,nameArr);
+                for(int i=0;i<n;i++){
+                    System.out.println(nameArr[i]+" "+scoreArr[i]);
+                }
+            }else{
+                insertSort2(scoreArr,nameArr);
+                for(int i=n-1;i>=0;i--){
+                    System.out.println(nameArr[i]+" "+scoreArr[i]);
+                }
+            }
+        }
+    }
+}
