@@ -6730,3 +6730,26 @@ public class Main{
         }
     }
 }
+
+
+import java.util.*;
+
+public class Gift {
+	//20200421nowcoder每日一题：微信红包
+    public int getValue(int[] gifts, int n) {
+        // write code here
+        Arrays.sort(gifts);
+        int[] arr = new int[gifts[gifts.length-1]+1];
+        for(int i=0;i<n;i++){
+            arr[gifts[i]]++;
+        }
+        int count = 0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>(n/2)){
+                count = i;
+                break;
+            }
+        }
+        return count;
+    }
+}
