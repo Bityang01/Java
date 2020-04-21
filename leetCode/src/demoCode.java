@@ -6753,3 +6753,54 @@ public class Gift {
         return count;
     }
 }
+
+import java.util.*;
+
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Partition {
+	//20200421nowcoder每日一题：链表分割
+    public ListNode partition(ListNode pHead, int x) {
+        // write code here
+        ListNode minLeft = null;
+        ListNode minRight = null;
+        ListNode maxLeft = null;
+        ListNode maxRight = null;
+        while(pHead != null){
+            ListNode cur = pHead.next;
+            if(pHead.val<x){
+                if(minLeft == null){
+                    minLeft = minRight = pHead;
+                }else{
+                    minRight.next = pHead;
+                    minRight = pHead;
+                }
+                minRight.next = null;
+            }else{
+                if(maxLeft == null){
+                    maxLeft = maxRight = pHead;
+                }else{
+                    maxRight.next = pHead;
+                    maxRight = pHead;
+                }
+                maxRight.next = null;
+            }
+            pHead = cur;
+        }
+        if(minLeft == null){
+            return maxLeft;
+        }
+        if(maxLeft == null){
+            return minLeft;
+        }
+        minRight.next = maxLeft;
+        return minLeft;
+    }
+}
