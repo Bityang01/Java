@@ -6828,3 +6828,33 @@ public class Main{
         }
     }
 }
+
+
+// write your code here
+import java.util.*;
+
+public class Main{
+	//20200422nowcoder每日一题：最难的问题
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String str1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String str2 = "VWXYZABCDEFGHIJKLMNOPQRSTU";
+            StringBuilder sb = new StringBuilder();
+            String str = in.nextLine();
+            for(int i=0;i<str.length();i++){
+                if(str.charAt(i) == ' '){
+                    sb.append(str.charAt(i));
+                }else{
+                    for(int j=0;j<str1.length();j++){
+                        if(str.charAt(i) == str1.charAt(j)){
+                            sb.append(str2.charAt(j));
+                            break;
+                        }
+                    }
+                }
+            }
+            System.out.println(sb.toString());
+        }
+    }
+}
