@@ -6804,3 +6804,27 @@ public class Partition {
         return minLeft;
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200422nowcoder每日一题：统计每个月兔子的总数
+    private static int getTotalCount(int monthCount){
+        if(monthCount<=0){
+            return 0;
+        }
+        if(monthCount == 1 || monthCount == 2){
+            return 1;
+        }else{
+            return getTotalCount(monthCount-1)+getTotalCount(monthCount-2);
+        }
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNextInt()){
+            int month = in.nextInt();
+            System.out.println(getTotalCount(month));
+        }
+    }
+}
