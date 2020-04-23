@@ -6858,3 +6858,39 @@ public class Main{
         }
     }
 }
+
+
+
+import java.util.*;
+
+public class Main{
+	//20200423nowcoder每日一题：到底买不买
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String str1 = in.nextLine();    //摊主的珠串
+            String str2 = in.nextLine();    //想要的珠串
+            int[] str1Arr = new int[123];
+            int[] str2Arr = new int[123];    //122是z的ASCII值，+1防止数组越界
+            int count = 0;
+            for(int i=0;i<str1.length();i++){
+                str1Arr[str1.charAt(i)]++;
+            }
+            for(int i=0;i<str2.length();i++){
+                str2Arr[str2.charAt(i)]++;
+            }
+            for(int i=0;i<123;i++){
+                if(str2Arr[i]!=0){
+                    if(str1Arr[i]<str2Arr[i]){
+                        count += (str2Arr[i]-str1Arr[i]);
+                    }
+                }
+            }
+            if(count!=0){
+                System.out.println("No "+count);
+            }else{
+                System.out.println("Yes");
+            }
+        }
+    }
+}
