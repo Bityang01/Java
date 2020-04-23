@@ -6894,3 +6894,38 @@ public class Main{
         }
     }
 }
+
+
+import java.util.*;
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Plus {
+	//20200423nowcoder每日一题：链式A+B
+    public ListNode plusAB(ListNode a, ListNode b) {
+        // write code here
+        ListNode res = new ListNode(-1);
+        ListNode pre = res;
+        int t=0;
+        while(a!=null||b!=null||t!=0){
+            if(a!=null){
+                t+=a.val;
+                a=a.next;
+            }
+            if(b!=null){
+                t+=b.val;
+                b=b.next;
+            }
+            pre.next = new ListNode(t%10);
+            pre = pre.next;
+            t/=10;
+        }
+        return res.next;
+    }
+}
