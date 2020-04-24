@@ -6929,3 +6929,23 @@ public class Plus {
         return res.next;
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200424nowcoder每日一题：下厨房
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        //由题意不可以包含重复元素，使用set
+        HashSet<String> set = new HashSet<>();
+        while(in.hasNext()){
+            String str = in.nextLine();
+            String[] strArr = str.split(" ");
+            for(int i=0;i<strArr.length;i++){
+                set.add(strArr[i]);
+            }
+        }
+        System.out.println(set.size());
+    }
+}
