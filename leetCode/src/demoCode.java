@@ -6982,3 +6982,43 @@ public class Main{
         }
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200425nowcoder每日一题：最高分是多少
+    private static int getMax(int[] arr,int x,int y){
+        int max = arr[x];
+        for(int i=x;i<=y;i++){
+            if(arr[i]>max){
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            int N = in.nextInt();
+            int M = in.nextInt();
+            int[] arr = new int[N+1];
+            for(int i=1;i<arr.length;i++){
+                arr[i] = in.nextInt();
+            }
+            for(int i=0;i<M;i++){
+                String str = in.next();
+                int A = in.nextInt();
+                int B = in.nextInt();
+                char[] chars = str.toCharArray();
+                char ch = chars[0];
+                if(ch == 'Q'){
+                    System.out.println(getMax(arr,A,B));
+                }
+                if(ch == 'U'){
+                    arr[A] = B;
+                }
+            }
+        }
+    }
+}
