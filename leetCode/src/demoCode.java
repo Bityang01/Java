@@ -6949,3 +6949,36 @@ public class Main{
         System.out.println(set.size());
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200425nowcoder每日一题：小易的升级之路
+    private static int function(int x,int y){
+        int min = x>y?y:x;
+        int max = x>y?x:y;
+        for(int i=min;i>=0;i--){
+            if(x%i==0 && y%i==0){
+                return i;
+            }
+        }
+        return 1;
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            int num = in.nextInt();
+            int c = in.nextInt();
+            for(int i=0;i<num;i++){
+                int tmp = in.nextInt();
+                if(tmp<=c){
+                    c += tmp;
+                }else{
+                    c += function(c,tmp);
+                }
+            }
+            System.out.println(c);
+        }
+    }
+}
