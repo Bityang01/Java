@@ -7010,15 +7010,107 @@ public class Main{
                 String str = in.next();
                 int A = in.nextInt();
                 int B = in.nextInt();
+                int min = A<B?A:B;
+                int max = A>B?A:B;
                 char[] chars = str.toCharArray();
                 char ch = chars[0];
                 if(ch == 'Q'){
-                    System.out.println(getMax(arr,A,B));
+                    System.out.println(getMax(arr,min,max));
                 }
                 if(ch == 'U'){
                     arr[A] = B;
                 }
             }
+        }
+    }
+}
+
+import java.util.*;
+
+public class Main{
+	//20200426nowcoder每日一题：学分绩点
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            int n = in.nextInt();
+            int[] arr1 = new int[n];
+            for(int i=0;i<n;i++){
+                arr1[i] = in.nextInt();
+            }
+            double[] res = new double[n];
+            int[] arr2 = new int[n];
+            for(int i=0;i<n;i++){
+                arr2[i] = in.nextInt();
+                if(arr2[i]>=90&&arr2[i]<=100){
+                    res[i] = 4.0;
+                }
+                if(arr2[i]>=85&&arr2[i]<=89){
+                    res[i] = 3.7;
+                }
+                if(arr2[i]>=82&&arr2[i]<=84){
+                    res[i] = 3.3;
+                }
+                if(arr2[i]>=78&&arr2[i]<=81){
+                    res[i] = 3.0;
+                }
+                if(arr2[i]>=75&&arr2[i]<=77){
+                    res[i] = 2.7;
+                }
+                if(arr2[i]>=72&&arr2[i]<=74){
+                    res[i] = 2.3;
+                }
+                if(arr2[i]>=68&&arr2[i]<=71){
+                    res[i] = 2.0;
+                }
+                if(arr2[i]>=64&&arr2[i]<=67){
+                    res[i] = 1.5;
+                }
+                if(arr2[i]>=60&&arr2[i]<=63){
+                    res[i] = 1.0;
+                }
+                if(arr2[i]<60){
+                    res[i] = 0;
+                }
+            }
+            double sum = 0;
+            double count = 0;
+            for(int i=0;i<n;i++){
+                sum += (res[i]*arr1[i]);
+                count += arr1[i];
+            }
+            double GPA = sum/count;
+            String str = "";
+            int x = (int)GPA;
+            str += (x+".");
+            int y = (int)(GPA*100)%100;
+            str += y;
+            System.out.println(str);
+        }
+    }
+}
+
+
+import java.util.*;
+
+public class Main{
+	//20200427nowcoder每日一题：数字之和
+    private static int getSum(int num){
+        int sum = 0;
+        while(num>0){
+            sum += num%10;
+            num /= 10;
+        }
+        return sum;
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            int num = in.nextInt();
+            int sum = 0;
+            int powSum = 0;
+            sum = getSum(num);
+            powSum = getSum((int)Math.pow(num,2));
+            System.out.println(sum+" "+powSum);
         }
     }
 }
