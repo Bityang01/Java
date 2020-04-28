@@ -7139,3 +7139,37 @@ public class Main{
         }
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200428nowcoder每日一题：计票统计
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            HashMap<String, Integer> map = new HashMap<>();
+            int num = in.nextInt();
+            String str = in.nextLine();
+            String[] strArr = str.split(" ");
+            for(int i=0;i<strArr.length;i++){
+                map.put(strArr[i], 0);
+            }
+            int people = in.nextInt();
+            String str1 = in.nextLine();
+            String[] arr = str1.split(" ");
+            int count = 0;
+            for(int i=0;i<people;i++){
+                if(map.containsKey(arr[i])){
+                    map.put(arr[i],map.get(arr[i]+1));
+                }else{
+                    count++;
+                }
+            }
+            for(int i=0;i<map.size();i++){
+                System.out.println(strArr[i]+" : "+map.get(strArr[i]));
+            }
+            System.out.println("Invalid : "+count);
+        }
+    }
+}
