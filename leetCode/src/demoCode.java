@@ -7114,3 +7114,28 @@ public class Main{
         }
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200428nowcoder每日一题：找X
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            int num = in.nextInt();
+            int[] arr = new int[num];
+            for(int i=0;i<num;i++){
+                arr[i] = in.nextInt();
+            }
+            int res = -1;
+            int target = in.nextInt();
+            for(int i=0;i<num;i++){
+                if(arr[i] == target){
+                    res = i;
+                }
+            }
+            System.out.println(res);
+        }
+    }
+}
