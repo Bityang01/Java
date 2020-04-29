@@ -7173,3 +7173,59 @@ public class Main{
         }
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200429nowcoder每日一题：整数与IP地址之间的转换
+    private static String tranIP(int[] arr){
+        String str = "";
+        for(int i=0;i<arr.length;i++){
+            str += Integer.toBinaryString(arr[i]);
+        }
+        return Integer.valueOf(str,2).toString();
+    }
+    private static String tranNum(int num){
+        String str = Integer.toBinaryString(num);
+        while(str.length()<32){
+            str = "0"+str;
+        }
+        System.out.println(str);
+        String[] arr = new String[4];
+        int i=0;
+        int count = 0;
+        while(i<32){
+            arr[count++] = str.substring(i,i+8);
+            i = i+8;
+        }
+        String res = "";
+        for(i=0;i<4;i++){
+            res += Integer.valueOf(arr[i],2).toString();
+            res += ".";
+        }
+        return res.substring(res.length()-1);
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String str = in.nextLine();
+            int flg = 0;
+            for(int i=0;i<str.length();i++){
+                if(str.charAt(i) == '.'){
+                    flg = 1;
+                    String[] str1 = str.split(".");
+                    int[] arr = new int[str1.length];
+                    for(int j=0;j<arr.length;j++){
+                        arr[j] = Integer.parseInt(str1[j]);
+                        System.out.println(tranIP(arr));
+                    }
+                }
+            }
+            if(flg == 0){
+                int num = Integer.parseInt(str);
+                System.out.println(tranNum(num));
+            }
+        }
+    }
+}
