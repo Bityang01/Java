@@ -7229,3 +7229,28 @@ public class Main{
         }
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200430nowcoder每日一题：守形数
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            int num = in.nextInt();
+            int sum = (int)Math.pow(num,2);
+            while(num>0&&sum>0){
+                if(num%10!=sum%10){
+                    System.out.println("No!");
+                    break;
+                }
+                num /= 10;
+                sum /= 10;
+            }
+            if(num==0||sum==0){
+                System.out.println("Yes!");
+            }
+        }
+    }
+}
