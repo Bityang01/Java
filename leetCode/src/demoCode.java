@@ -7254,3 +7254,55 @@ public class Main{
         }
     }
 }
+
+
+
+import java.util.*;
+
+public class Main{
+	//20200501nowcoder每日一题：密码验证合格程序
+    private static String passWord(String str){
+        if(str==null||str.length()<=8){
+            return "NG";
+        }
+        int lower = 0;
+        int uper = 0;
+        int other = 0;
+        int numer = 0;
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)<='Z'&&str.charAt(i)>='A'){
+                uper = 1;
+                continue;
+            }else{
+                if(str.charAt(i)<='z'&&str.charAt(i)>='a'){
+                    lower = 1;
+                    continue;
+                }else{
+                    if(str.charAt(i)<=9&&str.charAt(i)>=0){
+                        numer = 1;
+                        continue;
+                    }else{
+                        other = 1;
+                        continue;
+                    }
+                }
+            }
+        }
+        if((uper+lower+numer+other)<3){
+            return "NG";
+        }
+        for(int i=0 ;i<str.length()-2 ;i++){
+            String substr1 =str.substring(i, i+3);
+            if (str.substring(i+1).contains(substr1))
+               return "NG";
+        }
+        return "OK";
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNextLine()){
+            String str = in.nextLine();
+            System.out.println(passWord(str));
+        }
+    }
+}
