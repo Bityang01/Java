@@ -7306,3 +7306,24 @@ public class Main{
         }
     }
 }
+
+
+class Solution {
+	//20200503leetcode53. 最大子序和
+    public int maxSubArray(int[] nums) {
+        int sumMax=nums[0];
+        for(int i=0;i<nums.length;i++)
+        {
+            int sum=0;
+            for(int j=i;j<nums.length;j++)
+            {
+                sum=sum+nums[j];
+                if(sum>sumMax)
+                {
+                    sumMax=sum;
+                }
+            }
+        }
+        return sumMax;
+    }
+}
