@@ -7349,3 +7349,24 @@ class Solution {
         return list;
     }
 }
+
+
+class Solution {
+	//20200505leetcode1436. 旅行终点站
+    public String destCity(List<List<String>> paths) {
+        for(int i=0;i<paths.size();i++){
+            int flg = 0;
+            String tmp = paths.get(i).get(1);
+            for(int j=0;j<paths.size();j++){
+                if(paths.get(j).get(0).equals(tmp)){
+                    flg = 1;
+                    break;
+                }
+            }
+            if(flg == 0){
+                return tmp;
+            }
+        }
+        return null;
+    }
+}
