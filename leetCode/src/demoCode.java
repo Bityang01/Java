@@ -7386,3 +7386,37 @@ class Solution {
         return count;
     }
 }
+
+
+// write your code here
+import java.util.*;
+
+public class Main{
+	//20200507nowcoder每日一题：年会抽奖
+    private static double function(int num){
+        double sum = 1;
+        for(int i=1;i<=num;i++){
+            sum *= i;
+        }
+        return sum;
+    }
+    private static double function2(int n){
+        if(n==1){
+            return 0;
+        }else if(n==2){
+            return 1;
+        }else {
+            return (n-1)*(function2(n-1)+function2(n-2));
+        }
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            int n = in.nextInt();
+            double sum1 = function(n);
+            double sum2 = function2(n);
+            double res = (sum2/sum1)*100;
+            System.out.println(String.format("%.2f",res)+"%");
+        }
+    }
+}
