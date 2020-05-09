@@ -7447,3 +7447,44 @@ public class Main {
         }
     }
 }
+
+
+
+import java.util.*;
+
+public class Main{
+	//20200509nowcoder每日一题：奇偶校验位
+    private static boolean get1Num(String s){
+        int count = 0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i) == '1'){
+                count++;
+            }
+        }
+        if(count%2==0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String str = in.nextLine();
+            for(int i=0;i<str.length();i++){
+                char ch = str.charAt(i);
+                int tmp = ch-'\0';
+                String s = Integer.toBinaryString(tmp);
+                while(s.length()<7){
+                    s = "0"+s;
+                }
+                if(get1Num(s)){
+                    s = "0"+s;
+                }else{
+                    s = "1"+s;
+                }
+                System.out.println(s);
+            }
+        }
+    }
+}
