@@ -7488,3 +7488,26 @@ public class Main{
         }
     }
 }
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.*;
+import java.math.*;
+
+public class Main {
+	//20200509nowcoder每日一题：大整数排序
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            int n = in.nextInt();
+            BigInteger[] bg = new BigInteger[n];
+            for(int i=0;i<n;i++){
+                bg[i] = in.nextBigInteger();
+            }
+            Arrays.sort(bg);
+            for(int i=0;i<n;i++){
+                System.out.println(bg[i]);
+            }
+        }
+    }
+}
