@@ -7511,3 +7511,40 @@ public class Main {
         }
     }
 }
+
+
+
+import java.util.*;
+
+public class Main{
+	//20200512nowcoder每日一题：在霍格沃茨找零钱
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String strP = in.next();
+            String strA = in.next();
+            String[] arrayP = strP.split("\\.");
+            String[] arrayA = strA.split("\\.");
+            int[] arrP = new int[arrayP.length];
+            int[] arrA = new int[arrayA.length];
+            for(int i=0;i<arrP.length;i++){
+                arrP[i] = Integer.parseInt(arrayP[i]);
+                arrA[i] = Integer.parseInt(arrayA[i]);
+            }
+            int sumP = arrP[2]+arrP[1]*19+arrP[0]*17*19;
+            int sumA = arrA[2]+arrA[1]*19+arrA[0]*17*19;
+            int tmp = sumA - sumP;
+            String res = "";
+            if(tmp<0){
+                res += "-";
+            }
+            tmp = Math.abs(tmp);
+            res += (tmp/(17*19))+".";
+            tmp = tmp%(17*19);
+            res += (tmp/(19))+".";
+            tmp = tmp%19;
+            res += tmp;
+            System.out.println(res);
+        }
+    }
+}
