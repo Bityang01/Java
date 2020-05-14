@@ -7613,3 +7613,28 @@ public class Main {
         }
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200514nowcoder每日一题：球的半径和体积
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            double x0 = in.nextFloat();
+            double y0 = in.nextFloat();
+            double z0 = in.nextFloat();
+            double x1 = in.nextFloat();
+            double y1 = in.nextFloat();
+            double z1 = in.nextFloat();
+            double x = x1-x0;
+            double y = y1-y0;
+            double z = z1-z0;
+            double r = Math.sqrt(x*x+y*y+z*z);
+            double PI = Math.acos(-1);
+            double s = (4*PI*r*r*r)/3;
+            System.out.printf("%.3f"+" "+"%.3f",r,s);
+        }
+    }
+}
