@@ -7580,3 +7580,36 @@ public class Count2 {
         return count;
     }
 }*/
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.*;
+
+public class Main {
+	//20200514nowcoder每日一题：Broken Keyboard
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            String strF = in.nextLine();
+            String strS = in.nextLine();
+            strF = strF.toUpperCase();
+            strS = strS.toUpperCase();
+            HashSet set = new HashSet();
+            StringBuilder sb = new StringBuilder();
+            for(int i=0;i<strF.length();i++){
+                String tmp = ""+strF.charAt(i);
+                if(!strS.contains(tmp)){
+                    set.add(tmp);
+                }
+            }
+            String s = set.toString();
+            s = s.substring(1,s.length()-1);
+            for(int i=0;i<s.length();i++){
+                if(s.charAt(i)!=',' && s.charAt(i)!=' '){
+                    sb.append(s.charAt(i));
+                }
+            }
+            System.out.println(sb.toString());
+        }
+    }
+}
