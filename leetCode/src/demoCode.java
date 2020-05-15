@@ -7656,3 +7656,28 @@ public class Main{
         System.out.println(poorMan+" "+richMan);
     }
 }
+
+
+
+import java.lang.Math;
+
+public class Solution {
+    /**
+     * 计算你能获得的最大收益
+     * 
+     * @param prices Prices[i]即第i天的股价
+     * @return 整型
+     */
+    public int calculateMax(int[] prices) {
+		//20200515nowcoder每日一题：风口的猪——中国牛市
+        int firstBuy = Integer.MIN_VALUE,firstSell = 0;
+        int secondBuy = Integer.MIN_VALUE,secondSell = 0;
+        for(int curPrices : prices){
+            firstBuy = Math.max(firstBuy, -curPrices);
+            firstSell = Math.max(firstSell, firstBuy+curPrices);
+            secondBuy = Math.max(secondBuy, firstSell-curPrices);
+            secondSell = Math.max(secondSell,secondBuy+curPrices);
+        }
+        return secondSell;
+    }
+}
