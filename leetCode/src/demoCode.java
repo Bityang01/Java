@@ -7704,3 +7704,17 @@ public class Main {
         }
     }
 }
+
+
+import java.util.*;
+
+public class Main{
+	//20200517nowcoder每日一题：进制转换
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String str = in.nextLine();
+            System.out.println(Integer.parseInt(str.substring(2),16));
+        }
+    }
+}
