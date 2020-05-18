@@ -7718,3 +7718,63 @@ public class Main{
         }
     }
 }
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.Scanner;
+
+public class Main {
+	//20200518nowcoder每日一题：木棒拼图
+    private static boolean function(int[] arr){
+        int maxLength = 0;
+        int theMaxLength = 0;
+        int tmp = 0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>maxLength){
+                tmp = i;
+                maxLength = arr[i];
+            }
+        }
+        for(int i=0;i<arr.length;i++){
+            if(i == tmp){
+                continue;
+            }else{
+                theMaxLength += arr[i];
+            }
+        }
+        if(theMaxLength > maxLength){
+            return true;
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[] arr = new int[n*2];
+        int count = 0;
+        for(int i=n;i>0;i--){
+            int work = in.nextInt();
+            int length = in.nextInt();
+            if(work == 1){    //插入木棒
+                arr[count++] = length;
+            }else{    //删去木棒
+                if(count == 0){
+                    System.out.println("No");
+                    continue;
+                }else{
+                    for(int j=0;j<arr.length;j++){
+                        if(arr[j] == length){
+                            arr[j] = 0;
+                            break;
+                        }
+                    }
+                }
+            }
+            if(function(arr)){
+                System.out.println("Yes");
+            }else{
+                System.out.println("No");
+            }
+        }
+    }
+}
