@@ -7796,3 +7796,26 @@ public class LCA {
         return a;
     }
 }
+
+
+import java.util.*;
+
+public class Replacement {
+	//20200519nowcoder每日一题：空格替换
+    public String replaceSpace(String iniString, int length) {
+        // write code here
+        int indexAfter = 0;
+        int indexBack = 0;
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<iniString.length();i++){
+            if(iniString.charAt(i) == ' '){
+                indexBack = i;
+                sb.append(iniString.substring(indexAfter,indexBack));
+                sb.append("%20");
+                indexAfter = i+1;
+            }
+        }
+        sb.append(iniString.substring(indexAfter));
+        return sb.toString();
+    }
+}
