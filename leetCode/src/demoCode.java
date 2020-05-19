@@ -7778,3 +7778,21 @@ public class Main {
         }
     }
 }
+
+
+import java.util.*;
+
+public class LCA {
+	//20200519nowcoder每日一题：最近公共祖先
+    public int getLCA(int a, int b) {
+        // write code here
+        while(a!=b){
+            if(a>b){
+                a /= 2;
+            }else{
+                b /= 2;
+            }
+        }
+        return a;
+    }
+}
