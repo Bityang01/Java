@@ -7846,3 +7846,72 @@ public class Printer {
         return res;
     }
 }
+
+
+
+import java.util.*;
+
+public class Main{
+	//20200520nowcoder每日一题：回文串
+    private static boolean function(String str){
+        int i = 0;
+        int j = str.length()-1;
+        while(i<=j){
+            if(str.charAt(i) != str.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String str = in.nextLine();
+            int count = 0;
+            for(int i=0;i<str.length()-1;i++){
+                StringBuilder sb = new StringBuilder();
+                sb.delete(0,sb.length());
+                sb.append(str.substring(0,i));
+                sb.append(str.substring(i+1));
+                if(function(sb.toString())){
+                    count = 1;
+                    System.out.println("YES");
+                    break;
+                }
+            }
+            if(count == 0){
+                System.out.println("NO");
+            }
+        }
+    }
+}
+
+/*public class Main{
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        while(in.hasNext()){
+            String str = in.nextLine();
+            int countI = 0;
+            int countJ = 0;
+            for(int i=0,j=0;i<j;i++,j--){
+                if(str.charAt(i) != str.charAt(j)){
+                    countI++;
+                    i--;
+                }
+            }
+            for(int i=0,j=0;i<j;i++,j--){
+                if(str.charAt(i) != str.charAt(j)){
+                    countJ++;
+                    j++;
+                }
+            }
+            if(countI>1 || countJ>1){
+                System.out.println("NO");
+            }else{
+                System.out.println("YES");
+            }
+        }
+    }
+}*/
