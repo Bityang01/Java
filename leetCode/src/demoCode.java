@@ -7819,3 +7819,30 @@ public class Replacement {
         return sb.toString();
     }
 }
+
+
+import java.util.*;
+
+public class Printer {
+	//20200520nowcoder每日一题：打印二维数组
+    public int[] arrayPrint(int[][] arr, int n) {
+        // write code here
+        int[] res = new int[n*n];
+        int index = 0;
+        int x = 0;
+        int y = n-1;
+        while(x<n){
+            int tmpX = x;
+            int tmpY = y;
+            while(tmpX<n && tmpY<n){
+                res[index++] = arr[tmpX++][tmpY++];
+            }
+            if(y>0){
+                y--;
+            }else{
+                x++;
+            }
+        }
+        return res;
+    }
+}
