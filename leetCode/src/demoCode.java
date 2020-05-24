@@ -8002,3 +8002,42 @@ public class Main {
         }
     }
 }
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.Scanner;
+
+public class Main {
+	//20200524nowcoder每日一题：字符串的加解密
+    static String strHelp1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    static String strHelp2 = "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza1234567890";
+    /*static char[] chars1 = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+            'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+            '0','1','2','3','4','5','6','7','8','9'};
+    static char[] chars2 = {'B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','A',
+            'b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','a',
+            '1','2','3','4','5','6','7','8','9','0'};*/
+    private static String Encrypt(String str){    //加密
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<str.length();i++){
+            sb.append(strHelp2.charAt(strHelp1.indexOf(str.charAt(i))));
+        }
+        return sb.toString();
+    }
+    private static String unEncrypt(String str){    //解密
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<str.length();i++){
+            sb.append(strHelp1.charAt(strHelp2.indexOf(str.charAt(i))));
+        }
+        return sb.toString();
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            String str1 = in.nextLine();
+            String str2 = in.nextLine();
+            System.out.println(Encrypt(str1));
+            System.out.println(unEncrypt(str2));
+        }
+    }
+}
