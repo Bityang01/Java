@@ -7965,3 +7965,40 @@ public class Main {
         }
     }
 }
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.Scanner;
+
+public class Main {
+	//20200524nowcoder每日一题：计算日期到天数的转换
+    private static int iConverDateToDay(int year,int month,int day){
+        int sumDay = 0;
+        for(int i=1;i<month;i++){
+            if(i==1 || i==3 || i==5 || i==7 || i==8 || i==10 || i==12){
+                sumDay += 31;
+            }else{
+                if(i == 2){
+                    if((year%4==0 && year%100!=0) || (year%400==0)){
+                        sumDay += 29;
+                    }else{
+                        sumDay += 28;
+                    }
+                }else{
+                    sumDay += 30;
+                }
+            }
+        }
+        sumDay += day;
+        return sumDay;
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNextInt()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            int year = in.nextInt();
+            int month = in.nextInt();
+            int day = in.nextInt();
+            System.out.println(iConverDateToDay(year,month,day));
+        }
+    }
+}
