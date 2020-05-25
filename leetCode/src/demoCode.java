@@ -8041,3 +8041,36 @@ public class Main {
         }
     }
 }
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.*;
+
+public class Main {
+	//20200525nowcoder每日一题：电话号码
+    public static void main(String[] args) {
+        String string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String number = "222333444555666777788899991234567890";
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            int n = in.nextInt();
+            int count = 0;
+            String[] arr = new String[n];
+            for(int i=0;i<n;i++){
+                String str = in.nextLine();
+                str = str.replace("-","");
+                String tmp = "";
+                for(int j=0;j<7;j++){
+                    tmp += number.charAt(string.indexOf(str.charAt(j)+""));
+                }
+                tmp = tmp.substring(0,3)+"-"+tmp.substring(3);
+                arr[count++] = tmp;
+            }
+            Arrays.sort(arr);
+            for(int i=0;i<n;i++){
+                System.out.println(arr[i]);
+            }
+            System.out.println();
+        }
+    }
+}
