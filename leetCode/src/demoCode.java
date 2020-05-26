@@ -8103,3 +8103,34 @@ public class Main{
         process(num,m,res,sum,i+1);
     }
 }
+
+
+// write your code here
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.Scanner;
+public class Main {
+	//20200526nowcoder每日一题：骆驼命名法
+    public static void main(String[] args) {
+        String helpStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String helpStr2 = "abcdefghijklmnopqrstuvwxyz";
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            String str = in.nextLine();
+            int flg = 0;
+            StringBuilder sb = new StringBuilder();
+            for(int i=0;i<str.length();i++){
+                char ch = str.charAt(i);
+                if(ch == '_'){
+                    flg = 1;
+                    continue;
+                }
+                if(flg == 1){
+                    ch = helpStr.charAt(helpStr2.indexOf(ch));
+                    flg = 0;
+                }
+                sb.append(ch);
+            }
+            System.out.println(sb.toString());
+        }
+    }
+}
