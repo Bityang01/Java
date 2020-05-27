@@ -8152,3 +8152,37 @@ public class Solution {
         return count;
     }
 }
+
+
+// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.*;
+
+public class Main {
+	//20200527nowcoder每日一题：简单错误记录
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Map<String,Integer> map = new LinkedHashMap<>();
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            String str = in.next();
+            int num = in.nextInt();
+            String[] arr = str.split("\\\\");
+            String tmp = arr[arr.length-1];
+            if(tmp.length()>16){
+                tmp = tmp.substring(tmp.length()-16);
+            }
+            tmp = tmp+" "+num;
+            int value = 1;
+            if(map.containsKey(tmp)){
+                map.put(tmp,map.get(tmp)+1);
+            }else{
+                map.put(tmp,value);
+            }
+        }
+        int count=0;
+        for(String string:map.keySet()){
+            count++;
+            if(count>(map.keySet().size()-8)) //输出最后八个记录
+                System.out.println(string+" "+map.get(string));
+        }
+    }
+}
