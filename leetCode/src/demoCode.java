@@ -8134,3 +8134,21 @@ public class Main {
         }
     }
 }
+
+
+public class Solution {
+	//20200527nowcoder每日一题：数组中出现次数超过一半的数字
+    public int MoreThanHalfNum_Solution(int [] array) {
+        int[] arr = new int[100];
+        for(int i=0;i<array.length;i++){
+            arr[array[i]]++;
+        }
+        int count = 0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>array.length/2){
+                count = i;
+            }
+        }
+        return count;
+    }
+}
