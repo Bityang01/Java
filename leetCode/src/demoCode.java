@@ -8186,3 +8186,58 @@ public class Main {
         }
     }
 }
+
+
+import java.util.*;
+
+public class Main {
+	//20200612nowcoder web测试数组中值出现了一次的数字
+    private static void function(int[] arr){
+        Map<Integer,Integer> map = new TreeMap<>();
+        for(Integer c:arr){
+            int k = map.getOrDefault(c,0);
+            map.put(c,k+1);
+        }
+        for(Map.Entry<Integer,Integer> e : map.entrySet()){
+            if(e.getValue()%2==1){
+                System.out.print(e.getKey()+" ");
+            }
+        }
+        System.out.print("\n");
+    }
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[] arr = new int[n];
+        for(int i=0;i<n;i++){
+            arr[i] = in.nextInt();
+        }
+        function(arr);
+    }
+}
+
+
+/*// 本题为考试单行多行输入输出规范示例，无需提交，不计分。
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {// 注意，如果输入是多个测试用例，请通过while循环处理多个测试用例
+            int[] array = new int[10000];
+            int a = in.nextInt();
+            for(int i=0;i<a;i++){
+                int tmp = in.nextInt();
+                array[tmp]++;
+            }
+            String res = "";
+            for(int i=0;i<array.length;i++){
+                if((array[i]%2)!=0){
+                    res += i;
+                    res += " ";
+                }
+            }
+            System.out.println(res.substring(0,res.length()-1));
+        }
+    }
+}*/
